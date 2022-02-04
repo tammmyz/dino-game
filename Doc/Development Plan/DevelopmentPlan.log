@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.31)  4 FEB 2022 16:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 21.1) (preloaded format=pdflatex 2021.1.31)  4 FEB 2022 16:48
 entering extended mode
 **./DevelopmentPlan.tex
 (DevelopmentPlan.tex
@@ -61,7 +61,7 @@ tPlan.aux) )
 Here is how much of TeX's memory you used:
  456 strings out of 479618
  8727 string characters out of 2865026
- 281679 words of memory out of 3000000
+ 283679 words of memory out of 3000000
  17697 multiletter control sequences out of 15000+200000
  407070 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -71,7 +71,7 @@ sfonts/cm/cmbx12.pfb><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmr10.pfb><C:/Users/Owner/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Owner/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on DevelopmentPlan.pdf (2 pages, 66667 bytes).
+Output written on DevelopmentPlan.pdf (2 pages, 69585 bytes).
 PDF statistics:
  25 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
