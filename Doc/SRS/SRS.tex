@@ -6,8 +6,8 @@
 \usepackage{geometry}
 \usepackage{caption}
 \usepackage{url}
-
-
+\usepackage{booktabs}
+\usepackage{tabularx}
 
 
 \title{Software Requirements Specification: Chrome Dino Runner \\ \bigskip \large SFWRENG 3XA3 Project \\ \bigskip \large Team Number: L03 Group 1 \\ \large Team Name: ``Team Rex'' }
@@ -101,20 +101,87 @@ Users have the visual and physical capabilities to play the game
 
 \subsection{The Scope of the Work and the Product}
 
+
+
+\subsubsection{The Context of the Work}
 \subsubsection{The Context of the Work}
 % come back to and insert picture properly 
-\begin{figure}
-    \centering
-    \includegraphics{context_diagram.png}
-    \caption{Caption}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics{context_diagram.png}
+	\caption{Caption}
 \end{figure}
-
 \subsubsection{Work Partitioning}
 
 
+\noindent\setlength\tabcolsep{4pt}%
+\captionof{table}{Work Partitioning Event Details}
+\begin{tabularx}{\linewidth}{|l|c|*{4}{>{\RaggedRight\arraybackslash}X|}}
+	\hline
+	ID & Event Name & Event Description           & Input                & Expected Output               \\ [0.5ex]
+	\hline
+	1  & Viewing the Instructions Page  & Displays the instruction page.  & Keyboard/Mouse  & Instructions page \\
+	\hline
+	2  & Viewing the Leaderboard  & Displays the leaderboard  & Mouse & Leaderboard page  \\
+	\hline
+	3  & Change Game Settings  & The user can select different themes for the game, changes will be reflected in the UI. They can also alter the audio output. & Theme name and sound settings & Interface display and audio \\
+	\hline
+	4  & Playing the Game &The user plays the dino game  & Keyboard/Mouse & Interface display, theme music and final display \\
+	\hline
+\end{tabularx}
+
+\vskip1cm
 \subsubsection{Individual Product Use Cases}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics{use_case.png}
+	\caption{A use case diagram that displays the functionality of the application.}
+\end{figure}
+
+The use case diagram above shows the different ways a user can interact with the system. The user can start a game and the game must include displaying the score and allowing the user to jump over obstacle and displaying the final score. Game play is not impacted on whether a user goes to the main menu or if the score is saved to the database. Therefore, these action extend the use case. The use cases for viewing the instructions page, leaderboard page and settings menu are all self-explanatory. 
 
 \subsection{Functional Requirements}
+
+
+
+\textbf{E1: Viewing the Instructions Page} \\
+FR. The system must display instructions on how to play the game to the user. \\
+FR. The system must provide the user with a way to navigate the main menu. \\
+
+\textbf{E2: Viewing the Leaderboard} \\
+FR. The system must display the user with a list of the players with top scores and the respective score.  \\
+FR. The system must provide the user with a way to navigate back to the main menu. \\
+FR. The system must be able to filter the high scores by player. \\
+
+\textbf{E3: Change Game Settings} \\
+FR. The system must provide the user with a way to exit from the game settings to the main menu. \\
+
+FR. The system must allow the user to change the audio settings on the game. Such as having no audio or audio. \\
+
+FR. The system must display the available themes and allow the user to select a theme. \\
+
+\textbf{E4: Playing the Game} \\
+FR. The system must display the game to the screen with the appropriate theme. \\
+
+FR. The system must initialize the score to 0 when starting the game. \\
+
+FR. The system must output sound based on the audio settings. \\
+
+FR. The system must start gameplay when the user inputs a keyboard command. \\
+
+FR. The system must allow keyboard inputs to control the user interface. \\
+
+FR. The system must award points to the user after each dino step. \\
+
+FR. The system must display the user’s current score to the screen. \\
+
+FR. The system must allow the user to replay the game. \\
+
+FR. The system must allow the user to stop the game and return to the main menu. \\
+
+FR. The system must allow the user to enter their username when they are done playing the game. \\
+
+FR. After the game is finished, the user score must be entered into the database. \\
 
 
 
