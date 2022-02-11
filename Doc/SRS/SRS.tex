@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphics}
 \usepackage{amsmath}
@@ -8,6 +8,8 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{tabularx}
+
+
 
 
 \title{Software Requirements Specification: Chrome Dino Runner \\ \bigskip \large SFWRENG 3XA3 Project \\ \bigskip \large Team Number: L03 Group 1 \\ \large Team Name: ``Team Rex'' }
@@ -30,6 +32,7 @@ The clients for this project are the course instructor of SFWRENG 3XA3, Dr. Ashg
 The customers for this project are individuals who are interested in playing Chrome-Dino. The project does not explicitly target a demographic but is rather designed as a general-purpose entertainment source. The project is designed for anyone with the game's required software, such as Python and the PyGame library. 
 \subsubsection{Other Stakeholders}
 All members of group 1 are stakeholders of this project. We are all responsible for the development process, such as implementing, testing, and documenting the project. Group 1 members all care for the project's success and are responsible for maintaining the repository. Developers that fork the repository and continue the project's development are also stakeholders as they will be continuing the project and are interested in the project's success
+
 
 
 % Section 2: Project Constraints 
@@ -55,10 +58,10 @@ Rationale: This is because, the project must be completed prior to the end of th
 Fit Criterion: All deliverable contained within this project must completed and submitted by April 12, 2022. 
 Due to the time constraints on this project(3 months), this project needs to follow a predefined plan in order to ensure it's completion in an organized manner.
 \subsubsection{Budget Constraints}
-\subsubsection{Enterprise Constraints}
+N/A
 \subsection{Naming Conventions and Terminology}
 
-\begin{table}
+\begin{table}[h!]
 \caption{Table of Naming Conventions and Terminology.}
 \begin{tabular}{l c p{.5\textwidth}}
 \toprule
@@ -95,52 +98,55 @@ Users know how to operate a PC
 Users have the visual and physical capabilities to play the game
 
 
-
 % Section 3: Functional Requirements
 \section{Functional Requirements}
 
 \subsection{The Scope of the Work and the Product}
 
-
 \subsubsection{The Context of the Work}
 % come back to and insert picture properly 
 \begin{figure}[!ht]
-	\centering
-	\includegraphics{context_diagram.png}
-	\caption{Caption}
+    \centering
+    \includegraphics{context_diagram.png}
+    \caption{Caption}
 \end{figure}
+
 \subsubsection{Work Partitioning}
 
 
 \noindent\setlength\tabcolsep{4pt}%
 \captionof{table}{Work Partitioning Event Details}
 \begin{tabularx}{\linewidth}{|l|c|*{4}{>{\RaggedRight\arraybackslash}X|}}
-	\hline
-	ID & Event Name & Event Description           & Input                & Expected Output               \\ [0.5ex]
-	\hline
-	1  & Viewing the Instructions Page  & Displays the instruction page.  & Keyboard/Mouse  & Instructions page \\
-	\hline
-	2  & Viewing the Leaderboard  & Displays the leaderboard  & Mouse & Leaderboard page  \\
-	\hline
-	3  & Change Game Settings  & The user can select different themes for the game, changes will be reflected in the UI. They can also alter the audio output. & Theme name and sound settings & Interface display and audio \\
-	\hline
-	4  & Playing the Game &The user plays the dino game  & Keyboard/Mouse & Interface display, theme music and final display \\
-	\hline
+  \hline
+  ID & Event Name & Event Description           & Input                & Expected Output               \\ [0.5ex]
+  \hline
+  1  & Viewing the Instructions Page  & Displays the instruction page.  & Keyboard/Mouse  & Instructions page \\
+  \hline
+  2  & Viewing the Leaderboard  & Displays the leaderboard  & Mouse & Leaderboard page  \\
+  \hline
+  3  & Change Game Settings  & The user can select different themes for the game, changes will be reflected in the UI. They can also alter the audio output. & Theme name and sound settings & Interface display and audio \\
+  \hline
+  4  & Playing the Game &The user plays the dino game  & Keyboard/Mouse & Interface display, theme music and final display \\
+  \hline
 \end{tabularx}
 
 \vskip1cm
+
+
+
 \subsubsection{Individual Product Use Cases}
+
 \begin{figure}[!ht]
-	\centering
-	\includegraphics{use_case.png}
-	\caption{A use case diagram that displays the functionality of the application.}
+    \centering
+    \includegraphics{use_case.png}
+    \caption{A use case diagram that displays the functionality of the application.}
 \end{figure}
 
 The use case diagram above shows the different ways a user can interact with the system. The user can start a game and the game must include displaying the score and allowing the user to jump over obstacle and displaying the final score. Game play is not impacted on whether a user goes to the main menu or if the score is saved to the database. Therefore, these action extend the use case. The use cases for viewing the instructions page, leaderboard page and settings menu are all self-explanatory. 
 
+
+
 \subsection{Functional Requirements}
-
-
 
 \textbf{E1: Viewing the Instructions Page} \\
 FR. The system must display instructions on how to play the game to the user. \\
@@ -183,50 +189,52 @@ FR. After the game is finished, the user score must be entered into the database
 
 
 
-
 % section 4 -----------------------
 \section{Non-Functional Requirements}
     \subsection{Look and Feel Requirements}
         \subsubsection{Appearance Requirements}
-        LFX. The user interface consist of essential components relevant to the game.
+        LF1. The user interface consists of essential components relevant to the game.
         \subsubsection{Style Requirements} 
-    	LFX. The product shall maintain the 90's arcade appearance.\\
-    	LFX. The product shall be designed according to the extra themes developed.
+    	LF2. The product shall maintain the 90's arcade appearance.\\
+    	LF3. The product shall incorporate different themes.\\
+    	LF4. The game colours must not distract the user's game play.
    
 \subsection{Usability and Humanity Requirements}
     \subsubsection{Ease-Of-Use Requirements}
-    UHX. Game can be controlled using two methods, arrow keys and AWSD keys.\\
-    UHX. The game must have a simple menu page where game settings can be accessed.\\
-    UHX. The game can be used by people intuitively, no training needed and at a maximum basic English level.
+    UH1. Game shall be controlled using two methods: arrow keys or WASD.\\
+    UH2. The game shall have a simple menu page where the game can be accessed easily.\\
+    UH3. The game shall be used by people intuitively, no training needed and at a minimum basic English level.
     
     \subsubsection{Personalization and Internationalization Requirements}
-    PIx. The product shall only be used in English.
-    PIX. The user can adjust the theme of the game based on their preferences.
+    UH4. The product shall only be used in English.\\
+    UH5. The user can adjust the theme of the game based on their preferences.
     
     \subsubsection{Learning Requirements}
-    LRx. The game will be used without receiving training before using it.\\
-    LRx. The game must contain basic instructions within the main menu page.
+    UH6. The user shall not require training before playing the game.\\
+    UH7. The game must contain basic instructions within the main menu page.
 
     \subsubsection{Understandability and Politeness Requirements}
-    UPx. The game shall encompass a level of abstraction from the user.\\
-    UPx. The game shall use common control keys to play the game.\\
-    UPx. The game will include universal symbols and words that are naturally understood by the user community.
+    UH8. The game shall encompass a level of abstraction from the user.\\
+    UH9. The game shall use common control keys to play the game.\\
+    UH10. The game will include universal symbols and words that are naturally understood by the user community.
     
     \subsubsection{Accessibility Requirements}
-    ARx. The game shall be playable for those with colour blindness.
+    UH11. The game shall be playable for users with colour blindness.\\
+    UH12. The game shall use appropriate font style and size, making it readable to the general public.
     
 \subsection{Performance Requirements}
     \subsubsection{Speed and Latency Requirements}
-    PEX. Scores must be uploaded to the leader board in less than 10 seconds.\\
-    PEx. The interface must have a maximum response time of 2 seconds.
-    PEx. The game shall update the new status parameters within 5 minutes of user input.
+    PE1. Scores shall be uploaded to the leader board in less than 10 seconds.\\
+    PE2. The interface must have a maximum response time of 2 seconds to avoid disrupting the user's game play.\\
+    PE3. The game shall update the new status parameters within 5 seconds of user input.
 
     \subsubsection{Safety-Critical Requirements}
     N/A
     
     \subsubsection{Precision or Accuracy Requirements}
-    PEx. Integer whole number scores must be uploaded appropriately and displayed on the screen\\
-    PEx. Leader board shall be updated according to the top integer score
+    PE4. Integer whole number scores shall be uploaded and displayed on the screen within 100 milliseconds of changing.\\
+    PE5. The Leader board shall be updated according to the top integer score.\\
+    PE6. The game shall have a maximum latency of 100 milliseconds.
     
     \subsubsection{Reliability and Availability Requirements}
     N/A
@@ -235,62 +243,61 @@ FR. After the game is finished, the user score must be entered into the database
     N/A
     
     \subsubsection{Capacity Requirements}
-    PEx. The game shall only be available to a single player\\
-    PEx. The game shall allow a maximum of 3 users stored in the leader board.
+    PE7. The game shall only be available to a single player at a time.\\
+    PE8. The game shall allow a maximum of 5 users stored in the leader board.
     
     \subsubsection{Scalability or Extensibility Requirements}
-    PEx. Developers shall be able to add new features, such as themes, without compromising basic functionalities of the game. 
+    PE9. Developers shall be able to add new features, such as themes, without compromising the basic functionalities of the game. 
     
     \subsubsection{Longevity Requirements}
-    PEx. The game must maintain functionality with existing software until Spring 2022.
-
+    PE10. The game shall maintain functionality with existing software until Spring 2022.
 
 \subsection{Operational and Environmental Requirements}
     \subsubsection{Expected Physical Environment}
-    PEx. The game can be played with full functionality without internet connection.\\
-    PEx. The game can be played within any computer operating system (i.e. Linux, Windows)
+    PE11. The game shall be played with full functionality without an internet connection.\\
+    PE12. The game shall be played within any computer operating system (i.e. Linux, Windows).
     
 \subsection{Requirements for Interfacing with Adjacent Systems}
     \subsubsection{Productization Requirements}
-    PEX. The game shall be distributed to user computers as a .EXE file.
-    PEX. The game shall be installed without the use of separately printed instructions.
+    PE13. The game shall be distributed to user computers as a .EXE file.\\
+    PE14. The game shall be installed without the use of separately printed instructions.
     
  \subsection{Release Requirements}
-    PEX. The game will be released by April 5, 2021.
+    PE15. The game shall be released by April 5, 2021.
     
  \subsection{Maintainability and Support Requirements}
     \subsubsection{Maintenance Requirements}
-     MAx. Source code must be up to date on the latest changes.\\
-    MAx. Source code must be appropriately documented.
+    MA1. Source code shall be updated with the latest changes, within one working week of the scheduled agreement date.\\
+    MA2. Source code shall be appropriately documented.
     
     \subsubsection{Supportability Requirements}
-    MAX. The full project source code shall be made available to Git users in order to raise issues.
+    MA3. The full project source code shall be made available to Git users in order to raise issues.
     
     \subsubsection{Adaptability Requirements}
-    MAX. The product shall run under Windows 10, Linux Ubuntu 16.04, or newer versions of these operating systems.
+    MA4. The product shall run under Windows 10, Linux Ubuntu 16.04, or newer versions of these operating systems.
     
 \subsection{Security Requirements}
     \subsubsection{Access Requirements}
-    SRx. The game users shall have read-only access to the leader board and user scores.
-    SRx. Users are permitted to change game settings through user interface.
+    SR1. The game users shall have read-only access to the leader board and user scores. \\
+    SR2. Users are permitted to change game settings through user interface.
     
     \subsubsection{Integrity Requirements}
-    SRx. The product shall protect itself from unauthorized user modifications.
-    SRx. The user shall not be allowed to modify scores.
+    SR3. The product shall protect itself from unauthorized user modifications.\\
+    SR4. The user shall not be allowed to modify scores.
     
     \subsubsection{Privacy Requirements}
-    SRx. Each user shall only be able to view other user names and their corresponding high scores within the leader board.
+    SR5. Each user shall only be able to view other user names and their corresponding high scores within the leader board.
     
     \subsubsection{Audit Requirements}
     N/A
     
     \subsubsection{Immunity Requirements}
-    SRX. The product must not be vulnerable to unauthorized or undesirable software programs.
+    SR6. The product must not be vulnerable to unauthorized or undesirable software programs.
     
 \subsection{Cultural and Political Requirements}
     \subsubsection{Cultural Requirements}
-    CPx. The game themes shall not be offensive to any cultures or religions. \\
-    CPx. The game shall allow users to input non-offensive names only in English.
+    CP1. The game themes shall not be offensive to any cultures or religions. \\
+    CP2. The game shall not allow users to input offensive English user names or from other languages.
 
     \subsubsection{Political Requirements}    N/A
     
@@ -300,20 +307,59 @@ FR. After the game is finished, the user score must be entered into the database
     
     \subsubsection{Standards Requirements} 
     N/A
+    
 \subsection{Health and Safety Requirements}
     N/A
+    
+    
 %section 5
 \section{Project Issues}
 \subsection{Open Issues}
+There are currently no open Issues in the Chrome Dino Runner repository.
+However we found that the required pygame version 2.0.1 does not exists but the most current version 
+of pygame seems to work fine with the code.
+In addition, the code writes into a score.txt file that does not exist in the initial code repository.
+% And so we had to manually create and populate the score.txt file to successfully compile and run the game.
 \subsection{Off-the-Shelf Solutions}
+A version of the game we are reimplementing is available on Chrome's offline mode and multiple websites including
+https://chromedino.com/, https://dino-chrome.com/en and more
+Finally, during the 2021 Olympic Games in Tokyo Google released a limited edition themed version of the Dino game which is no longer available https://chromeunboxed.com/chromes-dino-game-tokyo-olympic-theme/
 \subsection{New Problems}
+This new implementation of the game will not change the basic rules of the game.
+Players who are accustomed to the orginal version of the game should be able to play the our version without
+the need for instructions
 \subsection{Tasks}
+
+Tasks are scheduled and delegated as per the project \href{}{\color{blue}Gantt Chart}.
+
+
 \subsection{Migration to the New Product}
+FILL IN WITH GROUP
 \subsection{Risks}
+This project has minimal risk as it is designed for entertainment purposes. The significant risk of this project will be in terms of testing. The quality of our game will depend on the graphical user interface. Testing GUI’s poses challenges as the only testing method available would be system testing. Compared to unit testing, system testing increases the change of bugs and issues going undiscovered. Our game must also be compatible with different hardware configurations and on multiple operating systems.
 \subsection{Costs}
+This project does not have any costs associated with it as it is being developed with open-source software and resources. The only cost is time resources; these resources will be used for the development, documentation and testing of the project. 
 \subsection{User Documentation and Training}
 \subsubsection{Documentation}
+An instructions page will be available in the main menu of the game.
+This page will contain instruction on how the game is to be played as well as the keys that can be used as controls. Information regarding scoring will also be present in this page.
+Finally, the main repository of the game will include a README file, which will detail and installation and set-up instructions.
 \subsubsection{Training}
+A user can play the \textbf{Chrome Dino Runner} with no necessary training. The game's controls (up and down arrow) should be intuitive when jumping over obstacles. The player may practice the game to improve skill, but no prior training is needed to succeed.  
 \subsection{Waiting Room}
+% ## do we just put our improvements here?? I think so - SF
+\begin{itemize}
+ \item Adding background music to the game to match the speed of the dinosaur
+ \item Developing a themed version of the game 
+ \begin{itemize}
+     \item For example: McMaster student theme
+ \end{itemize}
+ \item Inserting a play again button
+ \item Creating additional pages such as a home and instruction page 
+ \item Implementing new button control and keyboard binding such as A,W,S,D keys
+ \item Changing module design and incorporating software engineering principles
+\end{itemize}
 \subsection{Ideas for Solutions}
+Manually create and populate the score.txt file to successfully compile and run the game.
+% Also not sure if this is apporpriate^^
 \end{document}
