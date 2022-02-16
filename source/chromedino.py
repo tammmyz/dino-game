@@ -143,12 +143,16 @@ class Dinosaur:
         self.image = self.jump_img  # setting it to the only jumping image
         if self.dino_jump:
             self.dino_rect.y -= self.jump_vel * 4  # changing the height of y according to the velocity
-            self.jump_vel -= 0.8
-        if self.jump_vel < -self.JUMP_VEL:
-            self.dino_jump = False
-            self.jump_vel = self.JUMP_VEL
+            self.jump_vel -= 0.8  # changing the velocity
+        if self.jump_vel < -self.JUMP_VEL:  # once the velocity passes 0 (it resets jump velocity) - because we are on the ground
+            self.dino_jump = False  # set jump to false
+            self.jump_vel = self.JUMP_VEL  # resets velocity value to constant
 
+    ## @brief draws the dinosaur to the screen
+    #  @param SCREEN screen object from the pygame library
     def draw(self, SCREEN):
+        # blit draws the image to the screen (that we set)
+        # in the specific destination (x, y coordinates)
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
 
