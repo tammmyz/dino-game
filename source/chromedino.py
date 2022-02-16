@@ -1,5 +1,7 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
+
+# importing libraries
 import datetime
 import os
 import random
@@ -7,19 +9,21 @@ import threading
 
 import pygame
 
+# initializing the game
 pygame.init()
 
 # Global Constants
-
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+# setting up the window - title and setting the game icon (top left corner)
 pygame.display.set_caption("Chrome Dino Runner")
 
 Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
+# setting up images for different icons and putting them in a list
 RUNNING = [
     pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
     pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
@@ -48,32 +52,37 @@ BIRD = [
 
 CLOUD = pygame.image.load(os.path.join("assets/Other", "Cloud.png"))
 
+# putting in the ground graphic
 BG = pygame.image.load(os.path.join("assets/Other", "Track.png"))
 
-FONT_COLOR=(0,0,0)
+FONT_COLOR = (0, 0, 0)  # setting font to black
 
+
+# setting up the dinosaur class - need to separate into it's own module
 class Dinosaur:
-
+    # setting constants for the dinosaur position on screen and velocity
     X_POS = 80
     Y_POS = 310
     Y_POS_DUCK = 340
     JUMP_VEL = 8.5
 
+    # initializing dinosaur images
     def __init__(self):
-        self.duck_img = DUCKING
+        self.duck_img = DUCKING  # list of ducking images
         self.run_img = RUNNING
         self.jump_img = JUMPING
 
+        # starting dino positions
         self.dino_duck = False
         self.dino_run = True
         self.dino_jump = False
 
         self.step_index = 0
-        self.jump_vel = self.JUMP_VEL
-        self.image = self.run_img[0]
-        self.dino_rect = self.image.get_rect()
-        self.dino_rect.x = self.X_POS
-        self.dino_rect.y = self.Y_POS
+        self.jump_vel = self.JUMP_VEL  # setting jump velocity
+        self.image = self.run_img[0]  # setting first run image
+        self.dino_rect = self.image.get_rect()  # getting the dimensions of the 1st image
+        self.dino_rect.x = self.X_POS  # setting the x-position of the dino rectangle
+        self.dino_rect.y = self.Y_POS  # setting the y-position of the dino rectangle
 
     def update(self, userInput):
         if self.dino_duck:
@@ -211,11 +220,11 @@ def main():
             game_speed += 1
         current_time = datetime.datetime.now().hour
         with open("score.txt", "r") as f:
-            score_ints = [int(x) for x in f.read().split()]  
+            score_ints = [int(x) for x in f.read().split()]
             highscore = max(score_ints)
             if points > highscore:
-                highscore=points 
-            text = font.render("High Score: "+ str(highscore) + "  Points: " + str(points), True, FONT_COLOR)
+                highscore = points
+            text = font.render("High Score: " + str(highscore) + "  Points: " + str(points), True, FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
@@ -241,7 +250,7 @@ def main():
         font = pygame.font.Font("freesansbold.ttf", 30)
         text = font.render("Game Paused, Press 'u' to Unpause", True, FONT_COLOR)
         textRect = text.get_rect()
-        textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT  // 3)
+        textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 3)
         SCREEN.blit(text, textRect)
         pygame.display.update()
 
@@ -305,10 +314,10 @@ def menu(death_count):
     while run:
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
-            FONT_COLOR=(0,0,0)
+            FONT_COLOR = (0, 0, 0)
             SCREEN.fill((255, 255, 255))
         else:
-            FONT_COLOR=(255,255,255)
+            FONT_COLOR = (255, 255, 255)
             SCREEN.fill((128, 128, 128))
         font = pygame.font.Font("freesansbold.ttf", 30)
 
