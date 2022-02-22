@@ -88,9 +88,11 @@ def main():
         pause = True
         font = pygame.font.Font("freesansbold.ttf", 30)
         text = font.render("Game Paused, Press 'u' to Unpause", True, global_var.FONT_COLOR)
+        instruction_text = font.render("Press 'i' to see instructions", True, global_var.FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 3)
         SCREEN.blit(text, textRect)
+        SCREEN.blit(instruction_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 3 + 50))
         pygame.display.update()
 
         while pause:
@@ -160,7 +162,7 @@ def instructions():
     SCREEN.blit(title, titleRect)
 
 
-    # importing images
+    # importing images --> transfer to img.py
     up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
     up_img = pygame.transform.scale(up_img, (50,50))
 
@@ -194,7 +196,7 @@ def instructions():
     pause_text = body_font.render("to PAUSE the game", True, global_var.FONT_COLOR)
     unpause_text = body_font.render("to UNPAUSE the game", True, global_var.FONT_COLOR)
 
-
+    # Display instuction body 
     SCREEN.blit(press_text, (373, 140))
     SCREEN.blit(up_img, (433, 120))
     SCREEN.blit(or_text, (493, 140))
@@ -216,8 +218,6 @@ def instructions():
     SCREEN.blit(press_text, (373, 355))
     SCREEN.blit(u_img, (440, 340))
     SCREEN.blit(unpause_text, (493, 355))
-
-
 
 
 def menu(death_count):
@@ -262,10 +262,9 @@ def menu(death_count):
     
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
-        instructions()
+        #instructions()
         pygame.display.update()
         
-
         for event in pygame.event.get():
             print("EVENT")
             if event.type == pygame.QUIT:
