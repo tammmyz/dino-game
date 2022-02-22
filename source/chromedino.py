@@ -157,6 +157,25 @@ def instructions():
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
 
+    up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
+    up_img = pygame.transform.scale(up_img, (50,50))
+
+    w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
+    w_img = pygame.transform.scale(w_img, (46,47))
+
+    down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
+    down_img = pygame.transform.scale(down_img, (46,47))
+
+    s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
+    s_img = pygame.transform.scale(s_img, (46,47))
+
+    SCREEN.blit(up_img, (global_var.SCREEN_WIDTH // 2, 80))
+    SCREEN.blit(down_img, (global_var.SCREEN_WIDTH // 2, 135))
+    SCREEN.blit(w_img, (global_var.SCREEN_WIDTH // 2, 185))
+    SCREEN.blit(s_img, (global_var.SCREEN_WIDTH // 2, 235))
+
+
+
     
 
 def menu(death_count):
