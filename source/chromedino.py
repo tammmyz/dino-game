@@ -12,7 +12,8 @@ import time
 # importing local application/library specific imports
 from cloud import Cloud
 from large_cactus import LargeCactus
-from obstacle import Obstacle as Obstacle
+from small_cactus import SmallCactus
+from obstacle import Obstacle
 import global_var
 import images
 
@@ -197,18 +198,18 @@ class Dinosaur:
 #         SCREEN.blit(self.image[self.type], self.rect)
 
 
-class SmallCactus(Obstacle):
-    def __init__(self, image):
-        self.type = random.randint(0, 2)
-        super().__init__(image, self.type)
-        self.rect.y = 325
+# class SmallCactus(Obstacle):
+#     def __init__(self, image):
+#         self.type = random.randint(0, 2)
+#         super().__init__(image, self.type)
+#         self.rect.y = 325
 
-
-class LargeCactus(Obstacle):
-    def __init__(self, image):
-        self.type = random.randint(0, 2)
-        super().__init__(image, self.type)
-        self.rect.y = 300
+#
+# class LargeCactus(Obstacle):
+#     def __init__(self, image):
+#         self.type = random.randint(0, 2)
+#         super().__init__(image, self.type)
+#         self.rect.y = 300
 
 
 class Bird(Obstacle):
