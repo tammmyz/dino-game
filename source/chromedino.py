@@ -7,12 +7,14 @@ import os
 import random
 import threading
 import pygame
+import time
 
 # importing local application/library specific imports
-from Cloud import Cloud # importing class class
+from cloud import Cloud
+from large_cactus import LargeCactus
+from obstacle import Obstacle as Obstacle
 import global_var
 import images
-
 
 # initializing the game
 pygame.init()
@@ -27,6 +29,7 @@ pygame.display.set_caption("Chrome Dino Runner")
 
 Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
+
 
 # # setting up images for different icons and putting them in a list
 # images.RUNNING = [
@@ -89,7 +92,6 @@ class Dinosaur:
         self.dino_rect.x = self.X_POS  # setting the x-position of the dino rectangle
         self.dino_rect.y = self.Y_POS  # setting the y-position of the dino rectangle
 
-
     ## @brief updates the current dinosaur image based off user input
     #  @param userInput keyboard input (whatever key is pressed)
     #  @return updates screen
@@ -129,7 +131,7 @@ class Dinosaur:
 
     ## @brief changes the duck image and the position of the dino rectangle
     def duck(self):
-        self.image = self.duck_img[self.step_index // 5] # updating the image according to remainder
+        self.image = self.duck_img[self.step_index // 5]  # updating the image according to remainder
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = self.X_POS  # setting the positions
         self.dino_rect.y = self.Y_POS_DUCK
@@ -160,6 +162,7 @@ class Dinosaur:
         # in the specific destination (x, y coordinates)
         SCREEN.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
+
 #
 # class Cloud:
 #     def __init__(self):
@@ -177,21 +180,21 @@ class Dinosaur:
 #     def draw(self, SCREEN):
 #         SCREEN.blit(self.image, (self.x, self.y))
 #
-
-class Obstacle:
-    def __init__(self, image, type):
-        self.image = image
-        self.type = type
-        self.rect = self.image[self.type].get_rect()
-        self.rect.x = global_var.SCREEN_WIDTH
-
-    def update(self):
-        self.rect.x -= global_var.game_speed
-        if self.rect.x < -self.rect.width:
-            obstacles.pop()
-
-    def draw(self, SCREEN):
-        SCREEN.blit(self.image[self.type], self.rect)
+#
+# class Obstacle:
+#     def __init__(self, image, type):
+#         self.image = image
+#         self.type = type
+#         self.rect = self.image[self.type].get_rect()
+#         self.rect.x = global_var.SCREEN_WIDTH
+#
+#     def update(self):
+#         self.rect.x -= global_var.game_speed
+#         if self.rect.x < -self.rect.width:
+#             obstacles.pop()
+#
+#     def draw(self, SCREEN):
+#         SCREEN.blit(self.image[self.type], self.rect)
 
 
 class SmallCactus(Obstacle):
@@ -225,8 +228,9 @@ class Bird(Obstacle):
 
 
 def main():
+    print("main: length: ",len(global_var.obstacles))
     # global game_speed, x_pos_bg, y_pos_bg, points, obstacles
-    global obstacles
+    # global obstacles
     run = True
     clock = pygame.time.Clock()
     player = Dinosaur()
@@ -236,7 +240,7 @@ def main():
     # y_pos_bg = 380
     # points = 0
     font = pygame.font.Font("freesansbold.ttf", 20)
-    obstacles = []
+    global_var.obstacles = []
     death_count = 0
     pause = False
 
@@ -251,7 +255,8 @@ def main():
             highscore = max(score_ints)
             if global_var.points > highscore:
                 highscore = global_var.points
-            text = font.render("High Score: " + str(highscore) + "  Points: " + str(global_var.points), True, global_var.FONT_COLOR)
+            text = font.render("High Score: " + str(highscore) + "  Points: " + str(global_var.points), True,
+                               global_var.FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
@@ -307,15 +312,15 @@ def main():
         player.draw(SCREEN)
         player.update(userInput)  # player is an object of dinosaur that is always looking for input
 
-        if len(obstacles) == 0:
+        if len(global_var.obstacles) == 0:
             if random.randint(0, 2) == 0:
-                obstacles.append(SmallCactus(images.SMALL_CACTUS))
+                global_var.obstacles.append(SmallCactus(images.SMALL_CACTUS))
             elif random.randint(0, 2) == 1:
-                obstacles.append(LargeCactus(images.LARGE_CACTUS))
+                global_var.obstacles.append(LargeCactus(images.LARGE_CACTUS))
             elif random.randint(0, 2) == 2:
-                obstacles.append(Bird(images.BIRD))
+                global_var.obstacles.append(Bird(images.BIRD))
 
-        for obstacle in obstacles:
+        for obstacle in global_var.obstacles:
             obstacle.draw(SCREEN)
             obstacle.update()
             if player.dino_rect.colliderect(obstacle.rect):
@@ -349,6 +354,7 @@ def menu(death_count):
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
         elif death_count > 0:
+            print("made it here")
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
             scoreRect = score.get_rect()
@@ -374,14 +380,18 @@ def menu(death_count):
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
         pygame.display.update()
+
         for event in pygame.event.get():
+            print("EVENT")
             if event.type == pygame.QUIT:
                 run = False
                 pygame.display.quit()
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
+                print("keydown?")
                 main()
+
 
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)
 t1.start()
