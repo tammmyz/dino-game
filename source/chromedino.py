@@ -179,12 +179,20 @@ def instructions():
     bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
     bird_img = pygame.transform.scale(bird_img, (46,47))
 
+    p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
+    p_img = pygame.transform.scale(p_img, (38,40))
+
+    u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
+    u_img = pygame.transform.scale(u_img, (38,40))
+
     # Instruction Body
     body_font = pygame.font.Font("freesansbold.ttf", 20)
     press_text = body_font.render("Press", True, global_var.FONT_COLOR)
     jump_text = body_font.render("to JUMP", True, global_var.FONT_COLOR)
     duck_text = body_font.render("to DUCK", True, global_var.FONT_COLOR)
     or_text = body_font.render("or", True, global_var.FONT_COLOR)
+    pause_text = body_font.render("to PAUSE the game", True, global_var.FONT_COLOR)
+    unpause_text = body_font.render("to UNPAUSE the game", True, global_var.FONT_COLOR)
 
 
     SCREEN.blit(press_text, (370, 140))
@@ -200,6 +208,15 @@ def instructions():
     SCREEN.blit(s_img, (517, 200))
     SCREEN.blit(duck_text, (570, 220))
     SCREEN.blit(bird_img, (665, 200))
+
+    SCREEN.blit(press_text, (370, 290))
+    SCREEN.blit(p_img, (437, 275))
+    SCREEN.blit(pause_text, (490, 290))
+
+    SCREEN.blit(press_text, (370, 355))
+    SCREEN.blit(u_img, (437, 340))
+    SCREEN.blit(unpause_text, (490, 355))
+
 
 
 
