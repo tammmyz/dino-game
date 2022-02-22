@@ -151,12 +151,15 @@ def instructions():
     image_width = images.BG.get_width()
     SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
 
+    # Setting up title
     font = pygame.font.Font("freesansbold.ttf", 30)
     title = font.render("INSTRUCTIONS", True, global_var.FONT_COLOR)
     titleRect = title.get_rect()
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
 
+
+    # importing images
     up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
     up_img = pygame.transform.scale(up_img, (50,50))
 
@@ -176,6 +179,7 @@ def instructions():
     bird_img = pygame.transform.scale(bird_img, (46,47))
 
 
+    # Displaying images to screen 
     SCREEN.blit(up_img, (global_var.SCREEN_WIDTH // 2, 80))
     SCREEN.blit(down_img, (global_var.SCREEN_WIDTH // 2, 135))
     SCREEN.blit(w_img, (global_var.SCREEN_WIDTH // 2, 185))
@@ -184,8 +188,6 @@ def instructions():
     SCREEN.blit(bird_img, (global_var.SCREEN_WIDTH // 2, 335))
 
 
-
-    
 
 def menu(death_count):
     run = True
