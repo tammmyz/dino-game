@@ -195,27 +195,27 @@ def instructions():
     unpause_text = body_font.render("to UNPAUSE the game", True, global_var.FONT_COLOR)
 
 
-    SCREEN.blit(press_text, (370, 140))
-    SCREEN.blit(up_img, (430, 120))
-    SCREEN.blit(or_text, (490, 140))
-    SCREEN.blit(w_img, (515, 122))
-    SCREEN.blit(jump_text, (570, 140))
-    SCREEN.blit(cactus_img, (665, 120))
+    SCREEN.blit(press_text, (373, 140))
+    SCREEN.blit(up_img, (433, 120))
+    SCREEN.blit(or_text, (493, 140))
+    SCREEN.blit(w_img, (518, 122))
+    SCREEN.blit(jump_text, (573, 140))
+    SCREEN.blit(cactus_img, (668, 120))
 
-    SCREEN.blit(press_text, (370, 220))
-    SCREEN.blit(down_img, (435, 200))
-    SCREEN.blit(or_text, (490, 220))
-    SCREEN.blit(s_img, (517, 200))
-    SCREEN.blit(duck_text, (570, 220))
-    SCREEN.blit(bird_img, (665, 200))
+    SCREEN.blit(press_text, (373, 220))
+    SCREEN.blit(down_img, (438, 200))
+    SCREEN.blit(or_text, (493, 220))
+    SCREEN.blit(s_img, (520, 200))
+    SCREEN.blit(duck_text, (573, 220))
+    SCREEN.blit(bird_img, (668, 200))
 
-    SCREEN.blit(press_text, (370, 290))
-    SCREEN.blit(p_img, (437, 275))
-    SCREEN.blit(pause_text, (490, 290))
+    SCREEN.blit(press_text, (373, 290))
+    SCREEN.blit(p_img, (440, 275))
+    SCREEN.blit(pause_text, (493, 290))
 
-    SCREEN.blit(press_text, (370, 355))
-    SCREEN.blit(u_img, (437, 340))
-    SCREEN.blit(unpause_text, (490, 355))
+    SCREEN.blit(press_text, (373, 355))
+    SCREEN.blit(u_img, (440, 340))
+    SCREEN.blit(unpause_text, (493, 355))
 
 
 
