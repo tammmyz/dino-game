@@ -154,7 +154,7 @@ def instructions():
     font = pygame.font.Font("freesansbold.ttf", 30)
     title = font.render("INSTRUCTIONS", True, global_var.FONT_COLOR)
     titleRect = title.get_rect()
-    titleRect.center = (global_var.SCREEN_WIDTH // 2, 100)
+    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
 
     
