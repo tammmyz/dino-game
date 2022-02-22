@@ -163,16 +163,25 @@ def instructions():
     w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
     w_img = pygame.transform.scale(w_img, (46,47))
 
+    cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
+    cactus_img = pygame.transform.scale(cactus_img, (46,47))
+
     down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
     down_img = pygame.transform.scale(down_img, (46,47))
 
     s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
     s_img = pygame.transform.scale(s_img, (46,47))
 
+    bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
+    bird_img = pygame.transform.scale(bird_img, (46,47))
+
+
     SCREEN.blit(up_img, (global_var.SCREEN_WIDTH // 2, 80))
     SCREEN.blit(down_img, (global_var.SCREEN_WIDTH // 2, 135))
     SCREEN.blit(w_img, (global_var.SCREEN_WIDTH // 2, 185))
     SCREEN.blit(s_img, (global_var.SCREEN_WIDTH // 2, 235))
+    SCREEN.blit(cactus_img, (global_var.SCREEN_WIDTH // 2, 285))
+    SCREEN.blit(bird_img, (global_var.SCREEN_WIDTH // 2, 335))
 
 
 
