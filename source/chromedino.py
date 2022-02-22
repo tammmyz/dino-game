@@ -145,6 +145,7 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+
 def instructions():
     # Adding background
     SCREEN.fill((255,255,255))
@@ -164,28 +165,41 @@ def instructions():
     up_img = pygame.transform.scale(up_img, (50,50))
 
     w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
-    w_img = pygame.transform.scale(w_img, (46,47))
+    w_img = pygame.transform.scale(w_img, (46,46))
 
     cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
     cactus_img = pygame.transform.scale(cactus_img, (46,47))
 
     down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
-    down_img = pygame.transform.scale(down_img, (46,47))
+    down_img = pygame.transform.scale(down_img, (42,47))
 
     s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
-    s_img = pygame.transform.scale(s_img, (46,47))
+    s_img = pygame.transform.scale(s_img, (45,47))
 
     bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
     bird_img = pygame.transform.scale(bird_img, (46,47))
 
+    # Instruction Body
+    body_font = pygame.font.Font("freesansbold.ttf", 20)
+    press_text = body_font.render("Press", True, global_var.FONT_COLOR)
+    jump_text = body_font.render("to JUMP", True, global_var.FONT_COLOR)
+    duck_text = body_font.render("to DUCK", True, global_var.FONT_COLOR)
+    or_text = body_font.render("or", True, global_var.FONT_COLOR)
 
-    # Displaying images to screen 
-    SCREEN.blit(up_img, (global_var.SCREEN_WIDTH // 2, 80))
-    SCREEN.blit(down_img, (global_var.SCREEN_WIDTH // 2, 135))
-    SCREEN.blit(w_img, (global_var.SCREEN_WIDTH // 2, 185))
-    SCREEN.blit(s_img, (global_var.SCREEN_WIDTH // 2, 235))
-    SCREEN.blit(cactus_img, (global_var.SCREEN_WIDTH // 2, 285))
-    SCREEN.blit(bird_img, (global_var.SCREEN_WIDTH // 2, 335))
+
+    SCREEN.blit(press_text, (370, 140))
+    SCREEN.blit(up_img, (430, 120))
+    SCREEN.blit(or_text, (490, 140))
+    SCREEN.blit(w_img, (515, 122))
+    SCREEN.blit(jump_text, (570, 140))
+    SCREEN.blit(cactus_img, (665, 120))
+
+    SCREEN.blit(press_text, (370, 220))
+    SCREEN.blit(down_img, (435, 200))
+    SCREEN.blit(or_text, (490, 220))
+    SCREEN.blit(s_img, (517, 200))
+    SCREEN.blit(duck_text, (570, 220))
+    SCREEN.blit(bird_img, (665, 200))
 
 
 
