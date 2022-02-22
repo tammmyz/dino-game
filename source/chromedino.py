@@ -145,6 +145,19 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+def instructions():
+    # Adding background
+    SCREEN.fill((255,255,255))
+    image_width = images.BG.get_width()
+    SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
+
+    font = pygame.font.Font("freesansbold.ttf", 30)
+    title = font.render("INSTRUCTIONS", True, global_var.FONT_COLOR)
+    titleRect = title.get_rect()
+    titleRect.center = (global_var.SCREEN_WIDTH // 2, 100)
+    SCREEN.blit(title, titleRect)
+
+    
 
 def menu(death_count):
     run = True
@@ -182,11 +195,15 @@ def menu(death_count):
             hs_score_rect = hs_score_text.get_rect()
             hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
             SCREEN.blit(hs_score_text, hs_score_rect)
+
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
+    
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
+        instructions()
         pygame.display.update()
+        
 
         for event in pygame.event.get():
             print("EVENT")
