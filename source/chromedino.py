@@ -6,6 +6,7 @@ import datetime
 import os
 import random
 import threading
+from turtle import update
 import pygame
 import time
 
@@ -148,6 +149,7 @@ def main():
 
 def menu(death_count):
     run = True
+    updated_score = False
     while run:
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
@@ -161,15 +163,19 @@ def menu(death_count):
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
         elif death_count > 0:
+
+            if (not updated_score):
+                f = open("score.txt", "a+")
+                f.write(str(global_var.points) + "\n")
+                f.close()
+                updated_score = True
+
             print("made it here")
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
             scoreRect = score.get_rect()
             scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
             SCREEN.blit(score, scoreRect)
-            f = open("score.txt", "a")
-            f.write(str(global_var.points) + "\n")
-            f.close()
             with open("score.txt", "r") as f:
                 score = (
                     f.read()
