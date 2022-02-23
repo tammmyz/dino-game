@@ -305,7 +305,7 @@ def menu(death_count):
             pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
             pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
-            print(mouse_pos)
+
 
         pygame.display.update()
         
@@ -322,31 +322,43 @@ def menu(death_count):
 
             # check if instructions was pressed
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
-                print("How to play")
                 instructions()
                 while not main_flag:
                     for event in pygame.event.get():
-                        print("EVENT")
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
-                            print("keydown?")
+                            print('pressed e')
                             menu(0)
 
             # Check if settings was pressed.
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
                     mouse_pos[1] in range(y_settings, y_settings + h2):
-                print("How to play")
                 instructions()
                 while not main_flag:
                     for event in pygame.event.get():
-                        print("EVENT")
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
+
+                        # press n and turn off the audio settings
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_n:
+                            global_var.audio = False
+
+                        # press specific numbers and change the themes
+                        if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
+                            if(event.key == pygame.K_1):
+                                global_var.theme = 'default'
+                            elif(event.key == pygame.K_2):
+                                global_var.theme = 'student'
+                            elif(event.key == pygame.K_3):
+                                global_var.theme = 'corona'
+                            print(global_var.theme)
+
+
+                        # press e and get returned to the main page
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
-                            print("keydown?")
                             menu(0)
 
 
