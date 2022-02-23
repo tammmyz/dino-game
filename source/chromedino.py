@@ -280,8 +280,9 @@ def menu(death_count):
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
-        SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
-        mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
+        if death_count == 0:
+            SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
         
         pygame.display.update()
         
