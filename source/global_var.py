@@ -10,5 +10,6 @@ y_pos_bg = 380
 points = 0
 obstacles = []
 username = ""
+high_score = 0
 
 
