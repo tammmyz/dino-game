@@ -299,7 +299,7 @@ def menu(death_count):
                 main()
 
             #Check if instructions was pressed
-            if event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
+            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 print("How to play")
                 instructions()
                 while not main_flag:
