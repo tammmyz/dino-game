@@ -230,7 +230,10 @@ def main():
 
         clock.tick(30)
         pygame.display.update()
-
+def update_score():
+    f = open("score.txt", "a+")
+    f.write(global_var.username + ", " + str(global_var.points) + "\n")
+    f.close()
 
 def menu(death_count):
     global main_flag
@@ -249,15 +252,15 @@ def menu(death_count):
 
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
-        elif death_count > 0:
+            if len(global_var.username == 0):
+                global_var.username = input("Enter username:")
+                
 
+        elif death_count > 0:
             if (not updated_score):
-                f = open("score.txt", "a+")
-                f.write(str(global_var.points) + "\n")
-                f.close()
+                update_score()
                 updated_score = True
 
-            
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
             scoreRect = score.get_rect()

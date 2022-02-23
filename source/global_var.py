@@ -9,5 +9,6 @@ x_pos_bg = 0
 y_pos_bg = 380
 points = 0
 obstacles = []
+username = ""
 
 
