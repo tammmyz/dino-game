@@ -34,76 +34,78 @@ Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
 def instructions():
-    # Adding background
-    SCREEN.fill((255,255,255))
-    image_width = images.BG.get_width()
-    SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
 
-    # Setting up title
-    font = pygame.font.Font("freesansbold.ttf", 30)
-    title = font.render("INSTRUCTIONS", True, global_var.FONT_COLOR)
-    titleRect = title.get_rect()
-    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
-    SCREEN.blit(title, titleRect)
+    while True:
+        # Adding background
+        SCREEN.fill((255,255,255))
+        image_width = images.BG.get_width()
+        SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
 
-    # importing images --> transfer to img.py
-    up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
-    up_img = pygame.transform.scale(up_img, (50,50))
+        # Setting up title
+        font = pygame.font.Font("freesansbold.ttf", 30)
+        title = font.render("INSTRUCTIONS", True, "black")
+        titleRect = title.get_rect()
+        titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
+        SCREEN.blit(title, titleRect)
 
-    w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
-    w_img = pygame.transform.scale(w_img, (46,46))
+        # importing images --> transfer to img.py
+        up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
+        up_img = pygame.transform.scale(up_img, (50,50))
 
-    cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
-    cactus_img = pygame.transform.scale(cactus_img, (46,47))
+        w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
+        w_img = pygame.transform.scale(w_img, (46,46))
 
-    down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
-    down_img = pygame.transform.scale(down_img, (42,47))
+        cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
+        cactus_img = pygame.transform.scale(cactus_img, (46,47))
 
-    s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
-    s_img = pygame.transform.scale(s_img, (45,47))
+        down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
+        down_img = pygame.transform.scale(down_img, (42,47))
 
-    bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
-    bird_img = pygame.transform.scale(bird_img, (46,47))
+        s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
+        s_img = pygame.transform.scale(s_img, (45,47))
 
-    p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
-    p_img = pygame.transform.scale(p_img, (38,40))
+        bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
+        bird_img = pygame.transform.scale(bird_img, (46,47))
 
-    u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
-    u_img = pygame.transform.scale(u_img, (38,40))
+        p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
+        p_img = pygame.transform.scale(p_img, (38,40))
 
-    # Instruction Body
-    body_font = pygame.font.Font("freesansbold.ttf", 20)
-    press_text = body_font.render("Press", True, global_var.FONT_COLOR)
-    jump_text = body_font.render("to JUMP", True, global_var.FONT_COLOR)
-    duck_text = body_font.render("to DUCK", True, global_var.FONT_COLOR)
-    or_text = body_font.render("or", True, global_var.FONT_COLOR)
-    pause_text = body_font.render("to PAUSE the game", True, global_var.FONT_COLOR)
-    unpause_text = body_font.render("to UNPAUSE the game", True, global_var.FONT_COLOR)
+        u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
+        u_img = pygame.transform.scale(u_img, (38,40))
 
-    # Display instuction body 
-    SCREEN.blit(press_text, (373, 140))
-    SCREEN.blit(up_img, (433, 120))
-    SCREEN.blit(or_text, (493, 140))
-    SCREEN.blit(w_img, (518, 122))
-    SCREEN.blit(jump_text, (573, 140))
-    SCREEN.blit(cactus_img, (668, 120))
+        # Instruction Body
+        body_font = pygame.font.Font("freesansbold.ttf", 20)
+        press_text = body_font.render("Press", True, "black")
+        jump_text = body_font.render("to JUMP", True, "black")
+        duck_text = body_font.render("to DUCK", True, "black")
+        or_text = body_font.render("or", True, "black")
+        pause_text = body_font.render("to PAUSE the game", True, "black")
+        unpause_text = body_font.render("to UNPAUSE the game", True, "black")
 
-    SCREEN.blit(press_text, (373, 220))
-    SCREEN.blit(down_img, (438, 200))
-    SCREEN.blit(or_text, (493, 220))
-    SCREEN.blit(s_img, (520, 200))
-    SCREEN.blit(duck_text, (573, 220))
-    SCREEN.blit(bird_img, (668, 200))
+        # Display instuction body 
+        SCREEN.blit(press_text, (373, 140))
+        SCREEN.blit(up_img, (433, 120))
+        SCREEN.blit(or_text, (493, 140))
+        SCREEN.blit(w_img, (518, 122))
+        SCREEN.blit(jump_text, (573, 140))
+        SCREEN.blit(cactus_img, (668, 120))
 
-    SCREEN.blit(press_text, (373, 290))
-    SCREEN.blit(p_img, (440, 275))
-    SCREEN.blit(pause_text, (493, 290))
+        SCREEN.blit(press_text, (373, 220))
+        SCREEN.blit(down_img, (438, 200))
+        SCREEN.blit(or_text, (493, 220))
+        SCREEN.blit(s_img, (520, 200))
+        SCREEN.blit(duck_text, (573, 220))
+        SCREEN.blit(bird_img, (668, 200))
 
-    SCREEN.blit(press_text, (373, 355))
-    SCREEN.blit(u_img, (440, 340))
-    SCREEN.blit(unpause_text, (493, 355))
+        SCREEN.blit(press_text, (373, 290))
+        SCREEN.blit(p_img, (440, 275))
+        SCREEN.blit(pause_text, (493, 290))
 
-    pygame.display.update()
+        SCREEN.blit(press_text, (373, 355))
+        SCREEN.blit(u_img, (440, 340))
+        SCREEN.blit(unpause_text, (493, 355))
+
+        pygame.display.update()
 
 
 def main():
@@ -262,10 +264,17 @@ def menu(death_count):
 
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
-    
+
+        instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
+        x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
-        #instructions()
+
+        # Adding instuctions button on menu
+        SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+        mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
+        
         pygame.display.update()
         
         for event in pygame.event.get():
@@ -278,7 +287,9 @@ def menu(death_count):
             if event.type == pygame.KEYDOWN:
                 print("keydown?")
                 main()
-
-
+            #Check if instructions was pressed
+            if event.type == pygame.MOUSEBUTTONUP and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
+                instructions()
+        
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)
 t1.start()
