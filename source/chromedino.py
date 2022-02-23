@@ -257,7 +257,7 @@ def menu(death_count):
                 f.close()
                 updated_score = True
 
-            print("made it here")
+            
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
             scoreRect = score.get_rect()
