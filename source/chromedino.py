@@ -36,6 +36,7 @@ pygame.display.set_icon(Ico)
 
 main_flag = False
 
+
 def instructions():
     global main_flag
     # Adding background
@@ -276,24 +277,39 @@ def menu(death_count):
             hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
             SCREEN.blit(hs_score_text, hs_score_rect)
 
+        # setting up the main screen with appropriate text
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
 
+        #x, y, w, h getting the parameters of the text rectangle
         instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
-        x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+        x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2,global_var.SCREEN_HEIGHT // 1.5))
 
+        game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
+        x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+        # print(x2, y2, w2, h2)
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
         if death_count == 0:
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+
+            x_settings = int(global_var.SCREEN_WIDTH * 0.78)
+            y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
+            SCREEN.blit(game_settings_text, (x_settings, y_settings))
+
+
+
+            # pygame.Rect(x_position, y_position, width, height)
+            pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
+            pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
-        
+            print(mouse_pos)
+
         pygame.display.update()
         
         for event in pygame.event.get():
-            print("EVENT")
             if event.type == pygame.QUIT:
                 run = False
                 pygame.display.quit()
@@ -304,7 +320,7 @@ def menu(death_count):
                 main_flag = True
                 main()
 
-            #Check if instructions was pressed
+            # check if instructions was pressed
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 print("How to play")
                 instructions()
@@ -317,6 +333,22 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             print("keydown?")
                             menu(0)
+
+            # Check if settings was pressed.
+            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
+                    mouse_pos[1] in range(y_settings, y_settings + h2):
+                print("How to play")
+                instructions()
+                while not main_flag:
+                    for event in pygame.event.get():
+                        print("EVENT")
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            quit()
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
+                            print("keydown?")
+                            menu(0)
+
 
                     
             
