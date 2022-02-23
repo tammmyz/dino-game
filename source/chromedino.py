@@ -138,13 +138,9 @@ def main():
         if global_var.points % 100 == 0:
             global_var.game_speed += 1
         current_time = datetime.datetime.now().hour
-        # with open("score.txt", "r") as f:
-        #     score_ints = [int(x) for x in f.read().split()]
-        #     highscore = max(score_ints)
-        #     if global_var.points > highscore:
-        #         highscore = global_var.points
-        highscore = 500 ## for testing
-        text = font.render("High Score: " + str(highscore) + "  Points: " + str(global_var.points), True,
+        if global_var.points > global_var.high_score:
+            global_var.high_score = global_var.points
+        text = font.render("High Score: " + str(global_var.high_score) + "  Points: " + str(global_var.points), True,
                         global_var.FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (900, 40)
@@ -234,7 +230,7 @@ def main():
 
 def update_score():
     f = open("score.txt", "a+")
-    f.write(global_var.username + ", " + str(global_var.points) + "\n")
+    f.write("\n" + global_var.username + " " + str(global_var.points))
     f.close()
 
 def restart():
@@ -248,6 +244,46 @@ def restart():
     leader_board_text_rect = leader_board_text.get_rect()
     leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
+
+def get_leaders():
+    font = pygame.font.Font("freesansbold.ttf", 20)
+    score_dict = {}
+    leaders_text = []
+    with open("score.txt", "r") as f:
+            score = (
+                f.read()
+            ) 
+    score_ints = [x for x in score.split()]
+    score_list = score.split("\n")
+
+    for score in score_list:
+        temp = score.split()
+        if temp[0] in score_dict:
+            score_dict[temp[0]].append(int(temp[1]))
+        else:
+            score_dict[temp[0]] = [int(temp[1])]
+
+    top_score = {}
+    for key in score_dict:
+        score_dict[key] = sorted(score_dict[key], reverse=True)
+        # print (key, 'corresponds to', score_dict[key])
+        top_score[key] = score_dict[key][0]
+        sorted_top_score = {k: v for k, v in sorted(top_score.items(), key=lambda item: -item[1])}
+    if len(sorted_top_score) < 5:
+        for key in sorted_top_score:
+            leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}.", True, global_var.FONT_COLOR))
+            print (key, 'corresponds to', sorted_top_score[key])
+    else:
+        count = 0 
+        for key in sorted_top_score:
+            if count == 0:
+                global_var.high_score = sorted_top_score[key]
+            if count < 5:
+                leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}.", True, global_var.FONT_COLOR))
+                print (key, 'corresponds to', sorted_top_score[key])
+                count += 1
+        
+    return leaders_text
 
 
 def menu(death_count):
@@ -268,7 +304,7 @@ def menu(death_count):
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             if (len(global_var.username) == 0):
-                global_var.username = "Sheridan"
+                global_var.username = "Chelsea"
                 # global_var.username = input("Enter username:")
                 
 
@@ -276,8 +312,9 @@ def menu(death_count):
             if (not updated_score):
                 update_score()
                 updated_score = True
-
             restart()
+            leaders = get_leaders()
+
         text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
