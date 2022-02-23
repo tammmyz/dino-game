@@ -309,13 +309,16 @@ def menu(death_count):
                 
 
         elif death_count > 0:
+            text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             if (not updated_score):
                 update_score()
                 updated_score = True
             restart()
             leaders = get_leaders()
-
-        text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
+            leader1_rect = leaders[0].get_rect()
+            leader1_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
+            SCREEN.blit(leaders[0], leader1_rect)
+        
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
         SCREEN.blit(text, textRect)
