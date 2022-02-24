@@ -1,6 +1,5 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
-
 # importing standard libraries
 import datetime
 import os
