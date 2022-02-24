@@ -133,6 +133,7 @@ def main():
     pause = False
 
     def score():
+        get_leaders()
         global_var.points, global_var.game_speed
         global_var.points += 1
         if global_var.points % 100 == 0:
@@ -242,7 +243,7 @@ def restart():
     SCREEN.blit(score, scoreRect)
     leader_board_text = font.render("Leader Board", True, global_var.FONT_COLOR)
     leader_board_text_rect = leader_board_text.get_rect()
-    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
+    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 90)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
 
 def get_leaders():
@@ -269,17 +270,19 @@ def get_leaders():
         # print (key, 'corresponds to', score_dict[key])
         top_score[key] = score_dict[key][0]
         sorted_top_score = {k: v for k, v in sorted(top_score.items(), key=lambda item: -item[1])}
+    
+    ## first index is the highest score
+    global_var.high_score = sorted_top_score[list(sorted_top_score.keys())[0]]
+    
     if len(sorted_top_score) < 5:
         for key in sorted_top_score:
-            leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}.", True, global_var.FONT_COLOR))
+            leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}", True, global_var.FONT_COLOR))
             print (key, 'corresponds to', sorted_top_score[key])
     else:
         count = 0 
         for key in sorted_top_score:
-            if count == 0:
-                global_var.high_score = sorted_top_score[key]
             if count < 5:
-                leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}.", True, global_var.FONT_COLOR))
+                leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}", True, global_var.FONT_COLOR))
                 print (key, 'corresponds to', sorted_top_score[key])
                 count += 1
         
@@ -315,9 +318,22 @@ def menu(death_count):
                 updated_score = True
             restart()
             leaders = get_leaders()
-            leader1_rect = leaders[0].get_rect()
-            leader1_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
-            SCREEN.blit(leaders[0], leader1_rect)
+            leader_rect = []
+            c = 120
+            for i in range(len(leaders)):
+                leader_rect.append(leaders[i].get_rect())
+                leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
+                SCREEN.blit(leaders[i], leader_rect[i])
+                c += 30
+            # SCREEN.blit(leaders[1], leader_rect[1])
+
+            # leader1_rect = leaders[0].get_rect()
+            # leader1_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 120)
+            # SCREEN.blit(leaders[0], leader1_rect)
+
+            # leader2_rect = leaders[1].get_rect()
+            # leader2_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
+            # SCREEN.blit(leaders[1], leader2_rect)
         
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
