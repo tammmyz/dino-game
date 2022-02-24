@@ -39,9 +39,10 @@ def instructions():
     global main_flag
     # Adding background
     SCREEN.fill((255,255,255))
-    image_width = images.BG.get_width()
-    SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
 
+    track = pygame.image.load(os.path.join("assets/Other", "Track.png"))
+    SCREEN.blit(track, (0, 400))
+    
     # Setting up title
     font = pygame.font.Font("freesansbold.ttf", 30)
     title = font.render("INSTRUCTIONS", True, "black")
