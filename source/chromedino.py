@@ -273,7 +273,9 @@ def menu(death_count):
             # path to main menu
             menu_text = font.render("Main Menu", True, global_var.FONT_COLOR)
             SCREEN.blit(menu_text, (900, 25))
-
+            #x_menu, y_menu, w_menu, h_menu 
+            x_menu, y_menu, w_menu, h_menu = menu_text.get_rect(topleft=(900,25))
+            mouse_pos_menu = pygame.mouse.get_pos() #get mouse cursor position
     
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
@@ -303,6 +305,10 @@ def menu(death_count):
                 main_flag = True
                 main()
 
+            # Add mouse click on main menu text
+            if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_menu, x_menu+w_menu) and mouse_pos_menu[1] in range(y_menu, y_menu+h_menu):
+                menu(0)
+    
             #Check if instructions was pressed
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 print("How to play")
@@ -317,9 +323,7 @@ def menu(death_count):
                             print("keydown?")
                             menu(0)
 
-                    
-            
-                    
+                      
         
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)
 t1.start()
