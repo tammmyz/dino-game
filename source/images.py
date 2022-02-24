@@ -44,8 +44,10 @@ RUNNING_THEME2 = [
 JUMPING_THEME2 = pygame.image.load(os.path.join("assets/Dino", "DinoJump.png"))
 
 DUCKING_THEME2 = [
-    pygame.image.load(os.path.join("assets/Dino", "DinoDuck1.png")),
-    pygame.image.load(os.path.join("assets/Dino", "DinoDuck2.png")),
+    pygame.image.load(os.path.join("assets/Corona", "corona_duck1.png")),
+    pygame.image.load(os.path.join("assets/Corona", "corona_duck2.png")),
+    pygame.image.load(os.path.join("assets/Corona", "corona_duck3.png")),
+    pygame.image.load(os.path.join("assets/Corona", "corona_duck4.png")),
 ]
 
 OBSTACLE_ONE_THEME2 = [
