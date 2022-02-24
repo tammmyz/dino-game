@@ -231,6 +231,7 @@ def main():
     global_var.points = 0
     font = pygame.font.Font("freesansbold.ttf", 20)
     global_var.obstacles = []
+    global_var.game_speed = 20
     death_count = 0
     pause = False
 
@@ -459,6 +460,7 @@ def menu(death_count):
                                 global_var.theme = 'corona'
                                 images.RUNNING = images.RUNNING_THEME2
                                 images.DUCKING = images.DUCKING_THEME2
+                                images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME2
 
                             print(global_var.theme)
                         # press e and get returned to the main page

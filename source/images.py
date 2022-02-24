@@ -51,9 +51,9 @@ DUCKING_THEME2 = [
 ]
 
 OBSTACLE_ONE_THEME2 = [
-    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus1.png")),
-    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus2.png")),
-    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus3.png")),
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "vaccine1.png")),
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "first_aid.png")),
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "magnifying.png")),
 ]
 OBSTACLE_TWO_THEME2 = [
     pygame.image.load(os.path.join("assets/Cactus", "LargeCactus1.png")),
