@@ -15,7 +15,7 @@ from cloud import Cloud
 from large_cactus import LargeCactus
 from small_cactus import SmallCactus
 from bird import Bird
-from dinosaur import Dinosaur
+from character import Character
 from obstacle import Obstacle
 import global_var
 import images
@@ -223,7 +223,7 @@ def main():
     # global obstacles
     run = True
     clock = pygame.time.Clock()
-    player = Dinosaur()
+    player = Character()
     cloud = Cloud()
     # game_speed = 20
     # x_pos_bg = 0

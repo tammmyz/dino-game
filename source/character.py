@@ -2,7 +2,7 @@ import images
 import pygame
 
 # setting up the dinosaur class - need to separate into it's own module
-class Dinosaur:
+class Character:
     # setting constants for the dinosaur position on screen and velocity
     X_POS = 80
     Y_POS = 310
