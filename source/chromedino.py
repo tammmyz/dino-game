@@ -163,26 +163,16 @@ def settings():
     corona_img = pygame.image.load(os.path.join("assets/Corona", "corona.png"))
     corona_img = pygame.transform.scale(corona_img, (50,50))
 
-    cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
-    cactus_img = pygame.transform.scale(cactus_img, (46,47))
-
-    down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
-    down_img = pygame.transform.scale(down_img, (42,47))
-
-
     # Instruction Body
     body_font = pygame.font.Font("freesansbold.ttf", 20)
     default_text = body_font.render("The default settings have the audio on and the original theme", True, "black")
     press_text = body_font.render("Press", True, "black")
-    jump_text = body_font.render("to JUMP", True, "black")
-    duck_text = body_font.render("to DUCK", True, "black")
     no_audio_text = body_font.render("for no audio", True, "black")
     audio_text = body_font.render("for audio", True, "black")
     default_theme_text = body_font.render("for the default theme", True, "black")
     student_theme_text = body_font.render("for the student theme", True, "black")
     corona_theme_text = body_font.render("for the corona theme", True, "black")
     new_options_text = body_font.render("New themes coming soon...", True, "black")
-    unpause_text = body_font.render("to UNPAUSE the game", True, "black")
 
     # Display instruction body (x , y)
     SCREEN.blit(default_text, (250, 95))
@@ -225,7 +215,6 @@ def settings():
         SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
-
 
 
 def main():
@@ -320,11 +309,11 @@ def main():
 
         if len(global_var.obstacles) == 0:
             if random.randint(0, 2) == 0:
-                global_var.obstacles.append(SmallCactus(images.SMALL_CACTUS))
+                global_var.obstacles.append(SmallCactus(images.OBSTACLE_ONE))
             elif random.randint(0, 2) == 1:
-                global_var.obstacles.append(LargeCactus(images.LARGE_CACTUS))
+                global_var.obstacles.append(LargeCactus(images.OBSTACLE_TWO))
             elif random.randint(0, 2) == 2:
-                global_var.obstacles.append(Bird(images.BIRD))
+                global_var.obstacles.append(Bird(images.OBSTACLE_FLYING))
 
         for obstacle in global_var.obstacles:
             obstacle.draw(SCREEN)
@@ -468,8 +457,10 @@ def menu(death_count):
                                 global_var.theme = 'student'
                             elif(event.key == pygame.K_3):
                                 global_var.theme = 'corona'
-                            print(global_var.theme)
+                                images.RUNNING = images.RUNNING_THEME2
+                                images.DUCKING = images.DUCKING_THEME2
 
+                            print(global_var.theme)
                         # press e and get returned to the main page
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             menu(0)
