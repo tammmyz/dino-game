@@ -12,7 +12,7 @@ import time
 
 # importing local application/library specific imports
 from cloud import Cloud
-from large_cactus import LargeCactus
+from large_obstacle import LargeObstacle
 from small_cactus import SmallCactus
 from bird import Bird
 from character import Character
@@ -312,7 +312,7 @@ def main():
             if random.randint(0, 2) == 0:
                 global_var.obstacles.append(SmallCactus(images.OBSTACLE_ONE))
             elif random.randint(0, 2) == 1:
-                global_var.obstacles.append(LargeCactus(images.OBSTACLE_TWO))
+                global_var.obstacles.append(LargeObstacle(images.OBSTACLE_TWO))
             elif random.randint(0, 2) == 2:
                 global_var.obstacles.append(Bird(images.OBSTACLE_FLYING))
 
