@@ -458,9 +458,12 @@ def menu(death_count):
                                 global_var.theme = 'student'
                             elif(event.key == pygame.K_3):
                                 global_var.theme = 'corona'
-                                images.RUNNING = images.RUNNING_THEME2
-                                images.DUCKING = images.DUCKING_THEME2
-                                images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME2
+                                images.RUNNING = images.RUNNING_THEME3
+                                images.DUCKING = images.DUCKING_THEME3
+                                images.JUMPING = images.JUMPING_THEME3
+                                images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME3
+                                images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME3
+                                images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME3
 
                             print(global_var.theme)
                         # press e and get returned to the main page

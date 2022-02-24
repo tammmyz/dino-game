@@ -35,33 +35,33 @@ if global_var.theme == "default":
 
     CLOUD = pygame.image.load(os.path.join("assets/Other", "Cloud.png"))
 
-RUNNING_THEME2 = [
+RUNNING_THEME3 = [
     pygame.image.load(os.path.join("assets/Corona", "corona.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona2.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona3.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona4.png"))
 ]
-JUMPING_THEME2 = pygame.image.load(os.path.join("assets/Dino", "DinoJump.png"))
+JUMPING_THEME3 = pygame.image.load(os.path.join("assets/Corona", "corona.png"))
 
-DUCKING_THEME2 = [
+DUCKING_THEME3 = [
     pygame.image.load(os.path.join("assets/Corona", "corona_duck1.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona_duck2.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona_duck3.png")),
     pygame.image.load(os.path.join("assets/Corona", "corona_duck4.png")),
 ]
 
-OBSTACLE_ONE_THEME2 = [
+OBSTACLE_ONE_THEME3 = [
     pygame.image.load(os.path.join("assets/Corona_Obstacles", "vaccine1.png")),
     pygame.image.load(os.path.join("assets/Corona_Obstacles", "first_aid.png")),
     pygame.image.load(os.path.join("assets/Corona_Obstacles", "magnifying.png")),
 ]
-OBSTACLE_TWO_THEME2 = [
-    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus1.png")),
-    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus2.png")),
-    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png")),
+OBSTACLE_TWO_THEME3 = [
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "bandaid.png")),
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "bandaid.png")),
+    pygame.image.load(os.path.join("assets/Corona_Obstacles", "bandaid.png")),
 ]
 
-OBSTACLE_FLYING_THEME2 = [
+OBSTACLE_FLYING_THEME3 = [
     pygame.image.load(os.path.join("assets/Bird", "Bird1.png")),
     pygame.image.load(os.path.join("assets/Bird", "Bird2.png")),
 ]
