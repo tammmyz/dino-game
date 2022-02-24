@@ -249,7 +249,7 @@ def menu(death_count):
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
-            x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+            x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
