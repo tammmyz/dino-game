@@ -270,6 +270,11 @@ def menu(death_count):
             hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
             SCREEN.blit(hs_score_text, hs_score_rect)
 
+            # path to main menu
+            menu_text = font.render("Main Menu", True, global_var.FONT_COLOR)
+            SCREEN.blit(menu_text, (900, 25))
+
+    
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
 
