@@ -34,7 +34,9 @@ pygame.display.set_caption("Chrome Dino Runner")
 Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
+# variable used to track if you are on the main page or not?
 main_flag = False
+
 
 
 def instructions():
@@ -85,7 +87,7 @@ def instructions():
     pause_text = body_font.render("to PAUSE the game", True, "black")
     unpause_text = body_font.render("to UNPAUSE the game", True, "black")
 
-    # Display instuction body 
+    # Display instuction body
     SCREEN.blit(press_text, (373, 140))
     SCREEN.blit(up_img, (433, 120))
     SCREEN.blit(or_text, (493, 140))
@@ -111,9 +113,95 @@ def instructions():
     if not main_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
         SCREEN.blit(main_text, (320, 450))
-    
 
     pygame.display.update()
+
+
+def settings():
+    global main_flag
+    # Adding background
+    SCREEN.fill((255,255,255))
+    image_width = images.BG.get_width()
+    SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
+
+    # Setting up title
+    font = pygame.font.Font("freesansbold.ttf", 30)
+    title = font.render("SETTINGS", True, "black")
+    titleRect = title.get_rect()
+    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
+    SCREEN.blit(title, titleRect)
+
+    # importing images --> transfer to img.py
+    up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
+    up_img = pygame.transform.scale(up_img, (50,50))
+
+    w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
+    w_img = pygame.transform.scale(w_img, (46,46))
+
+    audio_img = pygame.image.load(os.path.join("assets/Other", "audio.png"))
+    audio_img = pygame.transform.scale(audio_img, (50,50))
+
+    no_audio_img = pygame.image.load(os.path.join("assets/Other", "no_audio.png"))
+    no_audio_img = pygame.transform.scale(no_audio_img, (50,50))
+
+    cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
+    cactus_img = pygame.transform.scale(cactus_img, (46,47))
+
+    down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
+    down_img = pygame.transform.scale(down_img, (42,47))
+
+    s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
+    s_img = pygame.transform.scale(s_img, (45,47))
+
+    bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
+    bird_img = pygame.transform.scale(bird_img, (46,47))
+
+    p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
+    p_img = pygame.transform.scale(p_img, (38,40))
+
+    u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
+    u_img = pygame.transform.scale(u_img, (38,40))
+
+    # Instruction Body
+    body_font = pygame.font.Font("freesansbold.ttf", 20)
+    default_text = body_font.render("The default settings have the audio on and the original theme", True, "black")
+    press_text = body_font.render("Press", True, "black")
+    jump_text = body_font.render("to JUMP", True, "black")
+    duck_text = body_font.render("to DUCK", True, "black")
+    no_audio_text = body_font.render("for no audio", True, "black")
+    audio_text = body_font.render("for audio", True, "black")
+    pause_text = body_font.render("to PAUSE the game", True, "black")
+    unpause_text = body_font.render("to UNPAUSE the game", True, "black")
+
+    # Display instruction body
+    SCREEN.blit(default_text, (300, 95))
+    # rendering no audio text to screen
+    SCREEN.blit(press_text, (373, 140))
+    SCREEN.blit(up_img, (433, 120))
+    SCREEN.blit(no_audio_text, (493, 140))
+    # insert audio image  here
+    SCREEN.blit(no_audio_img, (668, 120))
+
+    # rendering audio text to screen
+    SCREEN.blit(press_text, (373, 220))
+    SCREEN.blit(down_img, (438, 200))
+    SCREEN.blit(audio_text, (493, 220))
+    SCREEN.blit(audio_img, (668, 200))
+
+    SCREEN.blit(press_text, (373, 290))
+    SCREEN.blit(p_img, (440, 275))
+    SCREEN.blit(pause_text, (493, 290))
+
+    SCREEN.blit(press_text, (373, 355))
+    SCREEN.blit(u_img, (440, 340))
+    SCREEN.blit(unpause_text, (493, 355))
+
+    if not main_flag:
+        main_text = font.render("Press 'e' to go back to main menu", True, "black")
+        SCREEN.blit(main_text, (320, 450))
+
+    pygame.display.update()
+
 
 
 def main():
@@ -335,7 +423,7 @@ def menu(death_count):
             # Check if settings was pressed.
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
                     mouse_pos[1] in range(y_settings, y_settings + h2):
-                instructions()
+                settings()
                 while not main_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -345,6 +433,10 @@ def menu(death_count):
                         # press n and turn off the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_n:
                             global_var.audio = False
+
+                        # press a and turn on the audio settings
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+                            global_var.audio = True
 
                         # press specific numbers and change the themes
                         if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
