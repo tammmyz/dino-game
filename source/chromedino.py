@@ -1,6 +1,5 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
-
 # importing standard libraries
 import datetime
 import os
@@ -133,18 +132,16 @@ def main():
     pause = False
 
     def score():
+        get_leaders()
         global_var.points, global_var.game_speed
         global_var.points += 1
         if global_var.points % 100 == 0:
             global_var.game_speed += 1
         current_time = datetime.datetime.now().hour
-        with open("score.txt", "r") as f:
-            score_ints = [int(x) for x in f.read().split()]
-            highscore = max(score_ints)
-            if global_var.points > highscore:
-                highscore = global_var.points
-            text = font.render("High Score: " + str(highscore) + "  Points: " + str(global_var.points), True,
-                               global_var.FONT_COLOR)
+        if global_var.points > global_var.high_score:
+            global_var.high_score = global_var.points
+        text = font.render("High Score: " + str(global_var.high_score) + "  Points: " + str(global_var.points), True,
+                        global_var.FONT_COLOR)
         textRect = text.get_rect()
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
@@ -231,6 +228,64 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+def update_score():
+    f = open("score.txt", "a+")
+    f.write("\n" + global_var.username + " " + str(global_var.points))
+    f.close()
+
+def restart():
+    leader_rect = []
+    font = pygame.font.Font("freesansbold.ttf", 30)
+    score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
+    scoreRect = score.get_rect()
+    scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
+    SCREEN.blit(score, scoreRect)
+    leader_board_text = font.render("Leader Board", True, global_var.FONT_COLOR)
+    leader_board_text_rect = leader_board_text.get_rect()
+    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 90)
+    SCREEN.blit(leader_board_text, leader_board_text_rect)
+
+def get_leaders():
+    font = pygame.font.Font("freesansbold.ttf", 20)
+    score_dict = {}
+    ## score: Players
+    leaders_text = []
+    with open("score.txt", "r") as f:
+            score = (
+                f.read()
+            ) 
+    score_ints = [x for x in score.split()]
+    score_list = score.split("\n")
+
+    for score in score_list:
+        temp = score.split()
+        if temp[1] in score_dict:
+            score_dict[int(temp[1])].append(temp[0])
+        else:
+            score_dict[int(temp[1])] = [temp[0]]
+
+    sorted_scores = sorted(score_dict, reverse=True)
+    global_var.high_score = sorted_scores[0]
+    sorted_top_scores = []  # 2-D list of top scores
+    count = 0
+    for score in sorted_scores:
+        if count < 5:
+            ## if more than one person has the top score
+            if len(score_dict[score]) > 1:
+                for person in score_dict[score]:
+                    if count < 5:
+                        sorted_top_scores.append([person, score])
+                        count+= 1
+            else:
+                person = score_dict[score][0]
+                sorted_top_scores.append([person, score])
+                count+= 1
+
+    ## first index is the highest score
+    for pair in sorted_top_scores:
+        leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
+    return leaders_text
+
 
 def menu(death_count):
     global main_flag
@@ -249,40 +304,40 @@ def menu(death_count):
 
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
+            if (len(global_var.username) == 0):
+                global_var.username = "Chelsea"
+                # global_var.username = input("Enter username:")
+                
+
         elif death_count > 0:
-
-            if (not updated_score):
-                f = open("score.txt", "a+")
-                f.write(str(global_var.points) + "\n")
-                f.close()
-                updated_score = True
-
-            
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
-            score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
-            scoreRect = score.get_rect()
-            scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
-            SCREEN.blit(score, scoreRect)
-            with open("score.txt", "r") as f:
-                score = (
-                    f.read()
-                )  # Read all file in case values are not on a single line
-                score_ints = [int(x) for x in score.split()]  # Convert strings to ints
-            highscore = max(score_ints)  # sum all elements of the list
-            hs_score_text = font.render(
-                "High Score : " + str(highscore), True, global_var.FONT_COLOR
-            )
-            hs_score_rect = hs_score_text.get_rect()
-            hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
-            SCREEN.blit(hs_score_text, hs_score_rect)
+            if (not updated_score):
+                update_score()
+                updated_score = True
+            restart()
+            leaders = get_leaders()
+            leader_rect = []
+            c = 120
+            for i in range(len(leaders)):
+                leader_rect.append(leaders[i].get_rect())
+                leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
+                SCREEN.blit(leaders[i], leader_rect[i])
+                c += 30
+            # SCREEN.blit(leaders[1], leader_rect[1])
 
+            # leader1_rect = leaders[0].get_rect()
+            # leader1_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 120)
+            # SCREEN.blit(leaders[0], leader1_rect)
+
+            # leader2_rect = leaders[1].get_rect()
+            # leader2_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
+            # SCREEN.blit(leaders[1], leader2_rect)
+        
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
-
+        SCREEN.blit(text, textRect)
         instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
         x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
-
-        SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
