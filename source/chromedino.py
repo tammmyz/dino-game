@@ -248,6 +248,11 @@ def menu(death_count):
 
         if death_count == 0:
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
+            instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
+            x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+            SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
+
         elif death_count > 0:
             print("made it here")
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
@@ -280,18 +285,8 @@ def menu(death_count):
     
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
-
-        instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
-        x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
-
         SCREEN.blit(text, textRect)
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
-
-        # Adding instuctions button on menu
-        if death_count == 0:
-            SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
-            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
-        
         pygame.display.update()
         
         for event in pygame.event.get():
