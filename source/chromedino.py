@@ -132,11 +132,21 @@ def settings():
     SCREEN.blit(title, titleRect)
 
     # importing images --> transfer to img.py
-    up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
-    up_img = pygame.transform.scale(up_img, (50,50))
+    a_img = pygame.image.load(os.path.join("assets/Keys", "a.png"))
+    a_img = pygame.transform.scale(a_img, (50,50))
 
-    w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
-    w_img = pygame.transform.scale(w_img, (46,46))
+    n_img = pygame.image.load(os.path.join("assets/Keys", "n.png"))
+    n_img = pygame.transform.scale(n_img, (50,50))
+
+
+    one_img = pygame.image.load(os.path.join("assets/Keys", "1.png"))
+    one_img = pygame.transform.scale(one_img, (50,50))
+
+    two_img = pygame.image.load(os.path.join("assets/Keys", "2.png"))
+    two_img = pygame.transform.scale(two_img, (50,50))
+
+    three_img = pygame.image.load(os.path.join("assets/Keys", "3.png"))
+    three_img = pygame.transform.scale(three_img, (50,50))
 
     audio_img = pygame.image.load(os.path.join("assets/Other", "audio.png"))
     audio_img = pygame.transform.scale(audio_img, (50,50))
@@ -159,17 +169,6 @@ def settings():
     down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
     down_img = pygame.transform.scale(down_img, (42,47))
 
-    s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
-    s_img = pygame.transform.scale(s_img, (45,47))
-
-    bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
-    bird_img = pygame.transform.scale(bird_img, (46,47))
-
-    p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
-    p_img = pygame.transform.scale(p_img, (38,40))
-
-    u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
-    u_img = pygame.transform.scale(u_img, (38,40))
 
     # Instruction Body
     body_font = pygame.font.Font("freesansbold.ttf", 20)
@@ -189,32 +188,32 @@ def settings():
     SCREEN.blit(default_text, (250, 95))
     # rendering no audio text to screen
     SCREEN.blit(press_text, (373, 140))
-    SCREEN.blit(up_img, (433, 120))
+    SCREEN.blit(n_img, (433, 120))
     SCREEN.blit(no_audio_text, (493, 140))
     # insert audio image  here
-    SCREEN.blit(no_audio_img, (668, 120))
+    SCREEN.blit(no_audio_img, (625, 120))
 
     # rendering audio text to screen
     SCREEN.blit(press_text, (373, 220))
-    SCREEN.blit(down_img, (438, 200))
+    SCREEN.blit(a_img, (438, 200))
     SCREEN.blit(audio_text, (493, 220))
-    SCREEN.blit(audio_img, (668, 200))
+    SCREEN.blit(audio_img, (625, 200))
 
     # themed options - option 1 (default)
     SCREEN.blit(press_text, (140, 290))
-    SCREEN.blit(p_img, (205, 270))
+    SCREEN.blit(one_img, (205, 270))
     SCREEN.blit(default_theme_text, (260, 290))
     SCREEN.blit(dino_img, (475, 265))
 
     # themed options - option 2 (student version)
     SCREEN.blit(press_text, (140, 355))
-    SCREEN.blit(u_img, (205, 340))
+    SCREEN.blit(two_img, (205, 330))
     SCREEN.blit(student_theme_text, (260, 355))
     SCREEN.blit(student_img, (475, 330))
 
     # themed options - option 3 (corona version)
     SCREEN.blit(press_text, (555, 290))
-    SCREEN.blit(u_img, (620, 270))
+    SCREEN.blit(three_img, (620, 270))
     SCREEN.blit(corona_theme_text, (675, 290))
     SCREEN.blit(corona_img, (890, 265))
 
@@ -412,9 +411,7 @@ def menu(death_count):
             y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
             SCREEN.blit(game_settings_text, (x_settings, y_settings))
 
-
-
-            # pygame.Rect(x_position, y_position, width, height)
+            # pygame.Rect(x_position, y_position, width, height) - code below is for testing how to draw rect
             # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
             # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
@@ -472,7 +469,6 @@ def menu(death_count):
                             elif(event.key == pygame.K_3):
                                 global_var.theme = 'corona'
                             print(global_var.theme)
-
 
                         # press e and get returned to the main page
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
