@@ -144,6 +144,15 @@ def settings():
     no_audio_img = pygame.image.load(os.path.join("assets/Other", "no_audio.png"))
     no_audio_img = pygame.transform.scale(no_audio_img, (50,50))
 
+    dino_img = pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png"))
+    dino_img = pygame.transform.scale(dino_img, (50,50))
+
+    student_img = pygame.image.load(os.path.join("assets/Student", "student.png"))
+    student_img = pygame.transform.scale(student_img, (50,50))
+
+    corona_img = pygame.image.load(os.path.join("assets/Corona", "corona.png"))
+    corona_img = pygame.transform.scale(corona_img, (50,50))
+
     cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
     cactus_img = pygame.transform.scale(cactus_img, (46,47))
 
@@ -170,11 +179,14 @@ def settings():
     duck_text = body_font.render("to DUCK", True, "black")
     no_audio_text = body_font.render("for no audio", True, "black")
     audio_text = body_font.render("for audio", True, "black")
-    pause_text = body_font.render("to PAUSE the game", True, "black")
+    default_theme_text = body_font.render("for the default theme", True, "black")
+    student_theme_text = body_font.render("for the student theme", True, "black")
+    corona_theme_text = body_font.render("for the corona theme", True, "black")
+    new_options_text = body_font.render("New themes coming soon...", True, "black")
     unpause_text = body_font.render("to UNPAUSE the game", True, "black")
 
-    # Display instruction body
-    SCREEN.blit(default_text, (300, 95))
+    # Display instruction body (x , y)
+    SCREEN.blit(default_text, (250, 95))
     # rendering no audio text to screen
     SCREEN.blit(press_text, (373, 140))
     SCREEN.blit(up_img, (433, 120))
@@ -188,13 +200,26 @@ def settings():
     SCREEN.blit(audio_text, (493, 220))
     SCREEN.blit(audio_img, (668, 200))
 
-    SCREEN.blit(press_text, (373, 290))
-    SCREEN.blit(p_img, (440, 275))
-    SCREEN.blit(pause_text, (493, 290))
+    # themed options - option 1 (default)
+    SCREEN.blit(press_text, (140, 290))
+    SCREEN.blit(p_img, (205, 270))
+    SCREEN.blit(default_theme_text, (260, 290))
+    SCREEN.blit(dino_img, (475, 265))
 
-    SCREEN.blit(press_text, (373, 355))
-    SCREEN.blit(u_img, (440, 340))
-    SCREEN.blit(unpause_text, (493, 355))
+    # themed options - option 2 (student version)
+    SCREEN.blit(press_text, (140, 355))
+    SCREEN.blit(u_img, (205, 340))
+    SCREEN.blit(student_theme_text, (260, 355))
+    SCREEN.blit(student_img, (475, 330))
+
+    # themed options - option 3 (corona version)
+    SCREEN.blit(press_text, (555, 290))
+    SCREEN.blit(u_img, (620, 270))
+    SCREEN.blit(corona_theme_text, (675, 290))
+    SCREEN.blit(corona_img, (890, 265))
+
+    # themed options - new options coming soon
+    SCREEN.blit(new_options_text, (555,355))
 
     if not main_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
@@ -390,8 +415,8 @@ def menu(death_count):
 
 
             # pygame.Rect(x_position, y_position, width, height)
-            pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
-            pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
+            # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
+            # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
 
