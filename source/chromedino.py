@@ -249,6 +249,7 @@ def restart():
 def get_leaders():
     font = pygame.font.Font("freesansbold.ttf", 20)
     score_dict = {}
+    ## score: Players
     leaders_text = []
     with open("score.txt", "r") as f:
             score = (
@@ -259,33 +260,31 @@ def get_leaders():
 
     for score in score_list:
         temp = score.split()
-        if temp[0] in score_dict:
-            score_dict[temp[0]].append(int(temp[1]))
+        if temp[1] in score_dict:
+            score_dict[int(temp[1])].append(temp[0])
         else:
-            score_dict[temp[0]] = [int(temp[1])]
+            score_dict[int(temp[1])] = [temp[0]]
 
-    top_score = {}
-    for key in score_dict:
-        score_dict[key] = sorted(score_dict[key], reverse=True)
-        # print (key, 'corresponds to', score_dict[key])
-        top_score[key] = score_dict[key][0]
-        sorted_top_score = {k: v for k, v in sorted(top_score.items(), key=lambda item: -item[1])}
-    
+    sorted_scores = sorted(score_dict, reverse=True)
+    global_var.high_score = sorted_scores[0]
+    sorted_top_scores = []  # 2-D list of top scores
+    count = 0
+    for score in sorted_scores:
+        if count < 5:
+            ## if more than one person has the top score
+            if len(score_dict[score]) > 1:
+                for person in score_dict[score]:
+                    if count < 5:
+                        sorted_top_scores.append([person, score])
+                        count+= 1
+            else:
+                person = score_dict[score][0]
+                sorted_top_scores.append([person, score])
+                count+= 1
+
     ## first index is the highest score
-    global_var.high_score = sorted_top_score[list(sorted_top_score.keys())[0]]
-    
-    if len(sorted_top_score) < 5:
-        for key in sorted_top_score:
-            leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}", True, global_var.FONT_COLOR))
-            print (key, 'corresponds to', sorted_top_score[key])
-    else:
-        count = 0 
-        for key in sorted_top_score:
-            if count < 5:
-                leaders_text.append(font.render(f"{key}: {sorted_top_score[key]}", True, global_var.FONT_COLOR))
-                print (key, 'corresponds to', sorted_top_score[key])
-                count += 1
-        
+    for pair in sorted_top_scores:
+        leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
     return leaders_text
 
 
