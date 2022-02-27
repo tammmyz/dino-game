@@ -39,9 +39,10 @@ def instructions():
     global main_flag
     # Adding background
     SCREEN.fill((255,255,255))
-    image_width = images.BG.get_width()
-    SCREEN.blit(images.BG, (global_var.x_pos_bg, global_var.y_pos_bg))
 
+    track = pygame.image.load(os.path.join("assets/Other", "Track.png"))
+    SCREEN.blit(track, (0, 400))
+    
     # Setting up title
     font = pygame.font.Font("freesansbold.ttf", 30)
     title = font.render("INSTRUCTIONS", True, "black")
@@ -346,6 +347,10 @@ def menu(death_count):
                 global_var.username = "Chelsea"
                 # global_var.username = input("Enter username:")
                 
+            instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
+            x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
         elif death_count > 0:
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
@@ -360,8 +365,6 @@ def menu(death_count):
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
         SCREEN.blit(text, textRect)
-        instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
-        x, y, w, h = instructions_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
@@ -383,6 +386,10 @@ def menu(death_count):
                 main_flag = True
                 main()
 
+            # Add mouse click on main menu text
+            if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_menu, x_menu+w_menu) and mouse_pos_menu[1] in range(y_menu, y_menu+h_menu):
+                menu(0)
+    
             #Check if instructions was pressed
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 print("How to play")
@@ -413,9 +420,7 @@ def menu(death_count):
                             print("keydown?")
                             menu(death_count)
 
-                    
-            
-                    
+                      
         
 t1 = threading.Thread(target=menu(death_count=0), daemon=True)
 t1.start()
