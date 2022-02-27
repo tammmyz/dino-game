@@ -359,6 +359,16 @@ def menu(death_count):
                 updated_score = True
             x_lead, y_lead, w_lead, h_lead = restart()
             restart_flag = True
+
+            # we should probably add this to restart? - Anjola
+            # path to main menu
+            menu_text = font.render("Main Menu", True, global_var.FONT_COLOR)
+            SCREEN.blit(menu_text, (900, 25))
+            #x_menu, y_menu, w_menu, h_menu 
+            x_menu, y_menu, w_menu, h_menu = menu_text.get_rect(topleft=(900,25))
+            mouse_pos_menu = pygame.mouse.get_pos() #get mouse cursor position
+    
+
         ## should we have a template for ur pages so that we just diplay that 
         ##instead fo reqritng it each time?
 
