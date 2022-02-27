@@ -242,11 +242,21 @@ def restart():
     SCREEN.blit(score, scoreRect)
     leader_board_text = font.render("Leader Board", True, global_var.FONT_COLOR)
     leader_board_text_rect = leader_board_text.get_rect()
-    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 90)
+    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
+    x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(center=(global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150))
+    # highscore = 500  # sum all elements of the list
+    # hs_score_text = font.render(
+    #     "High Score : " + str(highscore), True, global_var.FONT_COLOR
+    # )
+    # hs_score_rect = hs_score_text.get_rect()
+    # hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
+    # SCREEN.blit(hs_score_text, hs_score_rect)
+
+    return( x_lead, y_lead, w_lead, h_lead)    
 
 def get_leaders():
-    font = pygame.font.Font("freesansbold.ttf", 20)
+    font = pygame.font.Font("freesansbold.ttf", 25)
     score_dict = {}
     ## score: Players
     leaders_text = []
@@ -286,9 +296,33 @@ def get_leaders():
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
     return leaders_text
 
+def display_leaderboad():  
+    SCREEN.fill((255,255,255))
+
+    font = pygame.font.Font("freesansbold.ttf", 30)    
+    title = font.render("LeaderBoard", True, "black")
+    titleRect = title.get_rect()
+    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
+    SCREEN.blit(title, titleRect)
+    leaders = get_leaders()
+    leader_rect = []
+    c = -20
+    for i in range(len(leaders)):
+        leader_rect.append(leaders[i].get_rect())
+        leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
+        SCREEN.blit(leaders[i], leader_rect[i])
+        c += 30
+
+    main_text = font.render("Press 'b' to go back to restart menu", True, "black")
+    SCREEN.blit(main_text, (320, 450))
+    
+
+    pygame.display.update()
 
 def menu(death_count):
     global main_flag
+    global restart_flag 
+    restart_flag = False
     main_flag = False
     run = True
     updated_score = False
@@ -314,25 +348,11 @@ def menu(death_count):
             if (not updated_score):
                 update_score()
                 updated_score = True
-            restart()
-            leaders = get_leaders()
-            leader_rect = []
-            c = 120
-            for i in range(len(leaders)):
-                leader_rect.append(leaders[i].get_rect())
-                leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
-                SCREEN.blit(leaders[i], leader_rect[i])
-                c += 30
-            # SCREEN.blit(leaders[1], leader_rect[1])
+            x_lead, y_lead, w_lead, h_lead = restart()
+            restart_flag = True
+        ## should we have a template for ur pages so that we just diplay that 
+        ##instead fo reqritng it each time?
 
-            # leader1_rect = leaders[0].get_rect()
-            # leader1_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 120)
-            # SCREEN.blit(leaders[0], leader1_rect)
-
-            # leader2_rect = leaders[1].get_rect()
-            # leader2_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
-            # SCREEN.blit(leaders[1], leader2_rect)
-        
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
         SCREEN.blit(text, textRect)
@@ -343,10 +363,10 @@ def menu(death_count):
         # Adding instuctions button on menu
         if death_count == 0:
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
-            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
+            
         
         pygame.display.update()
-        
+        mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
         for event in pygame.event.get():
             print("EVENT")
             if event.type == pygame.QUIT:
@@ -372,6 +392,22 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             print("keydown?")
                             menu(0)
+            
+            #Check if instructions was pressed
+            if restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
+                print("leaderboard")
+                display_leaderboad()
+                restart_flag = False
+                while not main_flag:
+                    for event in pygame.event.get():
+                        print("EVENT")
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            quit()
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
+                            #b to go back
+                            print("keydown?")
+                            menu(death_count)
 
                     
             
