@@ -245,17 +245,18 @@ def restart():
     leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
     x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(center=(global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150))
-    # highscore = 500  # sum all elements of the list
-    # hs_score_text = font.render(
-    #     "High Score : " + str(highscore), True, global_var.FONT_COLOR
-    # )
-    # hs_score_rect = hs_score_text.get_rect()
-    # hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
-    # SCREEN.blit(hs_score_text, hs_score_rect)
+    highscore =  curr_user_high_score # place holder
+    hs_score_text = font.render(
+        "Your High Score : " + str(highscore), True, global_var.FONT_COLOR
+    )
+    hs_score_rect = hs_score_text.get_rect()
+    hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
+    SCREEN.blit(hs_score_text, hs_score_rect)
 
     return( x_lead, y_lead, w_lead, h_lead)    
 
 def get_leaders():
+    global curr_user_high_score
     font = pygame.font.Font("freesansbold.ttf", 25)
     score_dict = {}
     ## score: Players
@@ -266,13 +267,15 @@ def get_leaders():
             ) 
     score_ints = [x for x in score.split()]
     score_list = score.split("\n")
-
+    curr_user_scores = []
     for score in score_list:
         temp = score.split()
         if temp[1] in score_dict:
             score_dict[int(temp[1])].append(temp[0])
         else:
             score_dict[int(temp[1])] = [temp[0]]
+        if temp[0] == global_var.username:
+            curr_user_scores.append(int(temp[1]))
 
     sorted_scores = sorted(score_dict, reverse=True)
     global_var.high_score = sorted_scores[0]
@@ -294,7 +297,8 @@ def get_leaders():
     ## first index is the highest score
     for pair in sorted_top_scores:
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
-    return leaders_text
+    curr_user_high_score =  max(curr_user_scores)
+    return (leaders_text)
 
 def display_leaderboad():  
     SCREEN.fill((255,255,255))
@@ -304,7 +308,7 @@ def display_leaderboad():
     titleRect = title.get_rect()
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
-    leaders = get_leaders()
+    leaders= get_leaders()
     leader_rect = []
     c = -20
     for i in range(len(leaders)):
