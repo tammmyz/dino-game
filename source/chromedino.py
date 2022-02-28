@@ -349,9 +349,8 @@ def restart():
     leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
     x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(center=(global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150))
-    highscore =  curr_user_high_score # place holder
     hs_score_text = font.render(
-        "Your High Score : " + str(highscore), True, global_var.FONT_COLOR
+        "Your High Score : " + str(global_var.high_score), True, global_var.FONT_COLOR
     )
     hs_score_rect = hs_score_text.get_rect()
     hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
@@ -360,7 +359,6 @@ def restart():
     return( x_lead, y_lead, w_lead, h_lead)    
 
 def get_leaders():
-    global curr_user_high_score
     font = pygame.font.Font("freesansbold.ttf", 25)
     score_dict = {}
     ## score: Players
@@ -381,8 +379,8 @@ def get_leaders():
         if temp[0] == global_var.username:
             curr_user_scores.append(int(temp[1]))
 
+    ## sort scores in descending order
     sorted_scores = sorted(score_dict, reverse=True)
-    global_var.high_score = sorted_scores[0]
     sorted_top_scores = []  # 2-D list of top scores
     count = 0
     for score in sorted_scores:
@@ -401,7 +399,7 @@ def get_leaders():
     ## first index is the highest score
     for pair in sorted_top_scores:
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
-    curr_user_high_score =  max(curr_user_scores)
+    global_var.high_score =  max(curr_user_scores)
     return (leaders_text)
 
 def display_leaderboad():  
