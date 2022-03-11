@@ -447,36 +447,97 @@ How test will be performed:
 Proof of Concept verifies and validates the method by which automated testing is performed. The testing for proof of concept will test the functionality of the game and game flow logic. 
 
 \subsection{Game Play}
-		
-\paragraph{Title for Test}
 
 \begin{enumerate}
+		
+\paragraph{Game Track}
 
 \item{test-id1\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-					
+Initial State: Game track page and score = 0
+
+Input: n/a
+
+Output: Game track is shown to the screen and updated score is in the top right corner. 
+
+How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Manual inspection will check if the score variable is a positive value. Visual inspection will validate if the screen is displaying the game play page and that the score is updated in the top right hand corner. 
+
 \item{test-id2\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
+Type: Functional, Dynamic, Manual.
+
+Initial State: Game Track Page
+
+Input: theme variable
+
+Output: theme graphics to the game page
+
+How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the correct images in accordance to the theme variable.   
+
+\item{test-id3\\}
+
+Type: Functional, Dynamic, Manual.
+
+Initial State: Game track page
+
+Input: Keyboard input "p"
+
+Output: Page that displays options to unpause the game or go to the instructions. 
+
+How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the correct page and that the game track is paused.
+
+\item{test-id4\\}
+
+Type: Functional, Dynamic, Manual.
+
+Initial State: Game track page
+
+Input: Keyboard input down arrow 
+
+Output: Character images changes to img\_duck
+
+How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the correct "ducking" image to the screen.
+
+\item{test-id5\\}
+
+Type: Functional, Dynamic, Manual.
+
+Initial State: Game track page
+
+Input: Keyboard input up arrow
+
+Output: Character images changes to img\_jump
+
+How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the correct jumping image to the screen and if the character jumps on screen.
+
+
 
 \end{enumerate}
+
+
+\paragraph{Pause Page}
+\begin{enumerate}
+	\item{test-id1\\}
+	
+	Initial State: Pause page
+	
+	Input: Keyboard input "U"
+	
+	Output: Game track continues on screen. 
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the game play page. To verify the game is running again, the character will be inspected and the score variable.  
+	
+	\item{test-id2\\}
+	
+	Initial State: Pause page
+	
+	Input: Keyboard input "I"
+	
+	Output: Instructions page displayed on screen 
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the instruction page.
+\end{enumerate}
+
 
 \subsection{Additional Game Pages}
 
@@ -561,6 +622,25 @@ How test will be performed:
 	Input: Keyboard input "E"
 	
 	Output: Main Page
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Manual inspection testing will be used to check if the home page is displayed. 
+	
+\end{enumerate}
+
+
+\paragraph{Instructions Page}
+
+\begin{enumerate}
+	
+	\item{test-id1\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: Settings 
+	
+	Input: Keyboard input "E"
+	
+	Output: Main page
 	
 	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Manual inspection testing will be used to check if the home page is displayed. 
 	
