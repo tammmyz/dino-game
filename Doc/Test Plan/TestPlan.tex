@@ -301,6 +301,33 @@ Output: Text elements of the Leaderboard page are properly displayed
 How test will be performed: When the Leaderboard page is displayed, manually inspect the page to 
 ensure that there is no text area overlap between the individual texts containing the user name and score. 
 
+
+% This should probably be on a restart page test
+\item{test-id2\\}
+
+Type: Functional, Automated, Dynamic 
+					
+Initial State: Restart flag is set to true and game point is higher than the current user's highest score.
+					
+Input: Game points
+					
+Output: Unit test passes if the user's high score is updated to the game points.
+					
+How test will be performed: After the user has completed a game run, use an assert statement to ensure that the value of the current user's high score is updated to the value of game points if the game point is higher than the current user's previous high score
+
+% This should probably be on a restart page test
+\item{test-id2\\}
+
+Type: Functional, Manual, Dynamic
+					
+Initial State: User has completed a game run (Death count is \> 0)
+					
+Input: Game points and username
+					
+Output: Unit test passes if the user's username and score is appended to score.txt
+					
+How test will be performed: After the user has completed a game run, manually inspect score.txt to ensure that the user's username and game point is entered into score.txt in the correct format.
+
 \end{enumerate}
 
 \subsubsection{Instructions Page Tests}
