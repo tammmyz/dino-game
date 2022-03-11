@@ -305,7 +305,9 @@ How test will be performed:
 
 \section{Tests for Proof of Concept}
 
-\subsection{Area of Testing1}
+Proof of Concept verifies and validates the method by which automated testing is performed. The testing for proof of concept will test the functionality of the game and game flow logic. 
+
+\subsection{Game Play}
 		
 \paragraph{Title for Test}
 
@@ -337,9 +339,93 @@ How test will be performed:
 
 \end{enumerate}
 
-\subsection{Area of Testing2}
+\subsection{Additional Game Pages}
 
-...
+
+
+\paragraph{Home Page}
+
+\begin{enumerate}
+	
+	\item{test-id1\\}
+	
+	Type: Functional, Dynamic, Manual. 
+	
+	Initial State: Main Page and default settings (theme and audio)
+	
+	Input: any keyboard input 
+	
+	Output: Game track is shown to the screen. 
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the game play page. 
+	
+	\item{test-id2\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: Main page and default settings (theme and audio) 
+	
+	Input: Mouse click on "Game Settings" text
+	
+	Output: Settings page. 
+	
+	How test will be performed:Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the settings.  
+	
+	\item{test-id3\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: Main page and default settings (theme and audio) 
+	
+	Input: Mouse click on "How to Play" text
+	
+	Output: Instructions page
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the screen is displaying the instructions page. 
+	
+\end{enumerate}
+
+\paragraph{Instructions Page}
+
+\begin{enumerate}
+	
+	\item{test-id1\\}
+	
+	Type: Functional, Dynamic, Manual. 
+	
+	Initial State: Instructions Page
+	
+	Input: Keyboard input "1", "2" or "3" 
+	
+	Output: Graphics on the main page and game track change. 
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Visual inspection will validate if the graphics have changed according to the theme. On the main page the icon will change and on the game track the obstacles and character will change based on the theme. 
+	
+	\item{test-id2\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: Instructions Page
+	
+	Input: Keyboard input "N" or "A" 
+	
+	Output: if "N" audio = True, if "A" audio = False
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Manual inspection testing will be used to check if the variable has changed in the appropriate python file. 
+	
+	\item{test-id3\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: Instructions Page
+	
+	Input: Keyboard input "E"
+	
+	Output: Main Page
+	
+	How test will be performed: Manual and dynamic testing will be used to ensure the program functions as expected. Manual inspection testing will be used to check if the home page is displayed. 
+	
+\end{enumerate}
 
 	
 \section{Comparison to Existing Implementation}	
