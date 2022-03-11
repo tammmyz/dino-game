@@ -402,46 +402,139 @@ How test will be performed: A manual test will be performed to inspect if the te
 
 \end{enumerate}
 
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+\subsubsection{Operating System Compatibility Test}
 
 \begin{enumerate}
 
 \item{test-id1\\}
 
-Type: 
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Structural, Manual, Dynamic (not sure)
 					
-Initial State: 
+Initial State: Game is stored in an executable file and uploaded to Google drive
 					
-Input: 
+Input/Condition: Download and launch game on computers running on  Windows 10, macOS Sierra 10.12 and Linux Ubuntu 16.04.
 					
-Output: 
+Output/Result: Game should run successfully on any of these operating systems.
 					
-How test will be performed: 
+How test will be performed: The executable file containing our program will be uploaded to Google drive.
+We will then download and execute the programs on systems running on Windows 10, macOS Sierra 10.12 and Linux Ubuntu 16.04. The test team will verify the successful run of the game on these systems
+\end{enumerate}
+
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\subsubsection{Look and Feel}
+
+\paragraph{Style Requirements}
+
+\begin{enumerate}
+
+
+\item{test-id1\\}
+
+Type: Functional, Manual, Dynamic 
+					
+Initial State: The game executable file is loaded and is currently on the main page.
+					
+Input/Condition: Users are asked to inspect the interface and its design.
+					
+Output/Result: Majority of the users  will report that the game colours are not distracting and the 90's arcade appearance is maintained.
+					
+How test will be performed: The test group will play the game. After playing, they will then be asked to comment on the user interface design (i.e. colour and theme).
 
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
 
-...
+\subsubsection{Usability}
+		
+\paragraph{Ease of Use}
 
-\subsection{Traceability Between Test Cases and Requirements}
+\begin{enumerate}
+
+
+\item{test-id1\\}
+
+Type: Functional, Manual, Dynamic (not sure)
+					
+Initial State: Game is newly launched from an executable file and set up on a computer (Start Page)
+					
+Input/Condition: Users are asked to play the game
+					
+Output/Result: Majority of the users are able to successfully play the game without any assistance from the development team
+					
+How test will be performed: The test group will be asked to play the game which will already be launched on a computer. Users should be able to successfully navigate the different pages and play the game without additional instructions from the development team.
+
+\item{test-id1\\}
+
+Type: Structural, Manual, Dynamic (not sure)
+					
+Initial State: Game is stored in an executable file and uploaded to Google drive
+					
+Input/Condition: The test group is asked to download and launch game on their computers running on  Windows 10, macOS Sierra 10.12 or Linux Ubuntu 16.04.
+					
+Output/Result: Users from the test group are successfully able to launch the game on their computers without assistance from the development team.
+					
+How test will be performed: The executable file containing our program will be uploaded to Google drive. We will then ask the test group to download and execute the programs on their computers running on  Windows 10, macOS Sierra 10.12 or Linux Ubuntu 16.04. The test team will verify the successful run of the game on these systems
+
+
+\end{enumerate}
+
+\subsubsection{Precision Test}
+\begin{enumerate}
+\item{test-id2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The game is launched and user-input (keyboard or mouse) is expected
+					
+Input: Using a stop watch, time how long it takes for the game to response (change page) after an input is entered.
+					
+Output: The average response time should be less than two seconds
+					
+How test will be performed: The game is launched to the homepage. Someone from the test group enters a valid input and the game's response time is measured by another member of the test group. A similar test in performed for the response time of pause and unpause inputs on the game play page.
+
+\end{enumerate}
+
+\subsubsection{Security Requirements}
+
+\paragraph{Access Requirements}
+\begin{enumerate}
+\item{test-id2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The interface is currently displaying the leaderboard page
+					
+Input: User mouse and keyboard input
+
+Output: The user is not able to change the leaderboard names and high score.
+					
+How test will be performed: The user will attempt to change the leaderboard manually, while staying in the leaderboard page.
+
+\end{enumerate}
+
+
+\subsubsection{Cultural and Political Requirements}
+
+\paragraph{Cultural Requirements}
+\begin{enumerate}
+\item{test-id2\\}
+
+Type: Functional, Dynamic, Automated 
+					
+Initial State: The game prompts the user for a username
+					
+Input: Illegal username (e.g a swear words)
+					
+Output: An error message should be displayed to inform the user of an illegal username
+					
+How test will be performed: The game developers will implement an Illegal username dictionary. When a username is entered, it will be compared to the Illegal username dictionary. If it is an illegal word an Illegal-Argument error is thrown. An assert statement will be used to validate this error handling method.
+
+\end{enumerate}
+
+% \subsection{Tests for Nonfunctional Requirements}
+
 
 \section{Tests for Proof of Concept}
 
@@ -647,8 +740,6 @@ How test will be performed: Manual and dynamic testing will be used to ensure th
 	
 \end{enumerate}
 
-	
-\section{Comparison to Existing Implementation}	
 				
 \section{Unit Testing Plan}
 
