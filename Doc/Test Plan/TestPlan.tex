@@ -14,10 +14,10 @@
 
 \title{SE 3XA3: Test Plan\\Title of Project}
 
-\author{Team \#, Team Name
-		\\ Student 1 name and macid
-		\\ Student 2 name and macid
-		\\ Student 3 name and macid
+\author{Team \#1, Team Rex
+	\\ Anjola Adewale and adewaa1
+	\\ Chelsea Maramot and maramotc
+	\\ Sheridan Fong and fongs7
 }
 
 \date{\today}
@@ -113,37 +113,46 @@ See Gantt Chart at the following url ...
 \section{System Test Description}
 	
 \subsection{Tests for Functional Requirements}
-
-\subsubsection{Area of Testing1}
-		
-\paragraph{Title for Test}
+\subsubsection{Settings Page Tests}
 
 \begin{enumerate}
-
-\item{test-id1\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
+	
+	\item{test-id1\\}
+	
+	Type: Functional, Dynamic, Manual, unit.
+	
+	Initial State: audio variable = True
+	
+	Input: Keyboard Input N or A 
+	
+	Output: The audio variable will change based on the keyboard input. 
+	
+	How test will be performed: Unit and functional testing will be used to confirm that the audio variable is set correctly based on the user's keyboard input in the global\_var.py file. Manual testing will be used for code inspection to ensure the code is running as planned. 
+	
+	\item{test-id2\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: theme = 'default'
+	
+	Input: Keyboard Input "1", "2", or "3"
+	
+	Output: Based on the keyboard input the theme variable value should change."1" for the default dino theme, "2" for the student theme and "3" for the corona virus theme.
+	
+	How test will be performed: Unit and functional testing will be used to confirm that the theme variable is set correctly based on the user's keyboard input in the global\_var.py file. Manual testing will be used for code inspection to ensure the code executes as desired. 
+	
+	\item{test-id3\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: The settings page is displayed on the screen. 
+	
+	Input: Keyboard Input "e"
+	
+	Output: The game will take you back to the main page and display the main page graphics. 
+	
+	How test will be performed: Unit testing will be used to check if the variable main\_flag is True and settings\_flag is False. If it is true the main page is being displayed. Functional testing will be used to observe if the graphics have changed from the settings to main page. Manual testing will be used for code inspection to ensure the code executes as desired. 
+	
 \end{enumerate}
 
 \subsubsection{Leaderboard Tests}
