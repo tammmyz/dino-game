@@ -162,6 +162,18 @@ Output: The Leaderboard page is displayed and contains up to five users and thei
 					
 How test will be performed: After the menu function is called and the restart\_flag variable is set to true, the appropriate user input(mouse event) is entered and the output is checked to ensure that the leaderboard is displayed. 
 
+\item{test-id2\\}
+
+Type: Automated, Dynamic, Structural
+					
+Initial State: None, this function is called on a unit basis. However the score.txt file must be populated
+					
+Input: Leaders\_text (Python list containing top users and their score)
+					
+Output: Unit test passes if the users in the leader board have the highest recorded scores
+					
+How test will be performed: The score.txt file will be manually populated with users and their scores.
+After calling the get\_leaders() function, each index of the leader\_txt output is validated using assert statements.
 \end{enumerate}
 
 \subsubsection{Instructions Page Tests}
