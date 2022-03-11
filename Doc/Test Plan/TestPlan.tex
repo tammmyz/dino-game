@@ -155,6 +155,110 @@ See Gantt Chart at the following url ...
 	
 \end{enumerate}
 
+
+\subsubsection{Gametrack Tests}
+
+\begin{enumerate}
+	
+	\item{test-id1\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: game images are set to default 
+	
+	Input: theme variable
+	
+	Output: Appropriate themed images are displayed to the screen.
+	
+	How test will be performed: Unit testing will be used to confirm that the correct images are loaded. For example if theme variable = "corona" the images.RUNNING = images.RUNNING\_THEME3 as opposed to images.RUNNING = images.RUNNING\_THEME1. Functional testing will be verified by inspection to ensure that the correct images are displayed to the screen according to the theme. Manual testing will be used for code inspection to ensure the code executes as desired. 
+	
+	\item{test-id2\\}
+	
+	Type: Functional, Dynamic, Manual.
+	
+	Initial State: audio setting is set to true 
+	
+	Input: audio variable 
+	
+	Output: Audio is played if audio = True and not played if audio = False. 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that audio is playing out of the computer. Manual testing will be used to ensure that the correct audio track is loaded and played. 
+	
+	\item{test-id3\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: Game track page 
+	
+	Input: Keyboard input "p" 
+	
+	Output: Pauses the game track and displays the pause page. 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the game has stopped and that the appropriate text is displayed to the screen. Unit testing will be used to verify that game\_track\_flag = False and that game\_track\_pause\_flag = True. This unit testing will ensure that the correct page elements are loaded to the screen. Manual testing will be used to ensure the code functions as desired. 
+	
+	\item{test-id4\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: Pause game page
+	
+	Input: Keyboard input "u"
+	
+	Output: unpauses the game track and displays the game track page. 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the game resumes as normal and that the appropriate graphics is displayed to the screen. Unit testing will be used to verify that game\_track\_flag = True and that game\_track\_pause\_flag = False. This unit testing will ensure that the correct page elements are loaded to the screen. Manual testing will be used to ensure the code functions as desired. 
+	
+	\item{test-id5\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: score = 0
+	
+	Input: n/a
+	
+	Output: score variable increases and is displayed to the screen
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the score is displayed to the screen in the top right hand corner. Unit testing will be used to ensure that the score value is only increasing as game play occurs. Manual testing will be used to ensure the code functions as desired.
+	
+	\item{test-id6\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: character.run\_img = True
+	
+	Input: keyboard input up arrow or spacebar
+	
+	Output: The character graphic will change from character.run\_img to character.jump\_img. The character will also increase it's position in the y-axis and therefore appear as if it is "jumping". 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the character is jumping and has an increased then decreased y-axis value that mimics jumping in the real world. Unit testing will be used to ensure that the character.run\_img = False and character.jump\_img = True. Manual testing will be used to ensure the code functions as desired. 
+	
+	\item{test-id7\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: character.run\_img = True
+	
+	Input: keyboard input down arrow. 
+	
+	Output: The character graphic will change from character.run\_img to character.duck\_img. The character will also decrease it's position in the y-axis and therefore appear as if it is "ducking". 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the character is "ducking" and has an decreased y-axis value that mimics ducking in the real world. Unit testing will be used to ensure that the character.run\_img = False and character.duck\_img = True. Manual testing will be used to ensure the code functions as desired. 
+	
+	\item{test-id8\\}
+	
+	Type: Functional, Dynamic, Manual, Unit.
+	
+	Initial State: game\_speed = 20
+	
+	Input: n/a
+	
+	Output: The game\_speed increases as time progresses and the images move across the screen faster. 
+	
+	How test will be performed: Functional testing will be verified by manual inspection to ensure that the character is moving faster. Unit testing will be used to ensure that the game speed is increasing with time. Manual testing will be used to ensure the code functions as desired. 
+
+\end{enumerate}
+
+
 \subsubsection{Leaderboard Tests}
 
 \begin{enumerate}
