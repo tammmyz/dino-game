@@ -422,10 +422,14 @@ def get_leaders():
 
 ## @brief Displays the leaderboard page texts and graphics
 def display_leaderboad():  
-    SCREEN.fill((255,255,255))
+    current_time = datetime.datetime.now().hour
+    if 7 < current_time < 19:
+        SCREEN.fill((255, 255, 255))
+    else:
+        SCREEN.fill((128, 128, 128))
 
     font = pygame.font.Font("freesansbold.ttf", 30)    
-    title = font.render("LeaderBoard", True, "black")
+    title = font.render("LeaderBoard", True,  global_var.FONT_COLOR)
     titleRect = title.get_rect()
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
@@ -438,7 +442,7 @@ def display_leaderboad():
         SCREEN.blit(leaders[i], leader_rect[i])
         c += 30
 
-    main_text = font.render("Press 'b' to go back to restart menu", True, "black")
+    main_text = font.render("Press 'b' to go back to restart menu", True,  global_var.FONT_COLOR)
     SCREEN.blit(main_text, (320, 450))
     
 
