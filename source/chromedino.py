@@ -119,7 +119,7 @@ def instructions():
 
 ## @brief Displays the settings page texts and graphics
 def settings():
-    global global_var.game_track_flag
+
     # Adding background
     SCREEN.fill((255,255,255))
     image_width = images.BG.get_width()
@@ -440,7 +440,6 @@ def display_leaderboad():
     pygame.display.update()
 
 def menu(death_count):
-    global global_var.game_track_flag
     global restart_flag 
     restart_flag = False
     global_var.game_track_flag = False
