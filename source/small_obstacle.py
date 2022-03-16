@@ -1,6 +1,6 @@
 ## @file small_obstacle.py
 #  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
-#  @brief Contains the small obstacle class which is used to generate objects in small_obstacle.py
+#  @brief Contains the small obstacle class which is used to generate objects in chromedino.py
 #  @date 03/18/2022
 
 from obstacle import Obstacle
