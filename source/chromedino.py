@@ -10,6 +10,7 @@ import threading
 from turtle import update
 import pygame
 import time
+from username import get_username 
 
 # importing local application/library specific imports
 from cloud import Cloud
@@ -467,6 +468,8 @@ def menu(death_count):
             global_var.start_flag = True
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             if (len(global_var.username) == 0):
+                # global_var.username = get_username()
+                # print(global_var.username)
                 global_var.username = "Chelsea"
                 # global_var.username = input("Enter username:")
                 
@@ -474,6 +477,12 @@ def menu(death_count):
             x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
+
+            username_text = font.render("Click to enter your username", True, global_var.FONT_COLOR)
+            x_u, y_u, w_u, h_u = username_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
+            SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
+           
+
 
         elif death_count > 0:
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
@@ -547,6 +556,7 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             print('pressed e')
                             menu(0)
+            
 
             # Check if settings was pressed.
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
@@ -604,6 +614,13 @@ def menu(death_count):
                             #b to go back
                             print("keydown?")
                             menu(death_count)
+                        #Check if instructions was pressed
+
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u, x_u+w_u) and mouse_pos[1] in range(y_u, y_u+h_u):
+                print("usernameee here")
+                global_var.username = get_username()
+                print(global_var.username)
+                global_var.restart_flag = False
 
                       
         
