@@ -36,11 +36,11 @@ Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
 # variable used to track if you are on the main page or not?
-main_flag = False
+global_var.game_track_flag = False
 
 ## @brief Displays the instructions page texts and graphics
 def instructions():
-    global main_flag
+    
     # Adding background
     SCREEN.fill((255,255,255))
 
@@ -111,7 +111,7 @@ def instructions():
     SCREEN.blit(u_img, (440, 340))
     SCREEN.blit(unpause_text, (493, 355))
 
-    if not main_flag:
+    if not global_var.game_track_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
         SCREEN.blit(main_text, (320, 450))
 
@@ -119,7 +119,7 @@ def instructions():
 
 ## @brief Displays the settings page texts and graphics
 def settings():
-    global main_flag
+    global global_var.game_track_flag
     # Adding background
     SCREEN.fill((255,255,255))
     image_width = images.BG.get_width()
@@ -211,7 +211,7 @@ def settings():
     # themed options - new options coming soon
     SCREEN.blit(new_options_text, (555,355))
 
-    if not main_flag:
+    if not global_var.game_track_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
         SCREEN.blit(main_text, (320, 450))
 
@@ -440,10 +440,10 @@ def display_leaderboad():
     pygame.display.update()
 
 def menu(death_count):
-    global main_flag
+    global global_var.game_track_flag
     global restart_flag 
     restart_flag = False
-    main_flag = False
+    global_var.game_track_flag = False
     run = True
     updated_score = False
     while run:
@@ -521,7 +521,7 @@ def menu(death_count):
                 exit()
             if event.type == pygame.KEYDOWN:
                 print("keydown?")
-                main_flag = True
+                global_var.game_track_flag = True
                 main()
 
             # Add mouse click on main menu text
@@ -531,7 +531,7 @@ def menu(death_count):
             #Check if instructions was pressed
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 instructions()
-                while not main_flag:
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
@@ -544,7 +544,7 @@ def menu(death_count):
             if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
                     mouse_pos[1] in range(y_settings, y_settings + h2):
                 settings()
-                while not main_flag:
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
@@ -586,7 +586,7 @@ def menu(death_count):
                 print("leaderboard")
                 display_leaderboad()
                 restart_flag = False
-                while not main_flag:
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         print("EVENT")
                         if event.type == pygame.QUIT:
