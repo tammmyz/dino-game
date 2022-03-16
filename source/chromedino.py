@@ -1,6 +1,8 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-# importing standard libraries
+## @file chromedino.py 
+#  @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
+# @brief Contains the main controller for the game
+# @date 03/18/2022
+# importing libraries
 import datetime
 import os
 import random
@@ -36,8 +38,7 @@ pygame.display.set_icon(Ico)
 # variable used to track if you are on the main page or not?
 main_flag = False
 
-
-
+## @brief Displays the instructions page texts and graphics
 def instructions():
     global main_flag
     # Adding background
@@ -116,7 +117,7 @@ def instructions():
 
     pygame.display.update()
 
-
+## @brief Displays the settings page texts and graphics
 def settings():
     global main_flag
     # Adding background
@@ -216,7 +217,7 @@ def settings():
 
     pygame.display.update()
 
-
+## @brief Calls all classes and generates objects to play the game 
 def main():
     print("main: length: ",len(global_var.obstacles))
     # global game_speed, x_pos_bg, y_pos_bg, points, obstacles
@@ -332,11 +333,14 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+## @brief Adds the user's username and score to score.txt after each death 
 def update_score():
     f = open("score.txt", "a+")
     f.write("\n" + global_var.username + " " + str(global_var.points))
     f.close()
 
+## @brief Displays the restart page texts and graphics 
+#  @return A tuple containing the positional coordinates of the Leaderboard text
 def restart():
     leader_rect = []
     font = pygame.font.Font("freesansbold.ttf", 30)
@@ -358,31 +362,39 @@ def restart():
 
     return( x_lead, y_lead, w_lead, h_lead)    
 
+## @brief Displays the restart page texts and graphics 
+#  @return A list containing the formatted leader text
 def get_leaders():
-    font = pygame.font.Font("freesansbold.ttf", 25)
+    font = pygame.font.Font("freesansbold.ttf", 25) # make font a global var
     score_dict = {}
-    ## score: Players
+    ## score: Players []
     leaders_text = []
     with open("score.txt", "r") as f:
             score = (
                 f.read()
             ) 
-    score_ints = [x for x in score.split()]
     score_list = score.split("\n")
-    curr_user_scores = []
+    # ["Anjola 3", "Chel 200"]
+    curr_user_scores = [] # the current users score
     for score in score_list:
         temp = score.split()
+        # temp = [Anjola, 3]
         if temp[1] in score_dict:
             score_dict[int(temp[1])].append(temp[0])
+            '''
+            {100 : [Anjola, Sheridan]}
+            '''
         else:
             score_dict[int(temp[1])] = [temp[0]]
+            ## if it's a score we've never seen, we'll make that a key
         if temp[0] == global_var.username:
             curr_user_scores.append(int(temp[1]))
 
     ## sort scores in descending order
-    sorted_scores = sorted(score_dict, reverse=True)
+    sorted_scores = sorted(score_dict, reverse=True) 
+    ## a list of sorted score from score_dict
     sorted_top_scores = []  # 2-D list of top scores
-    count = 0
+    count = 0 ## ensure that only five score are added to sorted top scoresS
     for score in sorted_scores:
         if count < 5:
             ## if more than one person has the top score
@@ -399,9 +411,11 @@ def get_leaders():
     ## first index is the highest score
     for pair in sorted_top_scores:
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
+        ## formating the leader text
     global_var.high_score =  max(curr_user_scores)
     return (leaders_text)
 
+## @brief Displays the leaderboard page texts and graphics
 def display_leaderboad():  
     SCREEN.fill((255,255,255))
 
