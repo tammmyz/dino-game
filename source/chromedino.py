@@ -236,6 +236,7 @@ def main():
     death_count = 0
     pause = False
 
+    ## @brief Updates game points and high score and displays it to the screen during game play
     def score():
         get_leaders()
         global_var.points, global_var.game_speed
@@ -251,6 +252,7 @@ def main():
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
 
+    ## @brief Updates the background of the game according to game speed 
     def background():
         # global_var.x_pos_bg, global_var.y_pos_bg
         image_width = images.BG.get_width()
@@ -261,11 +263,14 @@ def main():
             global_var.x_pos_bg = 0
         global_var.x_pos_bg -= global_var.game_speed
 
+    ## @brief Unpauses the game by setting appropriate boolean variables
     def unpause():
         nonlocal pause, run
         pause = False
         run = True
 
+    ## @brief Pauses the game by setting appropriate boolean variables and displaying the 
+    # appropriate text and graphics to the screen.
     def paused(): 
         nonlocal pause
         pause = True
@@ -288,7 +293,7 @@ def main():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_i:
                     print("pressed i")
                     instructions()
-
+    
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -439,6 +444,9 @@ def display_leaderboad():
 
     pygame.display.update()
 
+
+## @brief Displays the start and restart page texts and graphics
+# @brief death count an interger value indication the amount of times lost (had to restsart)
 def menu(death_count):
     global_var.start_flag = False 
     global_var.restart_flag = False
