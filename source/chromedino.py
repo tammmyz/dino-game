@@ -440,8 +440,8 @@ def display_leaderboad():
     pygame.display.update()
 
 def menu(death_count):
-    global restart_flag 
-    restart_flag = False
+    global_var.start_flag = False 
+    global_var.restart_flag = False
     global_var.game_track_flag = False
     run = True
     updated_score = False
@@ -456,6 +456,7 @@ def menu(death_count):
         font = pygame.font.Font("freesansbold.ttf", 30)
 
         if death_count == 0:
+            global_var.start_flag = True
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             if (len(global_var.username) == 0):
                 global_var.username = "Chelsea"
@@ -472,7 +473,7 @@ def menu(death_count):
                 update_score()
                 updated_score = True
             x_lead, y_lead, w_lead, h_lead = restart()
-            restart_flag = True
+            global_var.restart_flag = True
 
             # we should probably add this to restart? - Anjola
             # path to main menu
@@ -497,7 +498,7 @@ def menu(death_count):
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
-        if death_count == 0:
+        if global_var.start_flag == True:
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
 
             x_settings = int(global_var.SCREEN_WIDTH * 0.78)
@@ -528,7 +529,7 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 instructions()
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
@@ -540,7 +541,7 @@ def menu(death_count):
                             menu(0)
 
             # Check if settings was pressed.
-            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
                     mouse_pos[1] in range(y_settings, y_settings + h2):
                 settings()
                 while not global_var.game_track_flag:
@@ -581,10 +582,10 @@ def menu(death_count):
                     
             
             #Check if instructions was pressed
-            if restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
+            if global_var.restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
                 print("leaderboard")
                 display_leaderboad()
-                restart_flag = False
+                global_var.restart_flag = False
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         print("EVENT")
