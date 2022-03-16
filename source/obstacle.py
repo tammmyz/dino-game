@@ -1,4 +1,4 @@
-## @file character.py
+## @file obstacle.py
 #  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
 #  @brief Contains the Character class which is used to generate objects in chromedino.py
 #  @date 03/18/2022

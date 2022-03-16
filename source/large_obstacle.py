@@ -1,3 +1,8 @@
+## @file large_obstacle.py
+#  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
+#  @brief Contains the Character class which is used to generate objects in chromedino.py
+#  @date 03/18/2022
+
 import random
 from obstacle import Obstacle
 
