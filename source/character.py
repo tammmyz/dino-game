@@ -1,7 +1,18 @@
+## @file character.py
+#  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
+#  @brief Contains the Character class which is used to generate objects in chromedino.py
+#  @date 03/18/2022
+
 import images
 import pygame
 
-# setting up the dinosaur class - need to separate into it's own module
+
+## @brief Character is a class that implements a game character
+#  @details the character class defines the position and the images for
+#   the character movements such as duck, jump and run. It is responsible for drawing
+#   the character to the screen.
+
+
 class Character:
     # setting constants for the dinosaur position on screen and velocity
     X_POS = 80
@@ -9,7 +20,7 @@ class Character:
     Y_POS_DUCK = 340
     JUMP_VEL = 8.5
 
-    # initializing dinosaur images
+    ## @brief Constructor method for Character
     def __init__(self):
         self.duck_img = images.DUCKING  # list of ducking images
         self.run_img = images.RUNNING
