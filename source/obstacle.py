@@ -1,6 +1,6 @@
 ## @file obstacle.py
 #  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
-#  @brief Contains the Character class which is used to generate objects in chromedino.py
+#  @brief Contains the Obstacle class which is used to generate Obstacle objects
 #  @date 03/18/2022
 
 import global_var
