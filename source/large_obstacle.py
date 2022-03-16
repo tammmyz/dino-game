@@ -1,6 +1,6 @@
 ## @file large_obstacle.py
 #  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
-#  @brief Contains the large obstacle class which is used to generate objects in large_obstacle.py
+#  @brief Contains the large obstacle class which is used to generate objects in chromedino.py
 #  @date 03/18/2022
 
 import random
@@ -11,7 +11,7 @@ from obstacle import Obstacle
 
 class LargeObstacle(Obstacle):
 
-    ## @brief Constructor method for a LargeObstacles 
+    ## @brief Constructor method for a LargeObstacles
     #  @param image a list of large obstacle images
     def __init__(self, image):
         self.type = random.randint(0, 2)

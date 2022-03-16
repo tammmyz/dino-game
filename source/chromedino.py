@@ -450,7 +450,7 @@ def display_leaderboad():
         SCREEN.blit(leaders[i], leader_rect[i])
         c += 30
 
-    main_text = font.render("Press 'b' to go back to restart menu", True, global_var.FONT_COLOR)
+    main_text = font.render("Press 'b' to go back to restart menu", True,  global_var.FONT_COLOR)
     SCREEN.blit(main_text, (320, 450))
     
 
