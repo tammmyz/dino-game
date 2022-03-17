@@ -1,3 +1,8 @@
+## @file images.py
+#  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
+#  @brief Contains the images for chromedino.py
+#  @date 03/18/2022
+
 import pygame
 import os
 import global_var
