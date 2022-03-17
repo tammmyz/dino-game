@@ -458,7 +458,7 @@ def display_leaderboad():
 
 
 ## @brief Displays the start and restart page texts and graphics
-# @brief death count an interger value indication the amount of times lost (had to restsart)
+# @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
     global_var.start_flag = False 
     global_var.restart_flag = False
@@ -482,7 +482,7 @@ def menu(death_count):
             if (len(global_var.username) == 0):
                 # global_var.username = get_username()
                 # print(global_var.username)
-                global_var.username = "Chelsea"
+                global_var.username = "No_User_Entered"
                 # global_var.username = input("Enter username:")
                 
             instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
@@ -534,9 +534,9 @@ def menu(death_count):
             y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
             SCREEN.blit(game_settings_text, (x_settings, y_settings))
 
-            # pygame.Rect(x_position, y_position, width, height) - code below is for testing how to draw rect
-            # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
-            # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
+           # pygame.Rect(x_settings, y_settings, width, height) #- code below is for testing how to draw rect
+           # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
+           # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
 
