@@ -29,6 +29,7 @@ pygame.mixer.init()
 
 jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
 milestone_sound = pygame.mixer.Sound("assets/audio/milestone.mp3")
+death_sound = pygame.mixer.Sound("assets/audio/death.mp3")
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -340,6 +341,7 @@ def main():
             obstacle.draw(SCREEN)
             obstacle.update()
             if player.dino_rect.colliderect(obstacle.rect):
+                death_sound.play()
                 pygame.time.delay(2000)
                 death_count += 1
                 menu(death_count)
