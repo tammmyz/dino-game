@@ -24,6 +24,11 @@ import images
 
 # initializing the game
 pygame.init()
+pygame.font.init()
+pygame.mixer.init()
+
+jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
+milestone_sound = 
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -303,6 +308,10 @@ def main():
                 run = False
                 paused()
 
+            if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
+                jump_sound.play()
+            
+
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
             SCREEN.fill((255, 255, 255))
@@ -314,6 +323,7 @@ def main():
         player.draw(SCREEN)
         player.update(userInput)  # player is an object of dinosaur that is always looking for input
 
+    
         if len(global_var.obstacles) == 0:
             if random.randint(0, 2) == 0:
                 global_var.obstacles.append(SmallObstacle(images.OBSTACLE_ONE))
