@@ -31,6 +31,10 @@ jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
 milestone_sound = pygame.mixer.Sound("assets/audio/milestone.mp3")
 death_sound = pygame.mixer.Sound("assets/audio/death.mp3")
 duck_sound = pygame.mixer.Sound("assets/audio/duck.mp3")
+corona_sound = pygame.mixer.Sound("assets/audio/corona_theme.mp3")
+dinosaur_sound = pygame.mixer.Sound("assets/audio/dino_theme.mp3")
+student_sound = pygame.mixer.Sound("assets/audio/student_theme.mp3")
+
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -611,9 +615,12 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
                             if(event.key == pygame.K_1):
                                 global_var.theme = 'default'
+                                dinosaur_sound.play()
                             elif(event.key == pygame.K_2):
                                 global_var.theme = 'student'
+                                student_sound.play()
                             elif(event.key == pygame.K_3):
+                                corona_sound.play()
                                 global_var.theme = 'corona'
                                 images.RUNNING = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
