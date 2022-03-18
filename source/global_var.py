@@ -1,3 +1,9 @@
+## @file global_var.py
+#  @author Anjola Adewale, Chelsea Maramot, Sheridan Fong
+#  @brief Contains the global variables for chromedino.py
+#  @date 03/18/2022
+
+
 # global constants
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100

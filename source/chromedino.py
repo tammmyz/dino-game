@@ -1,6 +1,8 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-# importing standard libraries
+## @file chromedino.py 
+#  @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
+# @brief Contains the main controller for the game
+# @date 03/18/2022
+# importing libraries
 import datetime
 import os
 import random
@@ -8,6 +10,7 @@ import threading
 from turtle import update
 import pygame
 import time
+from username import get_username 
 
 # importing local application/library specific imports
 from cloud import Cloud
@@ -34,12 +37,11 @@ Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
 # variable used to track if you are on the main page or not?
-main_flag = False
+global_var.game_track_flag = False
 
-
-
+## @brief Displays the instructions page texts and graphics
 def instructions():
-    global main_flag
+    
     # Adding background
     SCREEN.fill((255,255,255))
 
@@ -110,15 +112,15 @@ def instructions():
     SCREEN.blit(u_img, (440, 340))
     SCREEN.blit(unpause_text, (493, 355))
 
-    if not main_flag:
+    if not global_var.game_track_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
         SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
 
-
+## @brief Displays the settings page texts and graphics
 def settings():
-    global main_flag
+
     # Adding background
     SCREEN.fill((255,255,255))
     image_width = images.BG.get_width()
@@ -210,13 +212,13 @@ def settings():
     # themed options - new options coming soon
     SCREEN.blit(new_options_text, (555,355))
 
-    if not main_flag:
+    if not global_var.game_track_flag:
         main_text = font.render("Press 'e' to go back to main menu", True, "black")
         SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
 
-
+## @brief Calls all classes and generates objects to play the game 
 def main():
     print("main: length: ",len(global_var.obstacles))
     # global game_speed, x_pos_bg, y_pos_bg, points, obstacles
@@ -235,6 +237,7 @@ def main():
     death_count = 0
     pause = False
 
+    ## @brief Updates game points and high score and displays it to the screen during game play
     def score():
         get_leaders()
         global_var.points, global_var.game_speed
@@ -250,6 +253,7 @@ def main():
         textRect.center = (900, 40)
         SCREEN.blit(text, textRect)
 
+    ## @brief Updates the background of the game according to game speed 
     def background():
         # global_var.x_pos_bg, global_var.y_pos_bg
         image_width = images.BG.get_width()
@@ -260,11 +264,14 @@ def main():
             global_var.x_pos_bg = 0
         global_var.x_pos_bg -= global_var.game_speed
 
+    ## @brief Unpauses the game by setting appropriate boolean variables
     def unpause():
         nonlocal pause, run
         pause = False
         run = True
 
+    ## @brief Pauses the game by setting appropriate boolean variables and displaying the 
+    # appropriate text and graphics to the screen.
     def paused(): 
         nonlocal pause
         pause = True
@@ -287,7 +294,7 @@ def main():
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_i:
                     print("pressed i")
                     instructions()
-
+    
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -299,6 +306,7 @@ def main():
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
             SCREEN.fill((255, 255, 255))
+            
         else:
             SCREEN.fill((0, 0, 0))
         userInput = pygame.key.get_pressed()
@@ -332,11 +340,14 @@ def main():
         clock.tick(30)
         pygame.display.update()
 
+## @brief Adds the user's username and score to score.txt after each death 
 def update_score():
     f = open("score.txt", "a+")
     f.write("\n" + global_var.username + " " + str(global_var.points))
     f.close()
 
+## @brief Displays the restart page texts and graphics 
+#  @return A tuple containing the positional coordinates of the Leaderboard text
 def restart():
     leader_rect = []
     font = pygame.font.Font("freesansbold.ttf", 30)
@@ -349,9 +360,8 @@ def restart():
     leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
     x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(center=(global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150))
-    highscore =  curr_user_high_score # place holder
     hs_score_text = font.render(
-        "Your High Score : " + str(highscore), True, global_var.FONT_COLOR
+        "Your High Score : " + str(global_var.high_score), True, global_var.FONT_COLOR
     )
     hs_score_rect = hs_score_text.get_rect()
     hs_score_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 100)
@@ -359,32 +369,39 @@ def restart():
 
     return( x_lead, y_lead, w_lead, h_lead)    
 
+## @brief Displays the restart page texts and graphics 
+#  @return A list containing the formatted leader text
 def get_leaders():
-    global curr_user_high_score
-    font = pygame.font.Font("freesansbold.ttf", 25)
+    font = pygame.font.Font("freesansbold.ttf", 25) # make font a global var
     score_dict = {}
-    ## score: Players
+    ## score: Players []
     leaders_text = []
     with open("score.txt", "r") as f:
             score = (
                 f.read()
             ) 
-    score_ints = [x for x in score.split()]
     score_list = score.split("\n")
-    curr_user_scores = []
+    # ["Anjola 3", "Chel 200"]
+    curr_user_scores = [] # the current users score
     for score in score_list:
         temp = score.split()
+        # temp = [Anjola, 3]
         if temp[1] in score_dict:
             score_dict[int(temp[1])].append(temp[0])
+            '''
+            {100 : [Anjola, Sheridan]}
+            '''
         else:
             score_dict[int(temp[1])] = [temp[0]]
+            ## if it's a score we've never seen, we'll make that a key
         if temp[0] == global_var.username:
             curr_user_scores.append(int(temp[1]))
 
-    sorted_scores = sorted(score_dict, reverse=True)
-    global_var.high_score = sorted_scores[0]
+    ## sort scores in descending order
+    sorted_scores = sorted(score_dict, reverse=True) 
+    ## a list of sorted score from score_dict
     sorted_top_scores = []  # 2-D list of top scores
-    count = 0
+    count = 0 ## ensure that only five score are added to sorted top scoresS
     for score in sorted_scores:
         if count < 5:
             ## if more than one person has the top score
@@ -401,14 +418,26 @@ def get_leaders():
     ## first index is the highest score
     for pair in sorted_top_scores:
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
-    curr_user_high_score =  max(curr_user_scores)
+        ## formating the leader text
+    
+    ## high score displayed is curent user's high score
+    if len(curr_user_scores) > 0:
+        global_var.high_score =  max(curr_user_scores)
+    else:
+        global_var.high_score = 0
+    
     return (leaders_text)
 
+## @brief Displays the leaderboard page texts and graphics
 def display_leaderboad():  
-    SCREEN.fill((255,255,255))
+    current_time = datetime.datetime.now().hour
+    if 7 < current_time < 19:     
+        SCREEN.fill((255, 255, 255)) 
+    else:
+        SCREEN.fill((128, 128, 128))
 
     font = pygame.font.Font("freesansbold.ttf", 30)    
-    title = font.render("LeaderBoard", True, "black")
+    title = font.render("LeaderBoard", True, global_var.FONT_COLOR)
     titleRect = title.get_rect()
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
@@ -421,17 +450,19 @@ def display_leaderboad():
         SCREEN.blit(leaders[i], leader_rect[i])
         c += 30
 
-    main_text = font.render("Press 'b' to go back to restart menu", True, "black")
+    main_text = font.render("Press 'b' to go back to restart menu", True,  global_var.FONT_COLOR)
     SCREEN.blit(main_text, (320, 450))
     
 
     pygame.display.update()
 
+
+## @brief Displays the start and restart page texts and graphics
+# @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
-    global main_flag
-    global restart_flag 
-    restart_flag = False
-    main_flag = False
+    global_var.start_flag = False 
+    global_var.restart_flag = False
+    global_var.game_track_flag = False
     run = True
     updated_score = False
     while run:
@@ -439,15 +470,19 @@ def menu(death_count):
         if 7 < current_time < 19:
             global_var.FONT_COLOR = (0, 0, 0)
             SCREEN.fill((255, 255, 255))
+            
         else:
             global_var.FONT_COLOR = (255, 255, 255)
             SCREEN.fill((128, 128, 128))
         font = pygame.font.Font("freesansbold.ttf", 30)
 
         if death_count == 0:
+            global_var.start_flag = True
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             if (len(global_var.username) == 0):
-                global_var.username = "Chelsea"
+                # global_var.username = get_username()
+                # print(global_var.username)
+                global_var.username = "No_User_Entered"
                 # global_var.username = input("Enter username:")
                 
             instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
@@ -455,13 +490,19 @@ def menu(death_count):
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
+            username_text = font.render("Click to enter your username", True, global_var.FONT_COLOR)
+            x_u, y_u, w_u, h_u = username_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
+            SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
+           
+
+
         elif death_count > 0:
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             if (not updated_score):
                 update_score()
                 updated_score = True
             x_lead, y_lead, w_lead, h_lead = restart()
-            restart_flag = True
+            global_var.restart_flag = True
 
             # we should probably add this to restart? - Anjola
             # path to main menu
@@ -486,16 +527,16 @@ def menu(death_count):
         SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
-        if death_count == 0:
+        if global_var.start_flag == True:
             SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
 
             x_settings = int(global_var.SCREEN_WIDTH * 0.78)
             y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
             SCREEN.blit(game_settings_text, (x_settings, y_settings))
 
-            # pygame.Rect(x_position, y_position, width, height) - code below is for testing how to draw rect
-            # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
-            # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
+           # pygame.Rect(x_settings, y_settings, width, height) #- code below is for testing how to draw rect
+           # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
+           # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
 
@@ -509,7 +550,7 @@ def menu(death_count):
                 exit()
             if event.type == pygame.KEYDOWN:
                 print("keydown?")
-                main_flag = True
+                global_var.game_track_flag = True
                 main()
 
             # Add mouse click on main menu text
@@ -517,9 +558,9 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
                 instructions()
-                while not main_flag:
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
@@ -527,12 +568,13 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             print('pressed e')
                             menu(0)
+            
 
             # Check if settings was pressed.
-            if death_count == 0 and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
                     mouse_pos[1] in range(y_settings, y_settings + h2):
                 settings()
-                while not main_flag:
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
@@ -570,11 +612,11 @@ def menu(death_count):
                     
             
             #Check if instructions was pressed
-            if restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
+            if global_var.restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
                 print("leaderboard")
                 display_leaderboad()
-                restart_flag = False
-                while not main_flag:
+                global_var.restart_flag = False
+                while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         print("EVENT")
                         if event.type == pygame.QUIT:
@@ -584,6 +626,13 @@ def menu(death_count):
                             #b to go back
                             print("keydown?")
                             menu(death_count)
+                        #Check if instructions was pressed
+
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u, x_u+w_u) and mouse_pos[1] in range(y_u, y_u+h_u):
+                print("usernameee here")
+                global_var.username = get_username()
+                print(global_var.username)
+                global_var.restart_flag = False
 
                       
         
