@@ -34,6 +34,8 @@ duck_sound = pygame.mixer.Sound("assets/audio/duck.mp3")
 corona_sound = pygame.mixer.Sound("assets/audio/corona_theme.mp3")
 dinosaur_sound = pygame.mixer.Sound("assets/audio/dino_theme.mp3")
 student_sound = pygame.mixer.Sound("assets/audio/student_theme.mp3")
+audio_on_sound = pygame.mixer.Sound("assets/audio/audio_on.mp3")
+audio_off_sound = pygame.mixer.Sound("assets/audio/audio_off.mp3")
 
 
 # Global Constants
@@ -314,10 +316,11 @@ def main():
                 run = False
                 paused()
 
-            if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
-                jump_sound.play()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
-                duck_sound.play()
+            if global_var.audio:
+                if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
+                    jump_sound.play()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+                    duck_sound.play()
            
         
         #if global_var.points % 1000 == 0 and global_var.points != 0:
@@ -348,10 +351,15 @@ def main():
             obstacle.draw(SCREEN)
             obstacle.update()
             if player.dino_rect.colliderect(obstacle.rect):
-                death_sound.play()
+
+                if global_var.audio:
+                    death_sound.play()
+
                 pygame.time.delay(2000)
                 death_count += 1
                 menu(death_count)
+
+                
 
         background()
 
@@ -606,19 +614,21 @@ def menu(death_count):
                         # press n and turn off the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_n:
                             global_var.audio = False
+                            audio_off_sound.play()
 
                         # press a and turn on the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                             global_var.audio = True
+                            audio_on_sound.play()
 
                         # press specific numbers and change the themes
                         if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
                             if(event.key == pygame.K_1):
-                                global_var.theme = 'default'
                                 dinosaur_sound.play()
+                                global_var.theme = 'default'
                             elif(event.key == pygame.K_2):
-                                global_var.theme = 'student'
                                 student_sound.play()
+                                global_var.theme = 'student'
                             elif(event.key == pygame.K_3):
                                 corona_sound.play()
                                 global_var.theme = 'corona'
