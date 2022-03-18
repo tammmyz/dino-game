@@ -30,6 +30,7 @@ pygame.mixer.init()
 jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
 milestone_sound = pygame.mixer.Sound("assets/audio/milestone.mp3")
 death_sound = pygame.mixer.Sound("assets/audio/death.mp3")
+duck_sound = pygame.mixer.Sound("assets/audio/duck.mp3")
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -311,6 +312,8 @@ def main():
 
             if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
                 jump_sound.play()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+                duck_sound.play()
            
         
         #if global_var.points % 1000 == 0 and global_var.points != 0:
