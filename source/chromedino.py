@@ -28,7 +28,7 @@ pygame.font.init()
 pygame.mixer.init()
 
 jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
-milestone_sound = 
+milestone_sound = pygame.mixer.Sound("assets/audio/milestone.mp3")
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -310,7 +310,11 @@ def main():
 
             if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
                 jump_sound.play()
-            
+           
+        
+        #if global_var.points % 1000 == 0 and global_var.points != 0:
+        #    print("REACHED")
+        #    milestone_sound.play()
 
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
