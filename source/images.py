@@ -12,7 +12,7 @@ BG = pygame.image.load(os.path.join("assets/Other", "Track.png"))
 
 if global_var.theme == "default":
     print("default here")
-    RUNNING = [
+    RUNNING_THEME = [
         pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
         pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
     ]
@@ -39,6 +39,33 @@ if global_var.theme == "default":
     ]
 
     CLOUD = pygame.image.load(os.path.join("assets/Other", "Cloud.png"))
+
+RUNNING_THEME1 = [
+    pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
+    pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
+]
+JUMPING_THEME1 = pygame.image.load(os.path.join("assets/Dino", "DinoJump.png"))
+DUCKING_THEME1 = [
+    pygame.image.load(os.path.join("assets/Dino", "DinoDuck1.png")),
+    pygame.image.load(os.path.join("assets/Dino", "DinoDuck2.png")),
+]
+
+OBSTACLE_ONE_THEME1 = [
+    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus1.png")),
+    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus2.png")),
+    pygame.image.load(os.path.join("assets/Cactus", "SmallCactus3.png")),
+]
+OBSTACLE_TWO_THEME1 = [
+    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus1.png")),
+    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus2.png")),
+    pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png")),
+]
+
+OBSTACLE_FLYING_THEME1 = [
+    pygame.image.load(os.path.join("assets/Bird", "Bird1.png")),
+    pygame.image.load(os.path.join("assets/Bird", "Bird2.png")),
+]
+
 
 RUNNING_THEME3 = [
     pygame.image.load(os.path.join("assets/Corona", "corona.png")),

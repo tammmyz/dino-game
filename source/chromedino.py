@@ -355,7 +355,7 @@ def restart():
     scoreRect = score.get_rect()
     scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
     SCREEN.blit(score, scoreRect)
-    leader_board_text = font.render("Leader Board", True, global_var.FONT_COLOR)
+    leader_board_text = font.render("Leaderboard", True, global_var.FONT_COLOR)
     leader_board_text_rect = leader_board_text.get_rect()
     leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
     SCREEN.blit(leader_board_text, leader_board_text_rect)
@@ -437,7 +437,7 @@ def display_leaderboad():
         SCREEN.fill((128, 128, 128))
 
     font = pygame.font.Font("freesansbold.ttf", 30)    
-    title = font.render("LeaderBoard", True, global_var.FONT_COLOR)
+    title = font.render("Leaderboard", True, global_var.FONT_COLOR)
     titleRect = title.get_rect()
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     SCREEN.blit(title, titleRect)
@@ -524,7 +524,7 @@ def menu(death_count):
         x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
         # print(x2, y2, w2, h2)
         SCREEN.blit(text, textRect)
-        SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
+        SCREEN.blit(images.RUNNING_THEME[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
 
         # Adding instuctions button on menu
         if global_var.start_flag == True:
@@ -592,11 +592,17 @@ def menu(death_count):
                         if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
                             if(event.key == pygame.K_1):
                                 global_var.theme = 'default'
+                                images.RUNNING_THEME = images.RUNNING_THEME1
+                                images.DUCKING = images.DUCKING_THEME1
+                                images.JUMPING = images.JUMPING_THEME1
+                                images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME1
+                                images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME1
+                                images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
                             elif(event.key == pygame.K_2):
                                 global_var.theme = 'student'
                             elif(event.key == pygame.K_3):
                                 global_var.theme = 'corona'
-                                images.RUNNING = images.RUNNING_THEME3
+                                images.RUNNING_THEME = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
                                 images.JUMPING = images.JUMPING_THEME3
                                 images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME3
