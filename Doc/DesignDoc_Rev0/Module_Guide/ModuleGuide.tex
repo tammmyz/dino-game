@@ -295,3 +295,127 @@ selected.
   software. So, the system can use it to display outputs or to accept inputs.
 \item[Implemented By:] OS
 \end{description}
+
+\subsection{Behaviour-Hiding Module}
+
+\subsubsection{Global Variable Module (View)}
+
+% Global Variable Module
+\begin{description}
+\item[Secrets:] The parameters required for the implementation of the game.
+\item[Services:] This module provides the global variables used to track the status of the display, game, and settings. 
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Images Module (View)}
+%Images Module
+\begin{description}
+\item[Secrets:]The images and graphics of the game.
+\item[Services:] This module provides character, obstacle, and background images for the game interface. It is activated by the controller and the model determines which images should be displayed.
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Instructions Display Module (View)}
+% Instructions Display Module
+\begin{description}
+\item[Secrets:]The contents of the instruction page. 
+\item[Services:] This module provides output to the user screen displaying the game's instructions. It is activated by the controller and the model determines if the Instructions Display Module should be used. 
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Leaderboard Display Module (View)}
+%Leaderboard Display Module
+\begin{description}
+\item[Secrets:]The contents of the leaderboard display.
+\item[Services:] This module provides output to the user screen displaying the current leaderboard. It is activated by the controller and the model determines if the Leaderboard Display Module should be used.
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Game Settings Display Module (View)}
+%Game Settings Display Module
+\begin{description}
+\item[Secrets:]The contents of the required behaviours.
+\item[Services:] This module provides output to the user screen displaying the available game settings. It is activated by the controller and the model determines if the Game Settings Display Module should be used. 
+\item[Implemented By:] --
+\end{description}
+
+\subsubsection{Leaderboard Calculation Module (Controller)}
+%Leaderboard Display Module
+\begin{description}
+\item[Secrets:] Algorithm for determining leaderboard members.
+\item[Services:] This module outputs the top scorers and the scores that will be displayed by leader\_board display.
+\item[Implemented By:] --
+\end{description}
+
+\subsection{Software Decision Module}
+
+\subsubsection{ChromeDino Module (Controller)}\\
+\begin{description}
+\item[Secrets:] The algorithm for determining the game logic and page navigation. 
+\item[Services:] Takes the user input and navigates through the game pages and/or game track.  
+\item[Implemented By:] CDR
+\end{description}
+
+
+\subsubsection{Obstacle Module (Model)}
+\begin{description}
+\item[Secrets:] The characteristics of an obstacle.
+\item[Services:] This module can draw and change the speeds of obstacles on the display and output them to the view. It is responsible for creating the objects.
+\item[Implemented By:] CDR
+\end{description}
+
+
+\subsubsection{Small Obstacle Module (Model)}
+\begin{description}
+\item[Secrets:] The the y-location and specific small object image. 
+\item[Services:] It is responsible for creating the objects and setting their height on the screen and choosing the specific small object image.
+\item[Implemented By:] CDR
+\end{description}
+
+
+\subsubsection{Large Obstacle Module (Model)}
+\begin{description}
+\item[Secrets:] The module that sets the y-location and specific large object image. 
+\item[Services:] It is responsible for creating the objects and setting their height on the screen and choosing the specific large object image. 
+\item[Implemented By:] CDR
+\end{description}
+
+
+\subsubsection{Character Module (Model)}
+\begin{description}
+\item[Secrets:] The characteristics of the character such as the positions, images, and jumping velocity. 
+\item[Services:] Changes the image output to the screen based on the user input. The images are displayed based on real world properties such as gravity. 
+\item[Implemented By:] CDR
+\end{description}
+
+
+\subsubsection{Cloud Module (Model)}
+\begin{description}
+\item[Secrets:] The algorithm that generates a random cloud in the game background.
+\item[Services:] This module updates the position of the cloud in the background and creates a new cloud to display. 
+  % Changes in these modules are more likely to be motivated by a desire to
+  % improve performance than by externally imposed changes.
+\item[Implemented By:] --
+\end{description}
+
+
+
+\subsubsection{Bird Module (Model)}
+\begin{description}
+\item[Secrets:] The class that generates a bird object and it's characteristics. 
+\item[Services:] Creates a cloud with random y-axis positioning and draws it to the screen. 
+\item[Implemented By:] CDR
+\end{description}
+
+
+
+\subsubsection{Leaderboard Module (Model)}
+\begin{description}
+\item[Secrets:] The algorithm that stores and tracks the changes in the leaderboard.
+\item[Services:] Includes data structure and algorithms used in the system that do not provide direct interaction with the user. 
+  % Changes in these modules are more likely to be motivated by a desire to
+  % improve performance than by externally imposed changes.
+\item[Implemented By:] --
+\end{description}
+
+
