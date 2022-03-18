@@ -123,3 +123,41 @@ This section lists possible changes to the system. According to the likeliness
 of the change, the possible changes are classified into two
 categories. Anticipated changes are listed in Section \ref{SecAchange}, and
 unlikely changes are listed in Section \ref{SecUchange}.
+
+\subsection{Anticipated Changes} \label{SecAchange}
+
+Anticipated changes are the source of the information that is to be hidden
+inside the modules. Ideally, changing one of the anticipated changes will only
+require changing the one module that hides the associated decision. The approach
+adapted here is called design for
+change.
+
+\begin{description}
+\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] The specific
+  hardware on which the software is running.
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the
+  initial input data.
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The grammar of python through future releases or the inclusion of older python grammars
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] New funtionality of the Pygame library through future releases 
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The format of the final packaging and distribution format of the program
+\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] The graphics are likely to change for obstacle and character based on themes and graphical design decisions. 
+\end{description}
+
+\subsection{Unlikely Changes} \label{SecUchange}
+
+The module design should be as general as possible. However, a general system is
+more complex. Sometimes this complexity is not necessary. Fixing some design
+decisions at the system architecture stage can simplify the software design. If
+these decision should later need to be changed, then many parts of the design
+will potentially need to be modified. Hence, it is not intended that these
+decisions will be changed.
+
+\begin{description}
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucIO}:] Input/Output devices
+  (Input: File and/or Keyboard, Output: File, Memory, and/or Screen).
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] There will always be
+  a source of input data external to the software.
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] The algorithms for the game points calculation and leaderboard display
+\item[\refstepcounter{ucnum} \uctheucnum \label{ucInput}:] The objective of the game which is to score as many points as possible. 
+\item ...
+\end{description}
