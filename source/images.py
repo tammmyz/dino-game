@@ -40,6 +40,7 @@ if global_var.theme == "default":
 
     CLOUD = pygame.image.load(os.path.join("assets/Other", "Cloud.png"))
 
+# ------------- Theme 1: Default Dino ----------------------
 RUNNING_THEME1 = [
     pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
     pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
@@ -66,6 +67,34 @@ OBSTACLE_FLYING_THEME1 = [
     pygame.image.load(os.path.join("assets/Bird", "Bird2.png")),
 ]
 
+# ------------------ Theme 2: Student
+RUNNING_THEME2 = [
+    pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
+    pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
+]
+JUMPING_THEME2 = pygame.image.load(os.path.join("assets/Dino", "DinoJump.png"))
+DUCKING_THEME2 = [
+    pygame.image.load(os.path.join("assets/Dino", "DinoDuck1.png")),
+    pygame.image.load(os.path.join("assets/Dino", "DinoDuck2.png")),
+]
+
+OBSTACLE_ONE_THEME2 = [
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "failed_test.png")),
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "wetsign.png")),
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "failed_test.png")),
+]
+OBSTACLE_TWO_THEME2 = [
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "desk.png")),
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "desk.png")),
+    pygame.image.load(os.path.join("assets/Student_Obstacles", "desk.png")),
+]
+
+OBSTACLE_FLYING_THEME2 = [
+    pygame.image.load(os.path.join("assets/Bird", "Bird1.png")),
+    pygame.image.load(os.path.join("assets/Bird", "Bird2.png")),
+]
+
+# -------- THEME 3 : CORONA ----------------------------------------------------------
 
 RUNNING_THEME3 = [
     pygame.image.load(os.path.join("assets/Corona", "corona.png")),

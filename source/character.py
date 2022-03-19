@@ -23,7 +23,7 @@ class Character:
     ## @brief Constructor method for Character
     def __init__(self):
         self.duck_img = images.DUCKING  # list of ducking images
-        self.run_img = images.RUNNING
+        self.run_img = images.RUNNING_THEME
         self.jump_img = images.JUMPING
 
         # starting dino positions

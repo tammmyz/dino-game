@@ -600,6 +600,12 @@ def menu(death_count):
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
                             elif(event.key == pygame.K_2):
                                 global_var.theme = 'student'
+                                images.RUNNING_THEME = images.RUNNING_THEME2
+                                images.DUCKING = images.DUCKING_THEME2
+                                images.JUMPING = images.JUMPING_THEME2
+                                images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME2
+                                images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME2
+                                images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME2
                             elif(event.key == pygame.K_3):
                                 global_var.theme = 'corona'
                                 images.RUNNING_THEME = images.RUNNING_THEME3
