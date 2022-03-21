@@ -65,9 +65,7 @@ No_User_Entered 46
 No_User_Entered 686
 No_User_Entered 686
 No_User_Entered 1143
-<<<<<<< HEAD
 No_User_Entered 46
-=======
 No_User_Entered 46
 No_User_Entered 164
 No_User_Entered 104
