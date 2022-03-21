@@ -24,6 +24,19 @@ import images
 
 # initializing the game
 pygame.init()
+pygame.font.init()
+pygame.mixer.init()
+
+jump_sound = pygame.mixer.Sound("assets/audio/jump.mp3")
+milestone_sound = pygame.mixer.Sound("assets/audio/milestone.mp3")
+death_sound = pygame.mixer.Sound("assets/audio/death.mp3")
+duck_sound = pygame.mixer.Sound("assets/audio/duck.mp3")
+corona_sound = pygame.mixer.Sound("assets/audio/corona_theme.mp3")
+dinosaur_sound = pygame.mixer.Sound("assets/audio/dino_theme.mp3")
+student_sound = pygame.mixer.Sound("assets/audio/student_theme.mp3")
+audio_on_sound = pygame.mixer.Sound("assets/audio/audio_on.mp3")
+audio_off_sound = pygame.mixer.Sound("assets/audio/audio_off.mp3")
+
 
 # Global Constants
 # global_var.SCREEN_HEIGHT = 600
@@ -303,6 +316,17 @@ def main():
                 run = False
                 paused()
 
+            if global_var.audio:
+                if event.type == pygame.KEYDOWN and (event.key == pygame.K_UP or event.key == pygame.K_SPACE):
+                    jump_sound.play()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+                    duck_sound.play()
+           
+        
+        #if global_var.points % 1000 == 0 and global_var.points != 0:
+        #    print("REACHED")
+        #    milestone_sound.play()
+
         current_time = datetime.datetime.now().hour
         if 7 < current_time < 19:
             SCREEN.fill((255, 255, 255))
@@ -314,6 +338,7 @@ def main():
         player.draw(SCREEN)
         player.update(userInput)  # player is an object of dinosaur that is always looking for input
 
+    
         if len(global_var.obstacles) == 0:
             if random.randint(0, 2) == 0:
                 global_var.obstacles.append(SmallObstacle(images.OBSTACLE_ONE))
@@ -326,9 +351,15 @@ def main():
             obstacle.draw(SCREEN)
             obstacle.update()
             if player.dino_rect.colliderect(obstacle.rect):
+
+                if global_var.audio:
+                    death_sound.play()
+
                 pygame.time.delay(2000)
                 death_count += 1
                 menu(death_count)
+
+                
 
         background()
 
@@ -583,14 +614,17 @@ def menu(death_count):
                         # press n and turn off the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_n:
                             global_var.audio = False
+                            audio_off_sound.play()
 
                         # press a and turn on the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                             global_var.audio = True
+                            audio_on_sound.play()
 
                         # press specific numbers and change the themes
                         if event.type == pygame.KEYDOWN and (event.key == pygame.K_1 or event.key == pygame.K_2 or event.key == pygame.K_3):
                             if(event.key == pygame.K_1):
+                                dinosaur_sound.play()
                                 global_var.theme = 'default'
                                 images.RUNNING_THEME = images.RUNNING_THEME1
                                 images.DUCKING = images.DUCKING_THEME1
@@ -599,6 +633,7 @@ def menu(death_count):
                                 images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME1
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
                             elif(event.key == pygame.K_2):
+                                student_sound.play()
                                 global_var.theme = 'student'
                                 images.RUNNING_THEME = images.RUNNING_THEME2
                                 images.DUCKING = images.DUCKING_THEME2
@@ -607,6 +642,7 @@ def menu(death_count):
                                 images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME2
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME2
                             elif(event.key == pygame.K_3):
+                                corona_sound.play()
                                 global_var.theme = 'corona'
                                 images.RUNNING_THEME = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
