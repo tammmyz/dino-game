@@ -517,9 +517,15 @@ def menu(death_count):
                 # print(global_var.username)
                 global_var.username = "No_User_Entered"
                 # global_var.username = input("Enter username:")
-                
+
+
+           
             instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
             x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
+            border_img = pygame.transform.scale(border_img, (w+100,h+20))
+            global_var.SCREEN.blit(border_img, (x-50, y-11))
+
             global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
@@ -591,7 +597,7 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x, x+w) and mouse_pos[1] in range(y, y+h):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-50, x+w+100) and mouse_pos[1] in range(y-11, y+h+20):
                 instructions()
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
