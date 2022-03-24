@@ -523,25 +523,20 @@ def menu(death_count):
 
            
             instructions_text = font.render("How to play", True, global_var.FONT_COLOR)
-            x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
-            border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
-            border_img = pygame.transform.scale(border_img, (w+100,h+20))
-            global_var.SCREEN.blit(border_img, (x-50, y-11))
-
-            global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
+            x, y, w, h = instructions_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6-90))
+        
+            #global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
 
-            username_text = font.render("Click to enter your username", True, global_var.FONT_COLOR)
-            x_u, y_u, w_u, h_u = username_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
-            global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
-
+            username_text = font.render("Change Username", True, global_var.FONT_COLOR)
+            x_u, y_u, w_u, h_u = username_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-50, global_var.SCREEN_HEIGHT // 1.6 + 30))
+        
             game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
-            x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
-            #border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
-            #border_img = pygame.transform.scale(border_img, (w2+100,h2+20))
-            #global_var.SCREEN.blit(border_img, (x2-50, y2-11))
+            x2, y2, w2, h2 = game_settings_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-30, global_var.SCREEN_HEIGHT // 1.6-30))
 
-
+            leaderboard_text = font.render("Leaderboard", True, global_var.FONT_COLOR)
+            x_l, y_l, w_l, h_l = leaderboard_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-50, global_var.SCREEN_HEIGHT // 1.6+90))
+            
             
         
         elif death_count > 0:
@@ -566,24 +561,41 @@ def menu(death_count):
         ## instead fo reqritng it each time?
         ## setting up the main screen with appropriate text
         textRect = text.get_rect()
-        textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
+        textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2-50)
 
         
         # print(x2, y2, w2, h2)
         global_var.SCREEN.blit(text, textRect)
-        global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
+        global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 30, global_var.SCREEN_HEIGHT // 2 - 200))
 
 
         
         # Adding instuctions button on menu
         if global_var.start_flag == True:
-            global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6))
 
-            x_settings = int(global_var.SCREEN_WIDTH * 0.78)
-            y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
-            global_var.SCREEN.blit(game_settings_text, (x_settings, y_settings))
+            border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
+            border_img = pygame.transform.scale(border_img, (350,50))
 
-           # pygame.Rect(x_settings, y_settings, width, height) #- code below is for testing how to draw rect
+
+            global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6-90))
+            global_var.SCREEN.blit(border_img, (x-100, y-11))
+
+
+            #x_settings = int(global_var.SCREEN_WIDTH * 0.78)
+            #y_settings = int(global_var.SCREEN_HEIGHT * 0.05)
+            #global_var.SCREEN.blit(game_settings_text, (x_settings, y_settings))
+            #global_var.SCREEN.blit(settings_border_img, (x_settings-50, y_settings - 11))
+            global_var.SCREEN.blit(game_settings_text, (global_var.SCREEN_WIDTH // 2.3-30, global_var.SCREEN_HEIGHT // 1.6 - 30 ))
+            global_var.SCREEN.blit(border_img, (x2-70, y2-11))
+
+            global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 2.3 - 50, global_var.SCREEN_HEIGHT // 1.6 + 30))
+            global_var.SCREEN.blit(border_img, (x_u - 50, y_u-11))
+
+            global_var.SCREEN.blit(leaderboard_text, (global_var.SCREEN_WIDTH // 2.3 - 15, global_var.SCREEN_HEIGHT // 1.6 + 90))
+            global_var.SCREEN.blit(border_img, (x_l - 50, y_l-11))
+
+
+            #pygame.Rect(x_settings, y_settings, width, height) #- code below is for testing how to draw rect
            # pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x_settings, y_settings, w2, h2), 2)
            # pygame.draw.rect(SCREEN, (0,0,0), (x2, x2 + w2, w2, h2))
             mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
@@ -607,7 +619,7 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-50, x+w+50) and mouse_pos[1] in range(y-11, y+h+20):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
                 instructions()
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
@@ -620,8 +632,8 @@ def menu(death_count):
             
 
             # Check if settings was pressed.
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_settings, x_settings + w2) and \
-                    mouse_pos[1] in range(y_settings, y_settings + h2):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x2-70, x2 + 350-70) and \
+                    mouse_pos[1] in range(y2, y2 -10 + 50):
                 settings()
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
@@ -694,8 +706,8 @@ def menu(death_count):
                             menu(death_count)
                         #Check if instructions was pressed
 
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u, x_u+w_u) and mouse_pos[1] in range(y_u, y_u+h_u):
-                print("usernameee here")
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u-50, x_u+300) and mouse_pos[1] in range(y_u, y_u - 10 + 50):
+                print("username here")
                 global_var.username = get_username()
                 print(global_var.username)
                 global_var.restart_flag = False
