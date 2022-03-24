@@ -576,6 +576,12 @@ def menu(death_count):
             border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
             border_img = pygame.transform.scale(border_img, (350,50))
 
+            big_border_img = pygame.image.load(os.path.join("assets/interface", "big_border.png"))
+            big_border_img = pygame.transform.scale(big_border_img, (600,550))
+            global_var.SCREEN.blit(big_border_img, (250, 20))
+
+
+
 
             global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6-90))
             global_var.SCREEN.blit(border_img, (x-100, y-11))
@@ -620,7 +626,9 @@ def menu(death_count):
     
             #Check if instructions was pressed
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
+              
                 instructions()
+
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
