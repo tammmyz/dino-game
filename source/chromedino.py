@@ -534,22 +534,8 @@ def menu(death_count):
             global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
 
 
-            ## should we have a template for ur pages so that we just diplay that 
-            ##instead fo reqritng it each time?
-
-            # setting up the main screen with appropriate text
-            textRect = text.get_rect()
-            textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
-
-            game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
-            x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
-            # print(x2, y2, w2, h2)
-            global_var.SCREEN.blit(text, textRect)
-            global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
-
-           
-
-
+            
+        
         elif death_count > 0:
             text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
             if (not updated_score):
@@ -566,6 +552,20 @@ def menu(death_count):
             x_menu, y_menu, w_menu, h_menu = menu_text.get_rect(topleft=(900,25))
             mouse_pos_menu = pygame.mouse.get_pos() #get mouse cursor position
     
+
+
+        ## should we have a template for ur pages so that we just diplay that 
+        ## instead fo reqritng it each time?
+        ## setting up the main screen with appropriate text
+        textRect = text.get_rect()
+        textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
+
+        game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
+        x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+        # print(x2, y2, w2, h2)
+        global_var.SCREEN.blit(text, textRect)
+        global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
+
 
         
         # Adding instuctions button on menu
