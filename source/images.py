@@ -12,7 +12,8 @@ BG = pygame.image.load(os.path.join("assets/Other", "Track.png"))
 
 if global_var.theme == "default":
     print("default here")
-    RUNNING_THEME = [
+    # RUNNING_THEME = [
+    RUNNING = [
         pygame.image.load(os.path.join("assets/Dino", "DinoRun1.png")),
         pygame.image.load(os.path.join("assets/Dino", "DinoRun2.png")),
     ]
