@@ -477,6 +477,8 @@ def display_leaderboad():
     leaders= get_leaders()
     leader_rect = []
     c = -20
+
+    global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
     for i in range(len(leaders)):
         leader_rect.append(leaders[i].get_rect())
         leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
@@ -533,6 +535,12 @@ def menu(death_count):
             x_u, y_u, w_u, h_u = username_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
             global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 2 + 150))
 
+            game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
+            x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+            #border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
+            #border_img = pygame.transform.scale(border_img, (w2+100,h2+20))
+            #global_var.SCREEN.blit(border_img, (x2-50, y2-11))
+
 
             
         
@@ -560,8 +568,7 @@ def menu(death_count):
         textRect = text.get_rect()
         textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2)
 
-        game_settings_text = font.render("Game Settings", True, global_var.FONT_COLOR)
-        x2, y2, w2, h2 = game_settings_text.get_rect(center=(global_var.SCREEN_WIDTH // 2 ,global_var.SCREEN_HEIGHT // 1.5))
+        
         # print(x2, y2, w2, h2)
         global_var.SCREEN.blit(text, textRect)
         global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
