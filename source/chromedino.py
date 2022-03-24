@@ -597,7 +597,7 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-50, x+w+100) and mouse_pos[1] in range(y-11, y+h+20):
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-50, x+w+50) and mouse_pos[1] in range(y-11, y+h+20):
                 instructions()
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
