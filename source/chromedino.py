@@ -626,7 +626,6 @@ def menu(death_count):
     
             #Check if instructions was pressed
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
-              
                 instructions()
 
                 while not global_var.game_track_flag:
@@ -634,9 +633,13 @@ def menu(death_count):
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
-                        if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
                             print('pressed e')
                             menu(0)
+
+    
+
+            
             
 
             # Check if settings was pressed.
@@ -691,7 +694,7 @@ def menu(death_count):
 
                             print(global_var.theme)
                         # press e and get returned to the main page
-                        if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
                             menu(0)
 
 
