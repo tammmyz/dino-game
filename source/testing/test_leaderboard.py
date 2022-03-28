@@ -9,14 +9,15 @@ from chromedino import *
 
 class TestLeaderboard(unittest.TestCase):
     
-    def test_upper(self):
+    def test_leaderboardflag(self):
         menu(1,0)
         mouse_pos = pygame.mouse.get_pos() 
         # global_var.restart_flag == True
         print("inside assert")
         self.assertEqual(global_var.leaderboard_flag, True)
        
-            
+    def test_leaderbaord_corectness(self):
+        pass        
 
 
 
