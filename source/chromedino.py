@@ -359,7 +359,7 @@ def main():
 
                 pygame.time.delay(2000)
                 death_count += 1
-                menu(death_count)
+                menu(death_count,1)
 
                 
 
@@ -375,6 +375,8 @@ def main():
 
 ## @brief Adds the user's username and score to score.txt after each death 
 def update_score():
+    if (len(global_var.username) == 0):
+                global_var.username = "No_User_Entered"
     f = open("score.txt", "a+")
     f.write("\n" + global_var.username + " " + str(global_var.points))
     f.close()
@@ -492,10 +494,11 @@ def display_leaderboad():
 
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
-def menu(death_count):
+def menu(death_count, test):
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
+    global_var.leaderboard_flag = False
     run = True
     updated_score = False
     while run:
@@ -513,10 +516,8 @@ def menu(death_count):
             global_var.start_flag = True
             text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
             if (len(global_var.username) == 0):
-                # global_var.username = get_username()
-                # print(global_var.username)
                 global_var.username = "No_User_Entered"
-                # global_var.username = input("Enter username:")
+                
 
 
            
@@ -594,7 +595,7 @@ def menu(death_count):
 
             # Add mouse click on main menu text
             if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_menu, x_menu+w_menu) and mouse_pos_menu[1] in range(y_menu, y_menu+h_menu):
-                menu(0)
+                menu(0, 1)
     
             #Check if instructions was pressed
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-50, x+w+50) and mouse_pos[1] in range(y-11, y+h+20):
@@ -606,7 +607,7 @@ def menu(death_count):
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
                             print('pressed e')
-                            menu(0)
+                            menu(0, 1)
             
 
             # Check if settings was pressed.
@@ -662,7 +663,7 @@ def menu(death_count):
                             print(global_var.theme)
                         # press e and get returned to the main page
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
-                            menu(0)
+                            menu(0, 1)
 
 
                     
@@ -671,6 +672,7 @@ def menu(death_count):
             if global_var.restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
                 print("leaderboard")
                 display_leaderboad()
+                global_var.leaderboard_flag = True
                 global_var.restart_flag = False
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
@@ -679,9 +681,11 @@ def menu(death_count):
                             pygame.quit()
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
+                            if test == 0:
+                                return
                             #b to go back
                             print("keydown?")
-                            menu(death_count)
+                            menu(death_count, 1)
                         #Check if instructions was pressed
 
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u, x_u+w_u) and mouse_pos[1] in range(y_u, y_u+h_u):
@@ -692,5 +696,5 @@ def menu(death_count):
 
                       
         
-t1 = threading.Thread(target=menu(death_count=0), daemon=True)
-t1.start()
+# t1 = threading.Thread(target=menu(death_count=0, test=1), daemon=True)
+# t1.start()
