@@ -45,6 +45,8 @@ def instructions():
     bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
     bird_img = pygame.transform.scale(bird_img, (46,47))
 
+   
+
     p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
     p_img = pygame.transform.scale(p_img, (38,40))
 
@@ -84,7 +86,7 @@ def instructions():
     global_var.SCREEN.blit(unpause_text, (493, 355))
 
     if not global_var.game_track_flag:
-        main_text = font.render("Press 'e' to go back to main menu", True, "black")
+        main_text = font.render("Press 'b' to go back to main menu", True, "black")
         global_var.SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
@@ -184,8 +186,7 @@ def settings():
     global_var.SCREEN.blit(new_options_text, (555,355))
 
     if not global_var.game_track_flag:
-        main_text = font.render("Press 'e' to go back to main menu", True, "black")
+        main_text = font.render("Press 'b' to go back to main menu", True, "black")
         global_var.SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
-
