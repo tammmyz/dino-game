@@ -26,33 +26,6 @@ def instructions():
     titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
     global_var.SCREEN.blit(title, titleRect)
 
-    # importing images --> transfer to img.py
-    up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
-    up_img = pygame.transform.scale(up_img, (50,50))
-
-    w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
-    w_img = pygame.transform.scale(w_img, (46,46))
-
-    cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
-    cactus_img = pygame.transform.scale(cactus_img, (46,47))
-
-    down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
-    down_img = pygame.transform.scale(down_img, (42,47))
-
-    s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
-    s_img = pygame.transform.scale(s_img, (45,47))
-
-    bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
-    bird_img = pygame.transform.scale(bird_img, (46,47))
-
-   
-
-    p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
-    p_img = pygame.transform.scale(p_img, (38,40))
-
-    u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
-    u_img = pygame.transform.scale(u_img, (38,40))
-
     # Instruction Body
     body_font = pygame.font.Font("freesansbold.ttf", 20)
     press_text = body_font.render("Press", True, "black")
@@ -64,25 +37,25 @@ def instructions():
 
     # Display instuction body
     global_var.SCREEN.blit(press_text, (373, 140))
-    global_var.SCREEN.blit(up_img, (433, 120))
+    global_var.SCREEN.blit(images.p_img, (433, 120))
     global_var.SCREEN.blit(or_text, (493, 140))
-    global_var.SCREEN.blit(w_img, (518, 122))
+    global_var.SCREEN.blit(images.w_img, (518, 122))
     global_var.SCREEN.blit(jump_text, (573, 140))
-    global_var.SCREEN.blit(cactus_img, (668, 120))
+    global_var.SCREEN.blit(images.cactus_img, (668, 120))
 
     global_var.SCREEN.blit(press_text, (373, 220))
-    global_var.SCREEN.blit(down_img, (438, 200))
+    global_var.SCREEN.blit(images.down_img, (438, 200))
     global_var.SCREEN.blit(or_text, (493, 220))
-    global_var.SCREEN.blit(s_img, (520, 200))
+    global_var.SCREEN.blit(images.s_img, (520, 200))
     global_var.SCREEN.blit(duck_text, (573, 220))
-    global_var.SCREEN.blit(bird_img, (668, 200))
+    global_var.SCREEN.blit(images.bird_img, (668, 200))
 
     global_var.SCREEN.blit(press_text, (373, 290))
-    global_var.SCREEN.blit(p_img, (440, 275))
+    global_var.SCREEN.blit(images.p_img, (440, 275))
     global_var.SCREEN.blit(pause_text, (493, 290))
 
     global_var.SCREEN.blit(press_text, (373, 355))
-    global_var.SCREEN.blit(u_img, (440, 340))
+    global_var.SCREEN.blit(images.u_img, (440, 340))
     global_var.SCREEN.blit(unpause_text, (493, 355))
 
     if not global_var.game_track_flag:

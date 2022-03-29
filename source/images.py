@@ -128,6 +128,37 @@ OBSTACLE_FLYING_THEME3 = [
     pygame.image.load(os.path.join("assets/Bird", "Bird2.png")),
 ]
 
+up_img = pygame.image.load(os.path.join("assets/Keys", "up.jpg"))
+up_img = pygame.transform.scale(up_img, (50,50))
+
+w_img = pygame.image.load(os.path.join("assets/Keys", "w.jpg"))
+w_img = pygame.transform.scale(w_img, (46,46))
+
+cactus_img = pygame.image.load(os.path.join("assets/Cactus", "LargeCactus3.png"))
+cactus_img = pygame.transform.scale(cactus_img, (46,47))
+
+down_img = pygame.image.load(os.path.join("assets/Keys", "down.jpg"))
+down_img = pygame.transform.scale(down_img, (42,47))
+
+s_img = pygame.image.load(os.path.join("assets/Keys", "s.jpg"))
+s_img = pygame.transform.scale(s_img, (45,47))
+
+bird_img = pygame.image.load(os.path.join("assets/Bird", "Bird1.png"))
+bird_img = pygame.transform.scale(bird_img, (46,47))
+
+p_img = pygame.image.load(os.path.join("assets/Keys", "p.png"))
+p_img = pygame.transform.scale(p_img, (38,40))
+
+u_img = pygame.image.load(os.path.join("assets/Keys", "u.png"))
+u_img = pygame.transform.scale(u_img, (38,40))
+
+
+
+
+
+
+
+
 #
 # # DEFAULT - setting up the default lists
 # RUNNING = [
