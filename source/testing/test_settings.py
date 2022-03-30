@@ -6,9 +6,8 @@ from unittest.mock import patch
 sys.path.insert(1, os.path.abspath('.'))
 
 from display import *
-
 import global_var
-from chromedino import menu
+from chromedino import *
 
 class TestInstructions(unittest.TestCase):
 
@@ -19,13 +18,17 @@ class TestInstructions(unittest.TestCase):
     def test_default_theme(self):
         self.assertEqual(global_var.theme, 'default')
 
-    # @patch("builtins.input", return_value="e")
-    # def test_settings_pg(self):
-    #
-    #     self.assertEqual()
+    def test_no_audio(self):
+        global_var.test_settings = True
+        menu(1)
+        self.assertEqual(global_var.audio, False)
+        global_var.test_settings = False
 
-
-
+    def test_student_theme(self):
+        global_var.test_settings = True
+        menu(1)
+        self.assertEqual(global_var.theme, 'student')
+        global_var.test_settings = False
 
 if __name__ == '__main__':
     unittest.main()

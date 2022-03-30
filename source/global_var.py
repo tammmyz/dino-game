@@ -28,4 +28,7 @@ start_flag = False
 restart_flag = False
 game_track_flag = False
 leaderboard_flag = False
+
+# testing variables
 test_leaderboard = False
+test_settings = False
