@@ -1,4 +1,5 @@
 import unittest
+import pygame
 
 import sys, os
 from unittest.mock import patch
@@ -18,7 +19,6 @@ class TestInstructions(unittest.TestCase):
     def test_default_theme(self):
         self.assertEqual(global_var.theme, 'default')
 
-    # @patch("builtins.input", return_value=pygame.)
     def test_no_audio(self):
         global_var.test_settings = True
         menu(1)
@@ -30,6 +30,11 @@ class TestInstructions(unittest.TestCase):
         menu(1)
         self.assertEqual(global_var.theme, 'student')
         global_var.test_settings = False
+
+    def test_corona_theme(self):
+        global_var.test_settings = True
+        menu(1)
+        self.assertEqual(global_var.theme, 'corona')
 
 if __name__ == '__main__':
     unittest.main()

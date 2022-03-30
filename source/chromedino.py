@@ -758,5 +758,5 @@ def menu(death_count):
 
                       
         
-t1 = threading.Thread(target=menu(death_count=0), daemon=True)
-t1.start()
+# t1 = threading.Thread(target=menu(death_count=0), daemon=True)
+# t1.start()
