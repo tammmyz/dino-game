@@ -487,7 +487,7 @@ def display_leaderboad():
         global_var.SCREEN.blit(leaders[i], leader_rect[i])
         c += 30
 
-    main_text = font.render("Press 'b' to go back to restart menu", True,  global_var.FONT_COLOR)
+    main_text = font.render("Press 'b' to go back", True,  global_var.FONT_COLOR)
     global_var.SCREEN.blit(main_text, (320, 450))
     
 
@@ -638,6 +638,23 @@ def menu(death_count):
                             print('pressed e')
                             menu(0)
             
+             #Check if instructions was pressed
+            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_l, x_l+w_l) and mouse_pos[1] in range(y_l, y_l+h_l):
+                display_leaderboad()
+                global_var.leaderboard_flag = True
+                global_var.restart_flag = False
+                while not global_var.game_track_flag:
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            quit()
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
+                            if global_var.test_leaderboard:
+                                return
+                            #b to go back
+                            print("keydown?")
+                            menu(death_count)
+                        #Check if instructions was pressed
 
             # Check if settings was pressed.
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x2-70, x2 + 350-70) and \
@@ -724,5 +741,5 @@ def menu(death_count):
 
                       
         
-# t1 = threading.Thread(target=menu(death_count=0), daemon=True)
-# t1.start()
+t1 = threading.Thread(target=menu(death_count=0), daemon=True)
+t1.start()
