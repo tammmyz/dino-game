@@ -359,7 +359,7 @@ def main():
 
                 pygame.time.delay(2000)
                 death_count += 1
-                menu(death_count,1)
+                menu(death_count)
 
                 
 
@@ -496,7 +496,7 @@ def display_leaderboad():
 
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
-def menu(death_count, test):
+def menu(death_count):
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
@@ -623,7 +623,7 @@ def menu(death_count, test):
 
             # Add mouse click on main menu text
             if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_menu, x_menu+w_menu) and mouse_pos_menu[1] in range(y_menu, y_menu+h_menu):
-                menu(0, 1)
+                menu(0)
     
             #Check if instructions was pressed
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
@@ -636,7 +636,7 @@ def menu(death_count, test):
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
                             print('pressed e')
-                            menu(0, 1)
+                            menu(0)
             
 
             # Check if settings was pressed.
@@ -692,7 +692,7 @@ def menu(death_count, test):
                             print(global_var.theme)
                         # press b and get returned to the main page
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                            menu(0, 1)
+                            menu(0)
 
 
                     
@@ -709,11 +709,11 @@ def menu(death_count, test):
                             pygame.quit()
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                            if test == 0:
+                            if global_var.test_leaderboard:
                                 return
                             #b to go back
                             print("keydown?")
-                            menu(death_count, 1)
+                            menu(death_count)
                         #Check if instructions was pressed
 
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_u-50, x_u+300) and mouse_pos[1] in range(y_u, y_u - 10 + 50):
@@ -724,5 +724,5 @@ def menu(death_count, test):
 
                       
         
-t1 = threading.Thread(target=menu(death_count=0, test=1), daemon=True)
-t1.start()
+# t1 = threading.Thread(target=menu(death_count=0), daemon=True)
+# t1.start()
