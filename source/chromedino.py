@@ -684,8 +684,6 @@ def menu(death_count):
                                 dinosaur_sound.play()
                                 global_var.theme = 'default'
 
-                                if global_var.test_settings:
-                                    return
 
                                 images.RUNNING = images.RUNNING_THEME1
                                 images.DUCKING = images.DUCKING_THEME1
