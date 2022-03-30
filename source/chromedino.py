@@ -501,6 +501,7 @@ def display_leaderboad():
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
+
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
@@ -685,6 +686,8 @@ def menu(death_count):
                         # press a and turn on the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                             global_var.audio = True
+                            if global_var.test_settings:
+                                return
                             audio_on_sound.play()
 
                         # press specific numbers and change the themes
