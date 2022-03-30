@@ -690,8 +690,8 @@ def menu(death_count, test):
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME3
 
                             print(global_var.theme)
-                        # press e and get returned to the main page
-                        if event.type == pygame.KEYDOWN and event.key == pygame.K_e:
+                        # press b and get returned to the main page
+                        if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
                             menu(0, 1)
 
 
@@ -725,5 +725,5 @@ def menu(death_count, test):
 
                       
         
-# t1 = threading.Thread(target=menu(death_count=0, test=1), daemon=True)
-# t1.start()
+t1 = threading.Thread(target=menu(death_count=0, test=1), daemon=True)
+t1.start()
