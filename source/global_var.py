@@ -24,16 +24,7 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 # global variables used for settings
 audio = True  # default is that sound will play
 theme = 'default'  # options include "student" and "corona" version.
-<<<<<<< HEAD
-
-
-start_flag = False 
-restart_flag = False
-game_track_flag = False
-instructions_flag = False
-=======
 start_flag = False 
 restart_flag = False
 game_track_flag = False
 leaderboard_flag = False
->>>>>>> 7160f94570df4b589be95fc66143b9c993614446
