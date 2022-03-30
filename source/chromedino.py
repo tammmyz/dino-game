@@ -498,6 +498,7 @@ def menu(death_count):
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
+    global_var.instructions_flag = False
     run = True
     updated_score = False
     while run:

@@ -11,8 +11,11 @@ from obstacle import Obstacle
 import global_var
 import images
 ## @brief Displays the instructions page texts and graphics
+
+
+
 def instructions():
-    
+    global_var.instructions_flag = True
     # Adding background
     global_var.SCREEN.fill((255,255,255))
 
