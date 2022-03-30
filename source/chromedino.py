@@ -693,6 +693,9 @@ def menu(death_count):
                                 dinosaur_sound.play()
                                 global_var.theme = 'default'
 
+                                if global_var.test_settings:
+                                    # print("testing student theme")
+                                    return
 
                                 images.RUNNING = images.RUNNING_THEME1
                                 images.DUCKING = images.DUCKING_THEME1
@@ -700,11 +703,12 @@ def menu(death_count):
                                 images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME1
                                 images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME1
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
-                            elif(event.key == pygame.K_2) or global_var.test_settings:
+                            elif(event.key == pygame.K_2):
                                 student_sound.play()
                                 global_var.theme = 'student'
 
                                 if global_var.test_settings:
+                                    # print("testing student theme")
                                     return
 
                                 images.RUNNING = images.RUNNING_THEME2
@@ -716,6 +720,11 @@ def menu(death_count):
                             elif(event.key == pygame.K_3):
                                 corona_sound.play()
                                 global_var.theme = 'corona'
+
+                                if global_var.test_settings:
+                                    # print("testing corona theme")
+                                    return
+
                                 images.RUNNING = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
                                 images.JUMPING = images.JUMPING_THEME3
