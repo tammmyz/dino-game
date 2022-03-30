@@ -617,7 +617,6 @@ def menu(death_count, test):
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
-                print("keydown?")
                 global_var.game_track_flag = True
                 main()
 
@@ -705,7 +704,6 @@ def menu(death_count, test):
                 global_var.restart_flag = False
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
-                        print("EVENT")
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
