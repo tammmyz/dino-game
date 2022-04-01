@@ -211,10 +211,14 @@ def restart():
     scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
     global_var.SCREEN.blit(score, scoreRect)
     leader_board_text = font.render("Leaderboard", True, global_var.FONT_COLOR)
-    leader_board_text_rect = leader_board_text.get_rect()
-    leader_board_text_rect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150)
-    global_var.SCREEN.blit(leader_board_text, leader_board_text_rect)
-    x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(center=(global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 150))
+    x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-10, global_var.SCREEN_HEIGHT // 2 + 150))
+    global_var.SCREEN.blit(leader_board_text, (x_lead, y_lead))
+    border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
+    border_img = pygame.transform.scale(border_img, (350,50))
+    global_var.SCREEN.blit(border_img, (x_lead-90, y_lead-11))
+
+
+
     hs_score_text = font.render(
         "Your High Score : " + str(global_var.high_score), True, global_var.FONT_COLOR
     )
@@ -372,7 +376,12 @@ def menu(death_count):
             # we should probably add this to restart? - Anjola
             # path to main menu
             menu_text = font.render("Main Menu", True, global_var.FONT_COLOR)
-            global_var.SCREEN.blit(menu_text, (900, 25))
+            x_m, y_m, w_m, h_m = menu_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-10, global_var.SCREEN_HEIGHT // 2 + 210))
+            global_var.SCREEN.blit(menu_text, (x_m, y_m))
+            border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
+            border_img = pygame.transform.scale(border_img, (350,50))
+            global_var.SCREEN.blit(border_img, (x_m-90, y_m-11))
+
             #x_menu, y_menu, w_menu, h_menu 
             x_menu, y_menu, w_menu, h_menu = menu_text.get_rect(topleft=(900,25))
             mouse_pos_menu = pygame.mouse.get_pos() #get mouse cursor position
@@ -442,7 +451,7 @@ def menu(death_count):
                 main()
 
             # Add mouse click on main menu text
-            if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_menu, x_menu+w_menu) and mouse_pos_menu[1] in range(y_menu, y_menu+h_menu):
+            if death_count > 0 and event.type == pygame.MOUSEBUTTONDOWN  and mouse_pos_menu[0] in range(x_m, x_m+w_m) and mouse_pos_menu[1] in range(y_m, y_m+h_m):
                 menu(0)
     
             #Check if instructions was pressed
@@ -504,8 +513,6 @@ def menu(death_count):
                                 dinosaur_sound.play()
                                 global_var.theme = 'default'
 
-                                if global_var.test_settings:
-                                    return
 
                                 images.RUNNING = images.RUNNING_THEME1
                                 images.DUCKING = images.DUCKING_THEME1

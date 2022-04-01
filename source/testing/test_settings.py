@@ -18,6 +18,7 @@ class TestInstructions(unittest.TestCase):
     def test_default_theme(self):
         self.assertEqual(global_var.theme, 'default')
 
+    # @patch("builtins.input", return_value=pygame.)
     def test_no_audio(self):
         global_var.test_settings = True
         menu(1)
