@@ -20,17 +20,6 @@ No_User_Entered 385
 No_User_Entered 50
 No_User_Entered 50
 No_User_Entered 46
-<<<<<<< HEAD
-No_User_Entered 757
-No_User_Entered 48
-No_User_Entered 110
-No_User_Entered 115
-No_User_Entered 46
-No_User_Entered 47
-No_User_Entered 56
-No_User_Entered 105
-No_User_Entered 1178
-=======
 No_User_Entered 106
 No_User_Entered 47
 No_User_Entered 46
@@ -78,4 +67,9 @@ No_User_Entered 46
 No_User_Entered 46
 No_User_Entered 46
 No_User_Entered 46
->>>>>>> c0335d8e5f125aea87442447790226c5ccb1349f
+No_User_Entered 0
+No_User_Entered 0
+No_User_Entered 55
+No_User_Entered 55
+No_User_Entered 0
+No_User_Entered 46

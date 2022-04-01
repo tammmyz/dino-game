@@ -193,8 +193,9 @@ def display_leaderboad():
         c += 30
 
     main_text = font.render("Press 'b' to go back", True,  global_var.FONT_COLOR)
-    global_var.SCREEN.blit(main_text, (320, 450))
-    
+    global_var.SCREEN.blit(main_text, (420, 450))
+    global_var.leaderboard_flag = True
+    global_var.restart_flag = False
 
     pygame.display.update()
 

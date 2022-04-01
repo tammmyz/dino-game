@@ -227,97 +227,7 @@ def restart():
     global_var.SCREEN.blit(hs_score_text, hs_score_rect)
 
     return( x_lead, y_lead, w_lead, h_lead)    
-'''
-## @brief Displays the restart page texts and graphics 
-#  @return A list containing the formatted leader text
-def get_leaders():
-    font = pygame.font.Font("freesansbold.ttf", 25) # make font a global var
-    score_dict = {}
-    ## score: Players []
-    leaders_text = []
-    with open("score.txt", "r") as f:
-            score = (
-                f.read()
-            ) 
-    score_list = score.split("\n")
-    # ["Anjola 3", "Chel 200"]
-    curr_user_scores = [] # the current users score
-    for score in score_list:
-        temp = score.split()
-        # temp = [Anjola, 3]
-        if temp[1] in score_dict:
-            score_dict[int(temp[1])].append(temp[0])
-            
-            # {100 : [Anjola, Sheridan]}
-            
-        else:
-            score_dict[int(temp[1])] = [temp[0]]
-            ## if it's a score we've never seen, we'll make that a key
-        if temp[0] == global_var.username:
-            curr_user_scores.append(int(temp[1]))
 
-    ## sort scores in descending order
-    sorted_scores = sorted(score_dict, reverse=True) 
-    ## a list of sorted score from score_dict
-    sorted_top_scores = []  # 2-D list of top scores
-    count = 0 ## ensure that only five score are added to sorted top scoresS
-    for score in sorted_scores:
-        if count < 5:
-            ## if more than one person has the top score
-            if len(score_dict[score]) > 1:
-                for person in score_dict[score]:
-                    if count < 5:
-                        sorted_top_scores.append([person, score])
-                        count+= 1
-            else:
-                person = score_dict[score][0]
-                sorted_top_scores.append([person, score])
-                count+= 1
-
-    ## first index is the highest score
-    for pair in sorted_top_scores:
-        leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
-        ## formating the leader text
-    
-    ## high score displayed is curent user's high score
-    if len(curr_user_scores) > 0:
-        global_var.high_score =  max(curr_user_scores)
-    else:
-        global_var.high_score = 0
-    
-    return (leaders_text)
-
-## @brief Displays the leaderboard page texts and graphics
-def display_leaderboad():  
-    current_time = datetime.datetime.now().hour
-    if 7 < current_time < 19:     
-        global_var.SCREEN.fill((255, 255, 255)) 
-    else:
-        global_var.SCREEN.fill((128, 128, 128))
-
-    font = pygame.font.Font("freesansbold.ttf", 30)    
-    title = font.render("Leaderboard", True, global_var.FONT_COLOR)
-    titleRect = title.get_rect()
-    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
-    global_var.SCREEN.blit(title, titleRect)
-    leaders= get_leaders()
-    leader_rect = []
-    c = -20
-
-    global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
-    for i in range(len(leaders)):
-        leader_rect.append(leaders[i].get_rect())
-        leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
-        global_var.SCREEN.blit(leaders[i], leader_rect[i])
-        c += 30
-
-    main_text = font.render("Press 'b' to go back", True,  global_var.FONT_COLOR)
-    global_var.SCREEN.blit(main_text, (320, 450))
-    
-
-    pygame.display.update()
-
-'''
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
@@ -553,18 +463,17 @@ def menu(death_count):
             
             #Check if instructions was pressed
             if global_var.restart_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_lead, x_lead+w_lead) and mouse_pos[1] in range(y_lead, y_lead+h_lead):
-                print("leaderboard")
+                # print("leaderboard")
                 display_leaderboad()
-                global_var.leaderboard_flag = True
-                global_var.restart_flag = False
+                if global_var.test_leaderboard:
+                    return
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                            if global_var.test_leaderboard:
-                                return
+                            
                             #b to go back
                             print("keydown?")
                             menu(death_count)
