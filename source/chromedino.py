@@ -509,6 +509,7 @@ def display_leaderboad():
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
+
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
@@ -700,6 +701,8 @@ def menu(death_count):
                         # press a and turn on the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                             global_var.audio = True
+                            if global_var.test_settings:
+                                return
                             audio_on_sound.play()
 
                         # press specific numbers and change the themes
@@ -709,6 +712,7 @@ def menu(death_count):
                                 global_var.theme = 'default'
 
                                 if global_var.test_settings:
+                                    # print("testing student theme")
                                     return
 
                                 images.RUNNING = images.RUNNING_THEME1
@@ -717,11 +721,12 @@ def menu(death_count):
                                 images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME1
                                 images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME1
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
-                            elif(event.key == pygame.K_2) or global_var.test_settings:
+                            elif(event.key == pygame.K_2):
                                 student_sound.play()
                                 global_var.theme = 'student'
 
                                 if global_var.test_settings:
+                                    # print("testing student theme")
                                     return
 
                                 images.RUNNING = images.RUNNING_THEME2
@@ -733,6 +738,11 @@ def menu(death_count):
                             elif(event.key == pygame.K_3):
                                 corona_sound.play()
                                 global_var.theme = 'corona'
+
+                                if global_var.test_settings:
+                                    # print("testing corona theme")
+                                    return
+
                                 images.RUNNING = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
                                 images.JUMPING = images.JUMPING_THEME3
