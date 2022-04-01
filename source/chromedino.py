@@ -110,6 +110,7 @@ def main():
     def paused(): 
         nonlocal pause
         pause = True
+        test_pause = pause
         font = pygame.font.Font("freesansbold.ttf", 30)
         text = font.render("Game Paused, Press 'u' to Unpause", True, global_var.FONT_COLOR)
         instruction_text = font.render("Press 'i' to see instructions", True, global_var.FONT_COLOR)
@@ -119,7 +120,7 @@ def main():
         global_var.SCREEN.blit(instruction_text, (global_var.SCREEN_WIDTH // 3, global_var.SCREEN_HEIGHT // 3 + 50))
         pygame.display.update()
 
-        while pause:
+        while pause and test_pause:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -128,6 +129,13 @@ def main():
                     unpause()
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_i:
                     print("pressed i")
+
+                    '''
+                    if global_var.test_instructions:
+                        #global_var.instructions_flag = True
+                        return
+                    '''
+
                     instructions()
     
     while run:
@@ -231,6 +239,7 @@ def restart():
 ## @brief Displays the start and restart page texts and graphics
 # @param death_count an integer value indication the amount of times lost (had to restsart)
 def menu(death_count):
+
     global_var.start_flag = False 
     global_var.restart_flag = False
     global_var.game_track_flag = False
@@ -365,17 +374,24 @@ def menu(death_count):
                 menu(0)
     
             #Check if instructions was pressed
-            if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
+            if global_var.test_instructions or global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x-100, x+250) and mouse_pos[1] in range(y-10, y-10+50):
                 instructions()
-
                 while not global_var.game_track_flag:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             quit()
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                            print('pressed e')
+                            print('pressed b')
+
+                            # test_exit_key
+                            if global_var.test_instructions:
+                                global_var.start_flag = True
+                                return
+
                             menu(0)
+
+                            
             
              #Check if instructions was pressed
             if global_var.start_flag == True and event.type == pygame.MOUSEBUTTONDOWN and mouse_pos[0] in range(x_l, x_l+w_l) and mouse_pos[1] in range(y_l, y_l+h_l):
@@ -415,6 +431,8 @@ def menu(death_count):
                         # press a and turn on the audio settings
                         if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                             global_var.audio = True
+                            if global_var.test_settings:
+                                return
                             audio_on_sound.play()
 
                         # press specific numbers and change the themes
@@ -423,6 +441,9 @@ def menu(death_count):
                                 dinosaur_sound.play()
                                 global_var.theme = 'default'
 
+                                if global_var.test_settings:
+                                    # print("testing student theme")
+                                    return
 
                                 images.RUNNING = images.RUNNING_THEME1
                                 images.DUCKING = images.DUCKING_THEME1
@@ -430,11 +451,12 @@ def menu(death_count):
                                 images.OBSTACLE_ONE = images.OBSTACLE_ONE_THEME1
                                 images.OBSTACLE_TWO = images.OBSTACLE_TWO_THEME1
                                 images.OBSTACLE_FLYING = images.OBSTACLE_FLYING_THEME1
-                            elif(event.key == pygame.K_2) or global_var.test_settings:
+                            elif(event.key == pygame.K_2):
                                 student_sound.play()
                                 global_var.theme = 'student'
 
                                 if global_var.test_settings:
+                                    # print("testing student theme")
                                     return
 
                                 images.RUNNING = images.RUNNING_THEME2
@@ -446,6 +468,11 @@ def menu(death_count):
                             elif(event.key == pygame.K_3):
                                 corona_sound.play()
                                 global_var.theme = 'corona'
+
+                                if global_var.test_settings:
+                                    # print("testing corona theme")
+                                    return
+
                                 images.RUNNING = images.RUNNING_THEME3
                                 images.DUCKING = images.DUCKING_THEME3
                                 images.JUMPING = images.JUMPING_THEME3
@@ -487,5 +514,5 @@ def menu(death_count):
 
                       
         
-t1 = threading.Thread(target=menu(death_count=0), daemon=True)
-t1.start()
+# t1 = threading.Thread(target=menu(death_count=0), daemon=True)
+# t1.start()
