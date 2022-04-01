@@ -10,6 +10,7 @@ from character import Character
 from obstacle import Obstacle
 import global_var
 import images
+from leader import *
 ## @brief Displays the instructions page texts and graphics
 
 
@@ -166,3 +167,35 @@ def settings():
         global_var.SCREEN.blit(main_text, (320, 450))
 
     pygame.display.update()
+
+## @brief Displays the leaderboard page texts and graphics
+def display_leaderboad():  
+    current_time = datetime.datetime.now().hour
+    if 7 < current_time < 19:     
+        global_var.SCREEN.fill((255, 255, 255)) 
+    else:
+        global_var.SCREEN.fill((128, 128, 128))
+
+    font = pygame.font.Font("freesansbold.ttf", 30)    
+    title = font.render("Leaderboard", True, global_var.FONT_COLOR)
+    titleRect = title.get_rect()
+    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
+    global_var.SCREEN.blit(title, titleRect)
+    leaders= get_leaders()
+    leader_rect = []
+    c = -20
+
+    global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 20, global_var.SCREEN_HEIGHT // 2 - 140))
+    for i in range(len(leaders)):
+        leader_rect.append(leaders[i].get_rect())
+        leader_rect[i].center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + c)
+        global_var.SCREEN.blit(leaders[i], leader_rect[i])
+        c += 30
+
+    main_text = font.render("Press 'b' to go back", True,  global_var.FONT_COLOR)
+    global_var.SCREEN.blit(main_text, (320, 450))
+    
+
+    pygame.display.update()
+
+
