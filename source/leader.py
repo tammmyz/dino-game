@@ -69,7 +69,9 @@ def get_leaders():
     for pair in sorted_top_scores:
         leaders_text.append(font.render(f"{pair[0]}: {pair[1]}", True, global_var.FONT_COLOR))
         ## formating the leader text
-    
+    if global_var.test_leaderboard2:
+        return sorted_top_scores
+
     ## high score displayed is curent user's high score
     if len(curr_user_scores) > 0:
         global_var.high_score =  max(curr_user_scores)
