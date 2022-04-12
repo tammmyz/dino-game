@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="GanttChart" company="" webLink="http://" view-date="2022-03-16" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.1.3100" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="GanttChart" company="" webLink="http://" view-date="2022-03-11" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.1.3100" locale="en_CA">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Name" width="158" order="0"/>
-        <field id="tpd4" name="Begin date" width="62" order="1"/>
-        <field id="tpd5" name="End date" width="61" order="2"/>
+        <field id="tpd3" name="Name" width="163" order="0"/>
+        <field id="tpd4" name="Begin date" width="67" order="1"/>
+        <field id="tpd5" name="End date" width="66" order="2"/>
         <timeline>
-            <![CDATA[40,9,132,5,1,81,7,17]]>
+            <![CDATA[5,7,1,132,40,9,81,17]]>
         </timeline>
         <option id="color.recent">
             <![CDATA[#ff9999 #ff99cc #ff3333 #99ff99 #ccffcc #33ff33 #33ccff]]>
@@ -95,18 +95,18 @@
             <task id="146" name="Add student theme" color="#ff9999" meeting="false" start="2022-03-14" duration="5" complete="100" thirdDate="2022-03-03" thirdDate-constraint="0" expand="true"/>
             <task id="147" name="Add input" color="#ff9999" meeting="false" start="2022-03-14" duration="5" complete="100" thirdDate="2022-03-03" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="31" name="Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2022-03-18" duration="4" complete="50" thirdDate="2022-03-02" thirdDate-constraint="0" priority="2" expand="true"/>
-        <task id="33" name="Final Demonstration (Revision 1)" color="#8cb6ce" meeting="false" start="2022-03-24" duration="6" complete="0" thirdDate="2022-03-14" thirdDate-constraint="0" priority="4" expand="true">
+        <task id="31" name="Revision 0 Demonstration" color="#8cb6ce" meeting="false" start="2022-03-18" duration="4" complete="100" thirdDate="2022-03-02" thirdDate-constraint="0" priority="2" expand="true"/>
+        <task id="33" name="Final Demonstration (Revision 1)" color="#8cb6ce" meeting="false" start="2022-03-24" duration="6" complete="100" thirdDate="2022-03-14" thirdDate-constraint="0" priority="4" expand="true">
             <notes>
                 <![CDATA[25%]]>
             </notes>
         </task>
-        <task id="35" name="Peer Eval of Other Teams Final Demo" color="#8cb6ce" meeting="false" start="2022-03-28" duration="6" complete="0" thirdDate="2022-03-14" thirdDate-constraint="0" priority="2" expand="true">
+        <task id="35" name="Peer Eval of Other Teams Final Demo" color="#8cb6ce" meeting="false" start="2022-03-28" duration="6" complete="100" thirdDate="2022-03-14" thirdDate-constraint="0" priority="2" expand="true">
             <notes>
                 <![CDATA[2%]]>
             </notes>
         </task>
-        <task id="37" name="Final Documentation (Revision 1)" color="#8cb6ce" meeting="false" start="2022-04-06" duration="5" complete="0" thirdDate="2022-03-14" thirdDate-constraint="0" priority="4" expand="true">
+        <task id="37" name="Final Documentation (Revision 1)" color="#8cb6ce" meeting="false" start="2022-04-06" duration="5" complete="100" thirdDate="2022-03-14" thirdDate-constraint="0" priority="4" expand="true">
             <notes>
                 <![CDATA[30%]]>
             </notes>
@@ -132,6 +132,7 @@
         <allocation task-id="82" resource-id="1" function="SoftwareDevelopment:3" responsible="false" load="0.83"/>
         <allocation task-id="87" resource-id="1" function="SoftwareDevelopment:3" responsible="false" load="0.83"/>
         <allocation task-id="132" resource-id="1" function="SoftwareDevelopment:2" responsible="false" load="2.0"/>
+        <allocation task-id="147" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="1.0"/>
         <allocation task-id="58" resource-id="2" function="Default:0" responsible="false" load="0.1"/>
         <allocation task-id="59" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="0.1"/>
         <allocation task-id="80" resource-id="2" function="SoftwareDevelopment:3" responsible="true" load="0.4"/>
@@ -140,7 +141,6 @@
         <allocation task-id="83" resource-id="2" function="SoftwareDevelopment:3" responsible="false" load="0.83"/>
         <allocation task-id="135" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="2.0"/>
         <allocation task-id="146" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="1.0"/>
-        <allocation task-id="147" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
