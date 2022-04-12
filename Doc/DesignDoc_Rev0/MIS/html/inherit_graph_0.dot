@@ -3,11 +3,11 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node2 [label="Obstacle",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node2 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="bird.Bird",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classbird_1_1Bird.html",tooltip="Bird is a class that implements a bird obstacle to the screen. "];
-  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="large_obstacle.LargeObstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classlarge__obstacle_1_1LargeObstacle.html",tooltip="LargeObstacle is a class that implements a large obstacle. "];
-  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="small_obstacle.SmallObstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsmall__obstacle_1_1SmallObstacle.html",tooltip="small_obstacle is a class that implements a small obstacle "];
+  Node1 [label="Obstacle",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="bird.Bird",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classbird_1_1Bird.html",tooltip="Bird is a class that implements a bird obstacle to the screen. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="large_obstacle.LargeObstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classlarge__obstacle_1_1LargeObstacle.html",tooltip="LargeObstacle is a class that implements a large obstacle. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="small_obstacle.SmallObstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsmall__obstacle_1_1SmallObstacle.html",tooltip="small_obstacle is a class that implements a small obstacle "];
 }
