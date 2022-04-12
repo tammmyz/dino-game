@@ -16,6 +16,7 @@ pygame.init()
 
 ## @brief Gets the username and displays the username
 def get_username():
+    global invalid_input_text, font3, user_text
     clock = pygame.time.Clock()
 
     # it will display on screen
@@ -39,7 +40,8 @@ def get_username():
     color = color_passive
 
     active = False
-
+    # no_username = True
+    
     while True:
         for event in pygame.event.get():
 
@@ -61,7 +63,28 @@ def get_username():
                     user_text = user_text[:-1]
           
                 elif event.key == pygame.K_RETURN:
-                    return(user_text)
+
+                    if (user_text.upper() in bad_word):
+                        invalid_input_text = font3.render("This is a bad word, please enter a new username", True, "red") 
+                        user_text = ''
+                        # get_username()
+                    elif (" " in user_text):
+                        invalid_input_text = font3.render("Username cannot contain a space,  please enter a new username", True, "red") 
+                        user_text = ''
+                        # print("invalid input")
+                        # get_username()
+                    elif (len(user_text) > 15):
+                        invalid_input_text = font3.render("Username too long,  please enter a new username", True, "red") 
+                        user_text = ''
+                        # get_username()
+                    elif (len(user_text) < 2):
+                        invalid_input_text = font3.render("Username too short,  please enter a new username", True, "red") 
+                        user_text = ''
+                        # get_username()
+                    else:
+                        print("end of check")
+                        print(user_text)
+                        return(user_text)
             
                 else:
                     user_text += event.unicode
@@ -84,12 +107,15 @@ def get_username():
         font = pygame.font.Font("freesansbold.ttf", 20)   
         font2 = pygame.font.Font("freesansbold.ttf", 32)  
         title = font2.render("Please select the grey box to enter your username", True, "black")
+        
         titleRect = title.get_rect()
         titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
         screen.blit(title, titleRect)
 
         main_text = font.render("Press Enter(Return) when you're done", True, "black")
         screen.blit(main_text, (470, 320))
+
+        screen.blit(invalid_input_text, (400, 420))
 
         temp = pygame.transform.scale(images.RUNNING[0], (200,200))
         # temp = images.RUNNING[0]
@@ -100,8 +126,9 @@ def get_username():
         
         clock.tick(60)
 
-      
+
 
 
 # print(get_username())
 # get_username()
+

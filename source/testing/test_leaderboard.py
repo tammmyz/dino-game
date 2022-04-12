@@ -4,6 +4,7 @@ import sys, os
 sys.path.insert(1, os.path.abspath('.'))
 from display import *
 from chromedino import *
+from leader import *
 
 ##assumes you're on the restart page
 
@@ -17,11 +18,12 @@ class TestLeaderboard(unittest.TestCase):
         self.assertEqual(global_var.leaderboard_flag, True)
        
     # def test_leaderbaord_corectness(self):
+    #     global_var.test_leaderboard = True
     #     leaders = get_leaders()
-    #     cleaders = ["Chelsea", "Anjola","Sheridan","Chelsea", "Sharon"]
+    #     cleaders = ["Chelsea", "Anjola","Sheridan"]
     #     i = 0
-    #     for leader in leaders:
-    #         self.assertEqual(leader[0], cleaders[i])
+    #     for leader in cleaders:
+    #         self.assertEqual(leader[i], cleaders[i])
     #         i += 1
 
 '''

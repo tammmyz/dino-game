@@ -31,4 +31,7 @@ leaderboard_flag = False
 
 # testing variables
 test_leaderboard = False
+test_leaderboard2 = False
 test_settings = False
+test_instructions = False
+test_pause = False
