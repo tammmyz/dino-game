@@ -17,7 +17,8 @@ from character import Character
 from obstacle import Obstacle
 import global_var
 import images
-
+import datetime
+from leader import * 
 
 ## @brief Displays the instructions page texts and graphics
 def instructions():
