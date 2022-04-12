@@ -1,4 +1,9 @@
-# import sys module
+## @file username.py 
+# @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
+# @brief Contains the algorithm for getting username
+# @date 04/12/2022
+# importing libraries
+
 import pygame
 import sys
 import global_var
@@ -8,6 +13,8 @@ import images
 # imported module
 pygame.init()
 
+
+## @brief Gets the username and displays the username
 def get_username():
     clock = pygame.time.Clock()
 

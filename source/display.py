@@ -1,3 +1,10 @@
+## @file display.py 
+# @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
+# @brief Contains the display interface for the game
+# @date 04/12/2022
+# importing libraries
+
+
 import pygame
 from global_var import SCREEN
 import global_var
@@ -10,10 +17,9 @@ from character import Character
 from obstacle import Obstacle
 import global_var
 import images
+
+
 ## @brief Displays the instructions page texts and graphics
-
-
-
 def instructions():
     global_var.instructions_flag = True
     # Adding background
