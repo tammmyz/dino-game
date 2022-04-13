@@ -58,19 +58,19 @@ class Character:
         # updates duck, run, jump images based off the userInput (key pressed)
 
         # if user pressing up, space and not already jumping, put the jump image
-        if (userInput[pygame.K_UP] or userInput[pygame.K_SPACE]) and not self.dino_jump:
+        if (userInput[pygame.K_UP] or userInput[pygame.K_SPACE] or userInput[pygame.K_w]) and not self.dino_jump:
             self.dino_duck = False
             self.dino_run = False
             self.dino_jump = True
 
         # if user is pressing down and the dino is not jumping the dino ducks
-        elif userInput[pygame.K_DOWN] and not self.dino_jump:
+        elif (userInput[pygame.K_DOWN] or userInput[pygame.K_s]) and not self.dino_jump:
             self.dino_duck = True
             self.dino_run = False
             self.dino_jump = False
 
         # if user is not pressing down or is not jumping then the dino is images.RUNNING
-        elif not (self.dino_jump or userInput[pygame.K_DOWN]):
+        elif not (self.dino_jump or userInput[pygame.K_DOWN] or userInput[pygame.K_s] or userInput[pygame.K_w]):
             self.dino_duck = False
             self.dino_run = True
             self.dino_jump = False
