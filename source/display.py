@@ -19,7 +19,7 @@ from obstacle import Obstacle
 import global_var
 from global_var import SCREEN
 import images
-from leader import * 
+from leader import *
 
 ## @brief Displays the instructions page texts and graphics
 def instructions():
@@ -188,7 +188,7 @@ def display_leaderboad():
    titleRect = title.get_rect()
    titleRect.center = (global_var.SCREEN_WIDTH // 2, 70)
    global_var.SCREEN.blit(title, titleRect)
-   leaders= get_leaders()
+   leaders = get_leaders()
    leader_rect = []
    c = -20
 

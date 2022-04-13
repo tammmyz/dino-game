@@ -4,7 +4,6 @@ import random
 import threading
 from turtle import update
 import pygame
-from display import *
 import time
 from username import get_username 
 
