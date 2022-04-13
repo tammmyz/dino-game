@@ -2,13 +2,14 @@
 # @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
 # @brief Contains the display interface for the game
 # @date 04/12/2022
-# importing libraries
 
-
+# importing standard libraries
 import pygame
-from global_var import SCREEN
 import global_var
 import os
+import datetime
+
+# importing local file/applications
 from cloud import Cloud
 from large_obstacle import LargeObstacle
 from small_obstacle import SmallObstacle
@@ -16,8 +17,8 @@ from bird import Bird
 from character import Character
 from obstacle import Obstacle
 import global_var
+from global_var import SCREEN
 import images
-import datetime
 from leader import * 
 
 ## @brief Displays the instructions page texts and graphics
@@ -204,6 +205,3 @@ def display_leaderboad():
    global_var.restart_flag = False
 
    pygame.display.update()
-
-
-
