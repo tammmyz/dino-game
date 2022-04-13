@@ -65,7 +65,7 @@
 Description of Tests: These tests ensure that the user is able to use the software according to the Software Requirement Specification (SRS). The following tests include the checking the functionalities of the Instructions, Leaderboard, Game Settings, and Game Track.
 
 \subsection{E1: Viewing the Instructions Page}
-The Instructions Page is fully functional. The user is able to access it by pressing the "How to play" button in the Menu Page. The keyboard binding are displayed in a comprehensive manner. The system then displays the Instructions page satisfying FR1. Finally, the user is able to transition back to the Menu Page from the Instructions Page satisfying FR2.
+The Instructions Page is fully functional. The user is able to access it by pressing the ``How to play" button in the Menu Page. The keyboard bindings are displayed in a comprehensive manner. The system then displays the Instructions page satisfying FR1. Finally, the user is able to transition back to the Menu Page from the Instructions Page satisfying FR2.
 
 \subsection{E2: Viewing the Leaderboard}
 The Leaderboard Page is fully functional. The user is able to access the Leaderboard Page from the Main Page by clicking the text. The system displays the top five scores of all users. This is different than FR3 as FR3 displays the top scores of the specific user. The leaderboard implemented does not filter the high scores by user and therefore FR5 is not met. The user can navigate back to the menu by pressing 'b' and therefore this satisfies FR4. 
@@ -75,7 +75,7 @@ The Leaderboard Page is fully functional. The user is able to access the Leaderb
 The Game Settings Page meets the functional requirements stated in the SRS. The user is able to transition from the Game Settings Page to the Menu Page and vice versa, as stated in FR6. Moreover, the game audio can be manipulated by the user within the Game Settings Page, as stated in FR7. Finally, FR8 states that themes must be displayed and the user is able to select a theme. This functional requirement has been met.
 
 \subsection{E4: Playing the Game}
-The game functions as proposed, the game displays the correct theme based off user input, the initial score is 0 and sound is outputted based on settings, this satisfies FR9, FR10, and FR11 respectively. The system starts gameplay when the user inputs any key not just WASD keys therefore FR12 fails. The game is controlled by WASD keys and arrow keys therefore satisfying FR13. The game awards points when the user moves and display's the current score to the screen, therefore FR14 and FR15 are satisfied. FR 17 is satisfied as the system allows the user to replay the game and they can stop the game by pressing 'p' and return to the main menu. The user can only enter their username on the Main Page therefore FR18 fails. After game play the score is entered into the database. 
+The game functions as proposed, the game displays the correct theme based off user input, the initial score is 0 and sound is outputted based on settings, this satisfies FR9, FR10, and FR11 respectively. The system starts gameplay when the user inputs any key not just WASD keys therefore FR12 fails. The game is controlled by WASD keys and arrow keys therefore satisfying FR13. The game awards points when the user moves and display's the current score to the screen, therefore FR14 and FR15 are satisfied. FR17 is satisfied as the system allows the user to replay the game and they can stop the game by pressing 'p' and return to the main menu. The user can only enter their username on the Main Page therefore FR18 fails. After game play the score is entered into the database. 
 
 
 \section{Nonfunctional Requirements Evaluation}
@@ -86,7 +86,7 @@ LF4: The game is fully implemented in black and whit, therefore the  game colour
 
 \subsection{Usability}
 UH1: The game was implemented to be controlled using two methods. The arrow keys and ``WASD" keys
-UH2: Through survey testing we verified that the game has a simple main menu page which leads to the different game settings	UH3. Through survey testing we verified that the game was partially intuitive. Some users found that they had to perform "jumping" and "ducking" actions earlier than anticipated in order to do die in the game.
+UH2: Through survey testing we verified that the game has a simple main menu page which leads to the different game settings	UH3. Through survey testing we verified that the game was partially intuitive. Some users found that they had to perform "jumping" and ``ducking" actions earlier than anticipated in order to do die in the game.
 UH4: The game instructions and settings are implemented in English
 UH5: The theme of the game is easily adjustable. All a user has to do is navigate to the game page and select the theme they want.
 UH6: User's that participated in the test group did not undergo any prior training before playing the game, thus this requirement is achieved
@@ -123,18 +123,11 @@ SR2: Users are permitted to change game settings through the user interface ther
 SR3: The product does not protect itself from unauthorized user modifications, this is due to the download method for users. 
 SR4: The user is able to modify the scores due to the download method. 
 SR5: This is satisfied as the user can view other usernames and their corresponding high scores. 
-SR6: This functional requirement is partially satisfied as our game has not been rigoursly tested against unauthorized or undesirable software programs. There has been no issues thus far with harmful software. 
+SR6: This functional requirement is partially satisfied as our game has not been rigorously tested against unauthorized or undesirable software programs. There has been no issues thus far with harmful software. 
 
 \subsection{Cultural and Political Requirements}
 CP1: The game themes are not offensive to any cultures or religions therefore this requirement is satisfied. 
 CP2: The game does not allow users to input offensive English user names. This was completed by having a dictionary of inappropriate usernames that the system checked for. The dictionary is currently only in English and therefore does not satisfy the requirement fully. 
-
-\section{Changes Due to Testing}
-
-
-Flags
-macOS
-
 
 
 \section{Automated Testing}
