@@ -2,22 +2,19 @@
 # @author Anjola Adewale, Sheridan Fong, Chelsea Maramot  
 # @brief Contains the algorithm for getting username
 # @date 04/12/2022
-# importing libraries
 
+# importing libraries
 import pygame
 import sys
 import global_var
 import images
 
 # pygame.init() will initialize all
-# imported module
 pygame.init()
 font3 = pygame.font.Font("freesansbold.ttf", 22) 
 invalid_input_text = font3.render(" ", True, "black") 
 bad_word = ['FCUK', 'BITCH', 'SHIT', 'STUPID']
 user_text = ''
-
-
 
 ## @brief Gets the username and displays the username
 def get_username():
@@ -35,18 +32,13 @@ def get_username():
     # create rectangle
     input_rect = pygame.Rect(500, 250, 400, 45)
 
-    # color_active stores color(lightskyblue3) which
-    # gets active when input box is clicked by user
     color_active = pygame.Color('lightskyblue3')
 
-    # color_passive store color(chartreuse4) which is
-    # color of input box.
     color_passive = pygame.Color('lightgrey')
     color = color_passive
 
     active = False
-    # no_username = True
-    
+
     while True:
         for event in pygame.event.get():
 
@@ -72,23 +64,16 @@ def get_username():
                     if (user_text.upper() in bad_word):
                         invalid_input_text = font3.render("This is a bad word, please enter a new username", True, "red") 
                         user_text = ''
-                        # get_username()
                     elif (" " in user_text):
                         invalid_input_text = font3.render("Username cannot contain a space,  please enter a new username", True, "red") 
                         user_text = ''
-                        # print("invalid input")
-                        # get_username()
                     elif (len(user_text) > 15):
                         invalid_input_text = font3.render("Username too long,  please enter a new username", True, "red") 
                         user_text = ''
-                        # get_username()
                     elif (len(user_text) < 2):
                         invalid_input_text = font3.render("Username too short,  please enter a new username", True, "red") 
                         user_text = ''
-                        # get_username()
                     else:
-                        print("end of check")
-                        print(user_text)
                         return(user_text)
             
                 else:
@@ -107,8 +92,7 @@ def get_username():
         text_surface = base_font.render(user_text, True, (255, 255, 255))
         
         screen.blit(text_surface, (input_rect.x+5, input_rect.y+5))
-        
-        
+
         font = pygame.font.Font("freesansbold.ttf", 20)   
         font2 = pygame.font.Font("freesansbold.ttf", 32)  
         title = font2.render("Please select the grey box to enter your username", True, "black")
@@ -123,17 +107,9 @@ def get_username():
         screen.blit(invalid_input_text, (400, 420))
 
         temp = pygame.transform.scale(images.RUNNING[0], (200,200))
-        # temp = images.RUNNING[0]
         global_var.SCREEN.blit(temp, (200, 200))
         input_rect.w = max(300, text_surface.get_width()+10)
         
         pygame.display.flip()
         
         clock.tick(60)
-
-
-
-
-# print(get_username())
-# get_username()
-
