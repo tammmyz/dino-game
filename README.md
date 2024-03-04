@@ -1,7 +1,6 @@
-# SE3XA3 Project
-**Team Name:** L03 Group 1
+# McMaster Software Engineering Kipling Prank 2024
 
-**Team Members:** Anjola Adewale, Chelsea Maramot and Sheridan Fong
+**Based on Code from SE3XA3 project by:** Anjola Adewale, Chelsea Maramot and Sheridan Fong
 
 This project is a reimplementation of _Chrome-Dino_
 
