@@ -10,6 +10,7 @@ import pygame
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FONT_COLOR = (0, 0, 0)  # setting font to black
+KIPLING_COLOR = (0, 100, 255) 
 
 # global variables
 game_speed = 20

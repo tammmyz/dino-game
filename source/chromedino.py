@@ -43,13 +43,19 @@ audio_on_sound = pygame.mixer.Sound("assets/audio/audio_on.mp3")
 audio_off_sound = pygame.mixer.Sound("assets/audio/audio_off.mp3")
 
 # setting up the window - title and setting the game icon (top left corner)
-pygame.display.set_caption("Chrome Dino Runner")
+pygame.display.set_caption("Kipling Dino Runner")
 
 Ico = pygame.image.load("assets/DinoWallpaper.png")
 pygame.display.set_icon(Ico)
 
 # variable used to track if you are on the main page or not?
 global_var.game_track_flag = False
+
+def kipling_font_small():
+   return pygame.font.Font("./assets/Other/Mainport.ttf", 20)
+
+def kipling_font_big():
+   return pygame.font.Font("./assets/Other/Mainport.ttf", 30)
 
 ## @brief Calls all classes and generates objects to play the game 
 def main():
@@ -59,7 +65,8 @@ def main():
    player = Character()
    cloud = Cloud()
    global_var.points = 0
-   font = pygame.font.Font("freesansbold.ttf", 20)
+   font = kipling_font_big()
+   # font = pygame.font.Font("freesansbold.ttf", 20)
    global_var.obstacles = []
    global_var.game_speed = 20
    death_count = 0
@@ -78,7 +85,14 @@ def main():
        text = font.render("High Score: " + str(global_var.high_score) + "  Points: " + str(global_var.points), True,
                        global_var.FONT_COLOR)
        textRect = text.get_rect()
-       textRect.center = (900, 40)
+       textRect.center = (840, 40)
+       global_var.SCREEN.blit(text, textRect)
+
+       # kipling
+       kfont = kipling_font_big()
+       text = kfont.render("SOFTWARE KIPLING PRANK", True, global_var.KIPLING_COLOR)
+       textRect = text.get_rect()
+       textRect.center = (240, 40)
        global_var.SCREEN.blit(text, textRect)
 
    ## @brief Updates the background of the game according to game speed
@@ -104,7 +118,8 @@ def main():
        nonlocal pause
        pause = True
        test_pause = pause
-       font = pygame.font.Font("freesansbold.ttf", 30)
+       font = kipling_font_big()
+       # font = pygame.font.Font("freesansbold.ttf", 30)
        text = font.render("Game Paused, Press 'u' to Unpause", True, global_var.FONT_COLOR)
        instruction_text = font.render("Press 'i' to see instructions", True, global_var.FONT_COLOR)
        textRect = text.get_rect()
@@ -202,14 +217,15 @@ def update_score():
 #  @return A tuple containing the positional coordinates of the Leaderboard text
 def restart():
    leader_rect = []
-   font = pygame.font.Font("freesansbold.ttf", 30)
+   font = kipling_font_big()
+   # font = pygame.font.Font("freesansbold.ttf", 30)
    score = font.render("Your Score: " + str(global_var.points), True, global_var.FONT_COLOR)
    scoreRect = score.get_rect()
    scoreRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2 + 50)
    global_var.SCREEN.blit(score, scoreRect)
    leader_board_text = font.render("Leaderboard", True, global_var.FONT_COLOR)
    x_lead, y_lead, w_lead, h_lead = leader_board_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-10, global_var.SCREEN_HEIGHT // 2 + 150))
-   global_var.SCREEN.blit(leader_board_text, (x_lead, y_lead))
+   global_var.SCREEN.blit(leader_board_text, (x_lead-20, y_lead))
    border_img = pygame.image.load(os.path.join("assets/interface", "border.png"))
    border_img = pygame.transform.scale(border_img, (350,50))
    global_var.SCREEN.blit(border_img, (x_lead-90, y_lead-11))
@@ -243,8 +259,16 @@ def menu(death_count):
        else:
            global_var.FONT_COLOR = (255, 255, 255)
            global_var.SCREEN.fill((128, 128, 128))
-       font = pygame.font.Font("freesansbold.ttf", 30)
 
+       # kipling text
+       font = kipling_font_big()
+       text = font.render("SOFTWARE KIPLING PRANK", True, global_var.KIPLING_COLOR)
+       textRect = text.get_rect()
+       textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2-230)
+       global_var.SCREEN.blit(text, textRect)
+
+       font = kipling_font_big()
+       # font = pygame.font.Font("freesansbold.ttf", 30)
        if death_count == 0:
            global_var.start_flag = True
            text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
@@ -305,16 +329,16 @@ def menu(death_count):
            big_border_img = pygame.transform.scale(big_border_img, (600,550))
            global_var.SCREEN.blit(big_border_img, (250, 20))
 
-           global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3, global_var.SCREEN_HEIGHT // 1.6-90))
+           global_var.SCREEN.blit(instructions_text, (global_var.SCREEN_WIDTH // 2.3-20, global_var.SCREEN_HEIGHT // 1.6-90))
            global_var.SCREEN.blit(border_img, (x-100, y-11))
 
-           global_var.SCREEN.blit(game_settings_text, (global_var.SCREEN_WIDTH // 2.3-30, global_var.SCREEN_HEIGHT // 1.6 - 30 ))
+           global_var.SCREEN.blit(game_settings_text, (global_var.SCREEN_WIDTH // 2.3-30-10, global_var.SCREEN_HEIGHT // 1.6 - 30 ))
            global_var.SCREEN.blit(border_img, (x2-70, y2-11))
 
-           global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 2.3 - 50, global_var.SCREEN_HEIGHT // 1.6 + 30))
+           global_var.SCREEN.blit(username_text, (global_var.SCREEN_WIDTH // 2.3 - 50-20, global_var.SCREEN_HEIGHT // 1.6 + 30))
            global_var.SCREEN.blit(border_img, (x_u - 50, y_u-11))
 
-           global_var.SCREEN.blit(leaderboard_text, (global_var.SCREEN_WIDTH // 2.3 - 15, global_var.SCREEN_HEIGHT // 1.6 + 90))
+           global_var.SCREEN.blit(leaderboard_text, (global_var.SCREEN_WIDTH // 2.3 - 15-10, global_var.SCREEN_HEIGHT // 1.6 + 90))
            global_var.SCREEN.blit(border_img, (x_l - 50, y_l-11))
 
            mouse_pos = pygame.mouse.get_pos() #get mouse cursor position
