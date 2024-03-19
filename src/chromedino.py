@@ -271,7 +271,7 @@ def menu(death_count):
        # font = pygame.font.Font("freesansbold.ttf", 30)
        if death_count == 0:
            global_var.start_flag = True
-           text = font.render("Press any Key to Start", True, global_var.FONT_COLOR)
+           text = font.render("Press Space Bar to Start", True, global_var.FONT_COLOR)
            if (len(global_var.username) == 0):
                global_var.username = "No_User_Entered"
 
@@ -292,7 +292,7 @@ def menu(death_count):
 
       
        elif death_count > 0:
-           text = font.render("Press any Key to Restart", True, global_var.FONT_COLOR)
+           text = font.render("Press Space Bar to Restart", True, global_var.FONT_COLOR)
            if (not updated_score):
                update_score()
                updated_score = True
