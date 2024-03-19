@@ -4,8 +4,4 @@
 
 This project is a reimplementation of _Chrome-Dino_
 
-The folders and files for this project are as follows:
-
-Code - Implementation
-
 
