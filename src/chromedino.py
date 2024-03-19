@@ -290,7 +290,6 @@ def menu(death_count):
            leaderboard_text = font.render("Leaderboard", True, global_var.FONT_COLOR)
            x_l, y_l, w_l, h_l = leaderboard_text.get_rect(topleft=(global_var.SCREEN_WIDTH // 2.3-50, global_var.SCREEN_HEIGHT // 1.6+90))
 
-      
        elif death_count > 0:
            text = font.render("Press Space Bar to Restart", True, global_var.FONT_COLOR)
            if (not updated_score):
@@ -315,7 +314,27 @@ def menu(death_count):
        textRect = text.get_rect()
        textRect.center = (global_var.SCREEN_WIDTH // 2, global_var.SCREEN_HEIGHT // 2-50)
 
+       # kipling
+       small_font = kipling_font_small()
+       creditText1 = small_font.render("Code developed by", True, global_var.FONT_COLOR)
+       creditTextRect1 = creditText1.get_rect()
+       creditTextRect1.center = (global_var.SCREEN_WIDTH // 2-425, global_var.SCREEN_HEIGHT // 2-75)
+       creditText2 = small_font.render("Anjola Adewale", True, global_var.FONT_COLOR)
+       creditTextRect2 = creditText2.get_rect()
+       creditTextRect2.center = (global_var.SCREEN_WIDTH // 2-425, global_var.SCREEN_HEIGHT // 2-25)
+       creditText3 = small_font.render("Sheridan Fong", True, global_var.FONT_COLOR)
+       creditTextRect3 = creditText3.get_rect()
+       creditTextRect3.center = (global_var.SCREEN_WIDTH // 2-425, global_var.SCREEN_HEIGHT // 2+25)
+       creditText4 = small_font.render("Chelsea Maramot", True, global_var.FONT_COLOR)
+       creditTextRect4 = creditText4.get_rect()
+       creditTextRect4.center = (global_var.SCREEN_WIDTH // 2-425, global_var.SCREEN_HEIGHT // 2+75)
+      
+
        global_var.SCREEN.blit(text, textRect)
+       global_var.SCREEN.blit(creditText1, creditTextRect1)
+       global_var.SCREEN.blit(creditText2, creditTextRect2)
+       global_var.SCREEN.blit(creditText3, creditTextRect3)
+       global_var.SCREEN.blit(creditText4, creditTextRect4)
        global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 30, global_var.SCREEN_HEIGHT // 2 - 200))
 
       
