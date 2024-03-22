@@ -328,6 +328,12 @@ def menu(death_count):
        creditText4 = small_font.render("Chelsea Maramot", True, global_var.FONT_COLOR)
        creditTextRect4 = creditText4.get_rect()
        creditTextRect4.center = (global_var.SCREEN_WIDTH // 2-425, global_var.SCREEN_HEIGHT // 2+75)
+       creditText5 = small_font.render("Modified by", True, global_var.FONT_COLOR)
+       creditTextRect5 = creditText5.get_rect()
+       creditTextRect5.center = (global_var.SCREEN_WIDTH // 2+425, global_var.SCREEN_HEIGHT // 2-25)
+       creditText6 = small_font.render("Yili Liu", True, global_var.FONT_COLOR)
+       creditTextRect6 = creditText6.get_rect()
+       creditTextRect6.center = (global_var.SCREEN_WIDTH // 2+425, global_var.SCREEN_HEIGHT // 2+25)
       
 
        global_var.SCREEN.blit(text, textRect)
@@ -335,6 +341,8 @@ def menu(death_count):
        global_var.SCREEN.blit(creditText2, creditTextRect2)
        global_var.SCREEN.blit(creditText3, creditTextRect3)
        global_var.SCREEN.blit(creditText4, creditTextRect4)
+       global_var.SCREEN.blit(creditText5, creditTextRect5)
+       global_var.SCREEN.blit(creditText6, creditTextRect6)
        global_var.SCREEN.blit(images.RUNNING[0], (global_var.SCREEN_WIDTH // 2 - 30, global_var.SCREEN_HEIGHT // 2 - 200))
 
       
